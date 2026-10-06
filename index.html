@@ -276,7 +276,7 @@ input,textarea,button{font-family:inherit}
 <sc-if value="{{ showConsent }}" hint-placeholder-val="{{ false }}">
   <div role="dialog" aria-labelledby="consent-titulo" aria-describedby="consent-texto" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;background:#0B1220;color:#E9EDF3;border:1px solid #1F2A3D;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 48px -12px rgba(7,11,20,0.6)">
     <p id="consent-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;font-size:1.0625rem;color:#F5F7FA">{{ t.consentTitle }}</p>
-    <p id="consent-texto" style="font-size:0.9375rem;line-height:1.55;color:#C9D1DD">{{ t.consentText }}<a href="{{ privacyHref }}" style="color:#B9A8FF">{{ t.privacyLink }}</a>.</p>
+    <p id="consent-texto" style="font-size:0.9375rem;line-height:1.55;color:#C9D1DD">{{ consentText }}<a href="{{ privacyHref }}" style="color:#B9A8FF">{{ t.privacyLink }}</a>.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <button type="button" onClick="{{ acceptConsent }}" style="flex:1;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#C6F432;color:#0B1220;font-weight:500;font-size:0.9375rem;cursor:pointer" style-hover="background:#9BC21F">{{ t.consentAccept }}</button>
       <button type="button" onClick="{{ declineConsent }}" style="flex:1;min-height:44px;padding:0 18px;border:1px solid rgba(245,247,250,0.24);border-radius:999px;background:transparent;color:#F5F7FA;font-weight:500;font-size:0.9375rem;cursor:pointer" style-hover="border-color:#F5F7FA">{{ t.consentDecline }}</button>
@@ -339,7 +339,8 @@ const I18N = {
     footerTag: 'Sites profissionais para pequenos negócios.',
     privacyLink: 'Política de privacidade', cookiePrefs: 'Preferências de cookies',
     consentTitle: 'Sua privacidade',
-    consentText: 'Usamos cookies do Google Analytics e da Meta para entender como o site é usado e melhorar nossos anúncios. Eles só são ativados se você aceitar. Saiba mais na ',
+    consentTools: { ga: 'do Google Analytics', meta: 'da Meta', and: ' e ' },
+    consentText: tools => `Usamos cookies ${tools} para entender como o site é usado e melhorar nossos anúncios. Eles só são ativados se você aceitar. Saiba mais na `,
     consentAccept: 'Aceitar', consentDecline: 'Recusar',
     waFloat: 'Fale com a Kivo pelo WhatsApp',
   },
@@ -392,7 +393,8 @@ const I18N = {
     footerTag: 'Professional websites for small businesses.',
     privacyLink: 'Privacy policy', cookiePrefs: 'Cookie preferences',
     consentTitle: 'Your privacy',
-    consentText: 'We use Google Analytics and Meta cookies to understand how the site is used and to improve our ads. They are only turned on if you accept. Learn more in our ',
+    consentTools: { ga: 'Google Analytics', meta: 'Meta', and: ' and ' },
+    consentText: tools => `We use ${tools} cookies to understand how the site is used and to improve our ads. They are only turned on if you accept. Learn more in our `,
     consentAccept: 'Accept', consentDecline: 'Decline',
     waFloat: 'Chat with Kivo on WhatsApp',
   },
@@ -415,7 +417,7 @@ const SERVICE_ICONS = ['site', 'landing', 'loja', 'cardapio', 'hospedagem', 'goo
 
 // ===== Medição (Google Analytics 4 + Pixel da Meta) =====
 // Cole os códigos aqui. Enquanto os dois estiverem vazios, nada é carregado e o aviso de cookies não aparece.
-const GA4_ID = '';        // ex.: 'G-ABC123XYZ9'  (GA4 > Administrador > Fluxos de dados)
+const GA4_ID = 'G-6J1TK1KX6T'; // ex.: 'G-ABC123XYZ9'  (GA4 > Administrador > Fluxos de dados)
 const META_PIXEL_ID = ''; // ex.: '123456789012345' (Gerenciador de Eventos da Meta)
 const TRACKING_ON = !!(GA4_ID || META_PIXEL_ID);
 
@@ -629,6 +631,8 @@ class Component extends DCLogic {
       privacyHref: `privacidade.html?lang=${lang}`,
       trackingOn: TRACKING_ON,
       showConsent: TRACKING_ON && this.state.consent === null,
+      // cita só as ferramentas que estão de fato configuradas
+      consentText: t.consentText([GA4_ID && t.consentTools.ga, META_PIXEL_ID && t.consentTools.meta].filter(Boolean).join(t.consentTools.and)),
       acceptConsent: () => this.setConsent('granted'),
       declineConsent: () => this.setConsent('denied'),
       reopenConsent: () => this.setState({ consent: null }),
