@@ -145,8 +145,8 @@ img { display: block; }
   gap: clamp(24px, 3.5vw, 36px);
 }
 .hero__title {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(2.75rem, 8.4vw, 6.5rem); line-height: 1.02; letter-spacing: -0.035em;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.5rem, 5.4vw, 4rem); line-height: 1.1; letter-spacing: -0.02em;
   display: flex; flex-direction: column; align-items: center;
 }
 .hero__line {
@@ -217,8 +217,8 @@ img { display: block; }
 }
 .section__head { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .section__title {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em;
   color: var(--grafite-900); text-wrap: balance;
 }
 .section__sub { color: var(--grafite-500); font-size: 1.0625rem; max-width: 46ch; text-wrap: pretty; }
@@ -227,8 +227,8 @@ img { display: block; }
 .section__sub--free { max-width: none; }
 
 .card-title {
-  font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; line-height: 1.25;
-  color: var(--grafite-900);
+  font-family: var(--font-display); font-weight: 500; font-size: 1.375rem; line-height: 1.25;
+  letter-spacing: -0.01em; color: var(--grafite-900);
 }
 .card-text { color: var(--grafite-500); text-wrap: pretty; }
 
@@ -258,8 +258,8 @@ img { display: block; }
 }
 .step { display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid var(--roxo-100); }
 .step__num {
-  font-family: var(--font-display); font-weight: 400; font-size: clamp(2.25rem, 3.6vw, 3rem);
-  line-height: 1; letter-spacing: -0.03em; color: var(--roxo-500);
+  font-family: var(--font-display); font-weight: 700; font-size: 2.5rem;
+  line-height: 1; letter-spacing: -0.02em; color: var(--roxo-500);
 }
 .btn-dark {
   display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 28px;
@@ -342,8 +342,8 @@ img { display: block; }
 }
 .quote__text { display: flex; flex-direction: column; gap: 20px; }
 .quote__title {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.1; letter-spacing: -0.02em;
   color: var(--gelo-50); text-wrap: balance;
 }
 .quote__title .accent { color: var(--lima-500); }
