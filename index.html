@@ -164,7 +164,7 @@ input,textarea,button{font-family:inherit}
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(32px,5vw,48px)">
         <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
           <h2 id="faq-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.1;letter-spacing:-0.025em;color:#0B1220">{{ t.faqTitle }}<span style="color:#7C5CFF">{{ t.faqAccent }}</span></h2>
-          <p style="color:#5B6B82;font-size:1.0625rem">{{ t.faqSub }}<a href="{{ waDirect }}" target="_blank" rel="noopener">{{ t.faqLink }}</a>.</p>
+          <p style="color:#5B6B82;font-size:1.0625rem">{{ t.faqSub }}<a href="{{ waDirect }}" target="_blank" rel="noopener" onClick="{{ onWaFaq }}">{{ t.faqLink }}</a>.</p>
         </div>
         <div style="width:100%;display:flex;flex-direction:column;gap:10px">
           <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
@@ -236,7 +236,7 @@ input,textarea,button{font-family:inherit}
         <ul style="list-style:none;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
           <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
             <li style="display:flex">
-              <a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="flex:1;background:#FFFFFF;border:1px solid #E9EDF3;border-radius:20px;padding:24px;display:flex;align-items:center;gap:16px;color:#0B1220;text-decoration:none;transition:border-color .2s ease,box-shadow .2s ease" style-hover="border-color:#C9BEFF;box-shadow:0 16px 36px -18px rgba(124,92,255,0.4);text-decoration:none">
+              <a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" onClick="{{ c.onClick }}" style="flex:1;background:#FFFFFF;border:1px solid #E9EDF3;border-radius:20px;padding:24px;display:flex;align-items:center;gap:16px;color:#0B1220;text-decoration:none;transition:border-color .2s ease,box-shadow .2s ease" style-hover="border-color:#C9BEFF;box-shadow:0 16px 36px -18px rgba(124,92,255,0.4);text-decoration:none">
                 <span aria-hidden="true" style="flex:none;width:48px;height:48px;border-radius:999px;background:#7C5CFF;color:#F5F7FA;display:flex;align-items:center;justify-content:center">
                   <span style="{{ c.iconStyle }}"></span>
                 </span>
@@ -259,13 +259,32 @@ input,textarea,button{font-family:inherit}
             <a href="{{ n.href }}" style="color:#5B6B82">{{ n.label }}</a>
           </sc-for>
         </div>
-        <p style="flex-basis:100%;color:#5B6B82;font-size:0.875rem;padding-top:20px;border-top:1px solid #E9EDF3">© {{ year }} Kivo Digital. {{ t.footerTag }}</p>
+        <div style="flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;color:#5B6B82;font-size:0.875rem;padding-top:20px;border-top:1px solid #E9EDF3">
+          <p>© {{ year }} Kivo Digital. {{ t.footerTag }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:20px">
+            <a href="{{ privacyHref }}" style="color:#5B6B82">{{ t.privacyLink }}</a>
+            <sc-if value="{{ trackingOn }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ reopenConsent }}" style="border:0;background:transparent;padding:0;color:#5B6B82;font-size:0.875rem;cursor:pointer;text-decoration:underline">{{ t.cookiePrefs }}</button>
+            </sc-if>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
 </main>
 
-<a href="{{ waDirect }}" target="_blank" rel="noopener" aria-label="{{ t.waFloat }}" style="position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:999px;background:#C6F432;color:#0B1220;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(198,244,50,0.35),0 6px 20px rgba(11,18,32,0.3);transition:transform .2s ease,background .2s ease" style-hover="background:#9BC21F;transform:scale(1.06)">
+<sc-if value="{{ showConsent }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-labelledby="consent-titulo" aria-describedby="consent-texto" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;background:#0B1220;color:#E9EDF3;border:1px solid #1F2A3D;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 48px -12px rgba(7,11,20,0.6)">
+    <p id="consent-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;font-size:1.0625rem;color:#F5F7FA">{{ t.consentTitle }}</p>
+    <p id="consent-texto" style="font-size:0.9375rem;line-height:1.55;color:#C9D1DD">{{ t.consentText }}<a href="{{ privacyHref }}" style="color:#B9A8FF">{{ t.privacyLink }}</a>.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button type="button" onClick="{{ acceptConsent }}" style="flex:1;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#C6F432;color:#0B1220;font-weight:500;font-size:0.9375rem;cursor:pointer" style-hover="background:#9BC21F">{{ t.consentAccept }}</button>
+      <button type="button" onClick="{{ declineConsent }}" style="flex:1;min-height:44px;padding:0 18px;border:1px solid rgba(245,247,250,0.24);border-radius:999px;background:transparent;color:#F5F7FA;font-weight:500;font-size:0.9375rem;cursor:pointer" style-hover="border-color:#F5F7FA">{{ t.consentDecline }}</button>
+    </div>
+  </div>
+</sc-if>
+
+<a href="{{ waDirect }}" target="_blank" rel="noopener" onClick="{{ onWaFloat }}" aria-label="{{ t.waFloat }}" style="position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:999px;background:#C6F432;color:#0B1220;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(198,244,50,0.35),0 6px 20px rgba(11,18,32,0.3);transition:transform .2s ease,background .2s ease" style-hover="background:#9BC21F;transform:scale(1.06)">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
 </x-dc>
@@ -318,6 +337,10 @@ const I18N = {
     waIntro: 'Olá, Kivo! Quero um orçamento de site.', waNome: 'Nome', waNegocio: 'Negócio', waSite: 'Já tem site', waMsg: 'O que preciso',
     waDirect: 'Olá, Kivo! Quero saber mais sobre sites.',
     footerTag: 'Sites profissionais para pequenos negócios.',
+    privacyLink: 'Política de privacidade', cookiePrefs: 'Preferências de cookies',
+    consentTitle: 'Sua privacidade',
+    consentText: 'Usamos cookies do Google Analytics e da Meta para entender como o site é usado e melhorar nossos anúncios. Eles só são ativados se você aceitar. Saiba mais na ',
+    consentAccept: 'Aceitar', consentDecline: 'Recusar',
     waFloat: 'Fale com a Kivo pelo WhatsApp',
   },
   en: {
@@ -367,6 +390,10 @@ const I18N = {
     waIntro: 'Hi, Kivo! I’d like a website quote.', waNome: 'Name', waNegocio: 'Business', waSite: 'Already has a website', waMsg: 'What I need',
     waDirect: 'Hi, Kivo! I’d like to know more about websites.',
     footerTag: 'Professional websites for small businesses.',
+    privacyLink: 'Privacy policy', cookiePrefs: 'Cookie preferences',
+    consentTitle: 'Your privacy',
+    consentText: 'We use Google Analytics and Meta cookies to understand how the site is used and to improve our ads. They are only turned on if you accept. Learn more in our ',
+    consentAccept: 'Accept', consentDecline: 'Decline',
     waFloat: 'Chat with Kivo on WhatsApp',
   },
 };
@@ -386,6 +413,50 @@ const ICONS = {
 };
 const SERVICE_ICONS = ['site', 'landing', 'loja', 'cardapio', 'hospedagem', 'google'];
 
+// ===== Medição (Google Analytics 4 + Pixel da Meta) =====
+// Cole os códigos aqui. Enquanto os dois estiverem vazios, nada é carregado e o aviso de cookies não aparece.
+const GA4_ID = '';        // ex.: 'G-ABC123XYZ9'  (GA4 > Administrador > Fluxos de dados)
+const META_PIXEL_ID = ''; // ex.: '123456789012345' (Gerenciador de Eventos da Meta)
+const TRACKING_ON = !!(GA4_ID || META_PIXEL_ID);
+
+// Escolha do visitante: 'granted' | 'denied' | null (ainda não respondeu)
+function readConsent() {
+  try { return window.localStorage.getItem('kivo-consent'); } catch (e) { return null; }
+}
+function saveConsent(v) {
+  try { window.localStorage.setItem('kivo-consent', v); } catch (e) {}
+}
+
+// Só roda depois que o visitante aceita; carrega cada ferramenta uma única vez
+function loadTracking() {
+  if (window.__kivoTracking) return;
+  window.__kivoTracking = true;
+  if (GA4_ID) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA4_ID);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+    document.head.appendChild(s);
+  }
+  if (META_PIXEL_ID) {
+    /* código padrão do Pixel da Meta */
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
+}
+
+// Registra um evento nas duas ferramentas (se carregadas).
+// ga: nome do evento no GA4; meta: evento padrão da Meta ('Lead' ou 'Contact')
+function track(ga, meta, params = {}) {
+  if (!window.__kivoTracking) return;
+  try { if (GA4_ID && window.gtag) window.gtag('event', ga, params); } catch (e) {}
+  try { if (META_PIXEL_ID && window.fbq) window.fbq('track', meta, params); } catch (e) {}
+}
+
 const LANGS = [{ key: 'pt', code: 'PT', lang: 'pt-BR', name: 'Português (Brasil)' }, { key: 'en', code: 'EN', lang: 'en', name: 'English' }];
 
 // ?lang=en na URL tem prioridade; depois a última escolha salva; padrão português
@@ -402,7 +473,8 @@ function initialLang() {
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, h: typeof window !== 'undefined' ? window.innerHeight : 800,
     y: 0, loaded: false, menuOpen: false, openFaq: 0, lang: typeof window !== 'undefined' ? initialLang() : 'pt',
-    form: { nome: '', negocio: '', site: 'nao', msg: '' }, feedback: '', fbType: '' };
+    form: { nome: '', negocio: '', site: 'nao', msg: '' }, feedback: '', fbType: '',
+    consent: typeof window !== 'undefined' ? readConsent() : null };
 
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth, h: window.innerHeight });
@@ -411,6 +483,15 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.t = setTimeout(() => this.setState({ loaded: true }), 80);
     this.applyLang();
+    if (TRACKING_ON && this.state.consent === 'granted') loadTracking();
+  }
+
+  setConsent(v) {
+    saveConsent(v);
+    this.setState({ consent: v });
+    if (v === 'granted') loadTracking();
+    // Ao recusar depois de ter aceitado, recarrega a página para descarregar as ferramentas
+    else if (window.__kivoTracking) window.location.reload();
   }
   componentDidUpdate() { this.applyLang(); }
 
@@ -453,6 +534,8 @@ class Component extends DCLogic {
       return;
     }
     const texto = `${t.waIntro}\n\n*${t.waNome}:* ${nome.trim()}\n*${t.waNegocio}:* ${negocio.trim()}\n*${t.waSite}:* ${t.siteOpts[site]}` + (msg.trim() ? `\n*${t.waMsg}:* ${msg.trim()}` : '');
+    // Nunca enviar nome, negócio ou mensagem para as ferramentas de medição (dados pessoais)
+    track('generate_lead', 'Lead', { method: 'formulario', ja_tem_site: site, idioma: this.state.lang });
     this.setState({ feedback: t.fbOk, fbType: 'ok' });
     setTimeout(() => window.open(`https://wa.me/${this.number()}?text=${encodeURIComponent(texto)}`, '_blank'), 600);
   };
@@ -500,10 +583,13 @@ class Component extends DCLogic {
         .map(([href, label]) => ({ href, label })),
       services: t.services.map(([title, text], i) => ({ title, text, iconStyle: icon(ICONS[SERVICE_ICONS[i]], 24) })),
       contacts: [
-        { icon: ICONS.email, value: EMAIL, href: `mailto:${EMAIL}`, target: '_self' },
-        { icon: ICONS.telefone, value: this.phoneDisplay(), href: `tel:+${this.number()}`, target: '_self' },
-        { icon: ICONS.instagram, value: `@${INSTAGRAM}`, href: `https://instagram.com/${INSTAGRAM}`, target: '_blank' },
-      ].map((c, i) => ({ ...c, label: t.contLabels[i], iconStyle: icon(c.icon, 22) }))
+        { icon: ICONS.email, value: EMAIL, href: `mailto:${EMAIL}`, target: '_self', method: 'email' },
+        { icon: ICONS.telefone, value: this.phoneDisplay(), href: `tel:+${this.number()}`, target: '_self', method: 'telefone' },
+        { icon: ICONS.instagram, value: `@${INSTAGRAM}`, href: `https://instagram.com/${INSTAGRAM}`, target: '_blank', method: 'instagram' },
+      ].map((c, i) => ({
+        ...c, label: t.contLabels[i], iconStyle: icon(c.icon, 22),
+        onClick: () => track('contact', 'Contact', { method: c.method, local: 'secao_contato' }),
+      }))
         // esconde o telefone enquanto o número for o provisório (55 + zeros)
         .filter(c => c.icon !== ICONS.telefone || !/^550+$/.test(this.number())),
       menuLabel: menuOpen ? t.menuClose : t.menuOpen,
@@ -538,6 +624,14 @@ class Component extends DCLogic {
       feedbackStyle: toObj(`padding:12px 14px;border-radius:8px;font-weight:500;font-size:15px;background:${fbType === 'erro' ? '#FFF1F0' : '#F1EDFF'};color:${fbType === 'erro' ? '#A8231B' : '#5B3FD9'}`),
       waDirect: `https://wa.me/${this.number()}?text=${encodeURIComponent(t.waDirect)}`,
       year: new Date().getFullYear(),
+      onWaFaq: () => track('contact', 'Contact', { method: 'whatsapp', local: 'perguntas' }),
+      onWaFloat: () => track('contact', 'Contact', { method: 'whatsapp', local: 'botao_flutuante' }),
+      privacyHref: `privacidade.html?lang=${lang}`,
+      trackingOn: TRACKING_ON,
+      showConsent: TRACKING_ON && this.state.consent === null,
+      acceptConsent: () => this.setConsent('granted'),
+      declineConsent: () => this.setConsent('denied'),
+      reopenConsent: () => this.setState({ consent: null }),
     };
   }
 }
