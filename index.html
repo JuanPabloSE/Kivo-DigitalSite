@@ -136,6 +136,27 @@ input,textarea,button{font-family:inherit}
       </div>
     </section>
 
+    <section id="como-funciona" aria-labelledby="proc-titulo" style="scroll-margin-top:72px;padding:clamp(56px,8vw,96px) 24px">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(36px,5vw,56px)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <h2 id="proc-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.1;letter-spacing:-0.025em;color:#0B1220;text-wrap:balance">{{ t.procTitle }}<span style="color:#7C5CFF">{{ t.procAccent }}</span></h2>
+          <p style="color:#5B6B82;font-size:1.0625rem;max-width:44ch;text-wrap:pretty">{{ t.procSub }}</p>
+        </div>
+        <ol style="list-style:none;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,32px)">
+          <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+            <li style="display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:2px solid #E2DAFF">
+              <span aria-hidden="true" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2.25rem,3.6vw,3rem);line-height:1;letter-spacing:-0.03em;color:#7C5CFF">{{ p.num }}</span>
+              <h3 style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;font-size:1.25rem;line-height:1.25;color:#0B1220">{{ p.title }}</h3>
+              <p style="color:#5B6B82;text-wrap:pretty">{{ p.text }}</p>
+            </li>
+          </sc-for>
+        </ol>
+        <a href="#orcamento" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:12px;background:#0B1220;color:#F5F7FA;font-weight:500;text-decoration:none;transition:background .2s ease" style-hover="background:#1F2A3D;text-decoration:none">{{ t.procCta }}
+          <svg width="18" height="18" viewBox="0 0 256 256" fill="#C6F432" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+        </a>
+      </div>
+    </section>
+
     <section id="depoimentos" aria-labelledby="dep-titulo" style="scroll-margin-top:72px;padding:clamp(56px,8vw,96px) 24px">
       <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(36px,5vw,56px)">
         <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
@@ -310,6 +331,14 @@ const I18N = {
       ['Hospedagem e domínio', 'Cuidamos do endereço do seu site e de mantê-lo no ar, rápido e seguro.'],
       ['Otimização para o Google', 'Site preparado para aparecer nas buscas de quem procura o que você oferece.'],
     ],
+    procTitle: 'Do primeiro oi ao ', procAccent: 'site no ar', procSub: 'Um processo simples, sem complicação e sem termos técnicos.',
+    steps: [
+      ['Conversa no WhatsApp', 'Você chama a gente e conta sobre o seu negócio e o que precisa.'],
+      ['Orçamento fechado', 'Você recebe o valor e o prazo por escrito, antes de começarmos.'],
+      ['Criação e aprovação', 'A gente cria o site e mostra para você antes de publicar, para ajustar o que for preciso.'],
+      ['Site no ar', 'Seu site é publicado, pronto para você divulgar para os seus clientes.'],
+    ],
+    procCta: 'Começar agora',
     contTitle: 'Fale com a ', contAccent: 'gente', contSub: 'Escolha o canal que for melhor para você. A gente responde rápido.',
     contLabels: ['E-mail', 'Telefone e WhatsApp', 'Instagram'],
     depTitle: 'Quem já tem site com a ', depAccent: 'Kivo', depSub: 'Donos de negócio falando com as próprias palavras.',
@@ -364,6 +393,14 @@ const I18N = {
       ['Hosting and domain', 'We take care of your website address and keep it online, fast and secure.'],
       ['Google optimization (SEO)', 'A site built to show up when people search for what you offer.'],
     ],
+    procTitle: 'From the first hello to ', procAccent: 'a live website', procSub: 'A simple process, with no hassle and no tech jargon.',
+    steps: [
+      ['Chat on WhatsApp', 'Message us and tell us about your business and what you need.'],
+      ['Fixed-price quote', 'You get the price and the timeline in writing before we start.'],
+      ['Design and approval', 'We build your site and show it to you before it goes live, so we can adjust whatever you need.'],
+      ['Your site goes live', 'Your site is published, ready for you to share with your customers.'],
+    ],
+    procCta: 'Get started',
     contTitle: 'Get in ', contAccent: 'touch', contSub: 'Pick the channel that works best for you. We reply fast.',
     contLabels: ['Email', 'Phone and WhatsApp', 'Instagram'],
     depTitle: 'Businesses already online with ', depAccent: 'Kivo', depSub: 'Business owners, in their own words.',
@@ -583,6 +620,7 @@ class Component extends DCLogic {
       navFull: !navCompact, navCompact, menuOpen, showMobileMenu: navCompact && menuOpen,
       navLinks: [['#servicos', t.navServices], ['#depoimentos', t.navTestimonials], ['#perguntas', t.navFaq], ['#contato', t.navContact]]
         .map(([href, label]) => ({ href, label })),
+      steps: t.steps.map(([title, text], i) => ({ num: String(i + 1).padStart(2, '0'), title, text })),
       services: t.services.map(([title, text], i) => ({ title, text, iconStyle: icon(ICONS[SERVICE_ICONS[i]], 24) })),
       contacts: [
         { icon: ICONS.email, value: EMAIL, href: `mailto:${EMAIL}`, target: '_self', method: 'email' },
