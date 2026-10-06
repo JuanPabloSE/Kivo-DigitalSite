@@ -4,13 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kivo Digital: sites profissionais para pequenos negócios</title>
+<meta name="description" content="A Kivo Digital cria sites profissionais, rápidos e fáceis de atualizar para pequenos negócios. Peça seu orçamento pelo WhatsApp.">
+<meta name="theme-color" content="#070B14">
+<link rel="icon" href="assets/kivo-avatar-lima.svg">
+<link rel="apple-touch-icon" href="assets/kivo-icon.png">
+<link rel="canonical" href="https://juanpablose.github.io/Kivo-DigitalSite/">
+<!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook, LinkedIn). Precisa ficar fixo no HTML: esses apps não rodam JavaScript. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kivo Digital">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://juanpablose.github.io/Kivo-DigitalSite/">
+<meta property="og:title" content="Kivo Digital: sites profissionais para pequenos negócios">
+<meta property="og:description" content="Sites rápidos, bonitos no celular e fáceis de atualizar. Peça seu orçamento pelo WhatsApp.">
+<meta property="og:image" content="https://juanpablose.github.io/Kivo-DigitalSite/assets/kivo-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kivo Digital: seu negócio merece um site de verdade">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<meta name="description" content="A Kivo Digital cria sites profissionais, rápidos e fáceis de atualizar para pequenos negócios. Peça seu orçamento pelo WhatsApp.">
-<link rel="icon" href="assets/kivo-avatar-lima.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
@@ -33,19 +49,20 @@ input,textarea,button{font-family:inherit}
       <img src="assets/kivo-negativa.svg" alt="Kivo Digital" style="height:26px;width:auto;display:block">
     </a>
     <div style="display:flex;align-items:center;gap:clamp(12px,2vw,24px)">
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-        <a href="#depoimentos" style="color:#C9D1DD;font-size:15px;font-weight:500" style-hover="color:#F5F7FA;text-decoration:none">{{ t.navTestimonials }}</a>
-        <a href="#perguntas" style="color:#C9D1DD;font-size:15px;font-weight:500" style-hover="color:#F5F7FA;text-decoration:none">{{ t.navFaq }}</a>
+      <sc-if value="{{ navFull }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" style="color:#C9D1DD;font-size:15px;font-weight:500" style-hover="color:#F5F7FA;text-decoration:none">{{ n.label }}</a>
+        </sc-for>
       </sc-if>
       <div role="group" aria-label="{{ t.langLabel }}" style="display:flex;align-items:center;gap:2px;padding:3px;border:1px solid rgba(245,247,250,0.18);border-radius:999px">
         <sc-for list="{{ langOpts }}" as="l" hint-placeholder-count="2">
           <button type="button" lang="{{ l.lang }}" onClick="{{ l.pick }}" aria-pressed="{{ l.on }}" aria-label="{{ l.name }}" title="{{ l.name }}" style="{{ l.style }}">{{ l.code }}</button>
         </sc-for>
       </div>
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ navFull }}" hint-placeholder-val="{{ true }}">
         <a href="#orcamento" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:#C6F432;color:#0B1220;font-size:15px;font-weight:500;text-decoration:none" style-hover="background:#9BC21F;text-decoration:none">{{ t.cta }}</a>
       </sc-if>
-      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <sc-if value="{{ navCompact }}" hint-placeholder-val="{{ false }}">
         <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(245,247,250,0.18);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
           <span style="width:20px;height:2px;background:#F5F7FA;border-radius:2px"></span>
           <span style="width:20px;height:2px;background:#F5F7FA;border-radius:2px"></span>
@@ -56,8 +73,9 @@ input,textarea,button{font-family:inherit}
   </nav>
   <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
     <div style="border-top:1px solid rgba(245,247,250,0.08);padding:8px 24px 24px;display:flex;flex-direction:column;gap:4px">
-      <a href="#depoimentos" onClick="{{ closeMenu }}" style="color:#F5F7FA;font-weight:500;padding:12px 0;font-size:18px">{{ t.navTestimonials }}</a>
-      <a href="#perguntas" onClick="{{ closeMenu }}" style="color:#F5F7FA;font-weight:500;padding:12px 0;font-size:18px">{{ t.navFaq }}</a>
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="color:#F5F7FA;font-weight:500;padding:12px 0;font-size:18px">{{ n.label }}</a>
+      </sc-for>
       <a href="#orcamento" onClick="{{ closeMenu }}" style="margin-top:8px;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;background:#C6F432;color:#0B1220;font-weight:500;text-decoration:none">{{ t.cta }}</a>
     </div>
   </sc-if>
@@ -98,7 +116,27 @@ input,textarea,button{font-family:inherit}
   </section>
 
   <div style="{{ sheetStyle }}">
-    <section id="depoimentos" aria-labelledby="dep-titulo" style="scroll-margin-top:72px;padding:clamp(72px,10vw,120px) 24px clamp(56px,8vw,96px)">
+    <section id="servicos" aria-labelledby="serv-titulo" style="scroll-margin-top:72px;padding:clamp(72px,10vw,120px) 24px clamp(56px,8vw,96px)">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(36px,5vw,56px)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <h2 id="serv-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.1;letter-spacing:-0.025em;color:#0B1220;text-wrap:balance">{{ t.servTitle }}<span style="color:#7C5CFF">{{ t.servAccent }}</span></h2>
+          <p style="color:#5B6B82;font-size:1.0625rem;max-width:46ch;text-wrap:pretty">{{ t.servSub }}</p>
+        </div>
+        <ul style="list-style:none;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+            <li style="background:#FFFFFF;border:1px solid #E9EDF3;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease" style-hover="border-color:#C9BEFF;box-shadow:0 16px 36px -18px rgba(124,92,255,0.4);transform:translateY(-2px)">
+              <span aria-hidden="true" style="width:48px;height:48px;border-radius:14px;background:#F1EDFF;color:#5B3FD9;display:flex;align-items:center;justify-content:center">
+                <span style="{{ s.iconStyle }}"></span>
+              </span>
+              <h3 style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;font-size:1.25rem;line-height:1.25;color:#0B1220">{{ s.title }}</h3>
+              <p style="color:#5B6B82;text-wrap:pretty">{{ s.text }}</p>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+
+    <section id="depoimentos" aria-labelledby="dep-titulo" style="scroll-margin-top:72px;padding:clamp(56px,8vw,96px) 24px">
       <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(36px,5vw,56px)">
         <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
           <h2 id="dep-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.1;letter-spacing:-0.025em;color:#0B1220;text-wrap:balance">{{ t.depTitle }}<span style="color:#7C5CFF">{{ t.depAccent }}</span></h2>
@@ -189,13 +227,37 @@ input,textarea,button{font-family:inherit}
       </div>
     </section>
 
+    <section id="contato" aria-labelledby="contato-titulo" style="scroll-margin-top:72px;padding:clamp(56px,8vw,96px) 24px clamp(24px,4vw,48px)">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(32px,5vw,48px)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <h2 id="contato-titulo" style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.1;letter-spacing:-0.025em;color:#0B1220;text-wrap:balance">{{ t.contTitle }}<span style="color:#7C5CFF">{{ t.contAccent }}</span></h2>
+          <p style="color:#5B6B82;font-size:1.0625rem;max-width:44ch;text-wrap:pretty">{{ t.contSub }}</p>
+        </div>
+        <ul style="list-style:none;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+          <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
+            <li style="display:flex">
+              <a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="flex:1;background:#FFFFFF;border:1px solid #E9EDF3;border-radius:20px;padding:24px;display:flex;align-items:center;gap:16px;color:#0B1220;text-decoration:none;transition:border-color .2s ease,box-shadow .2s ease" style-hover="border-color:#C9BEFF;box-shadow:0 16px 36px -18px rgba(124,92,255,0.4);text-decoration:none">
+                <span aria-hidden="true" style="flex:none;width:48px;height:48px;border-radius:999px;background:#7C5CFF;color:#F5F7FA;display:flex;align-items:center;justify-content:center">
+                  <span style="{{ c.iconStyle }}"></span>
+                </span>
+                <span style="display:flex;flex-direction:column;line-height:1.35;min-width:0">
+                  <span style="color:#5B6B82;font-size:0.875rem">{{ c.label }}</span>
+                  <span style="font-weight:500;font-size:1.0625rem;overflow-wrap:anywhere">{{ c.value }}</span>
+                </span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+
     <footer style="padding:40px 24px 32px">
       <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
         <img src="assets/kivo-positiva.svg" alt="Kivo Digital" style="height:24px;width:auto;display:block">
         <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
-          <a href="#depoimentos" style="color:#5B6B82">{{ t.navTestimonials }}</a>
-          <a href="#perguntas" style="color:#5B6B82">{{ t.navFaq }}</a>
-          <a href="{{ waDirect }}" target="_blank" rel="noopener" style="color:#5B6B82">WhatsApp</a>
+          <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+            <a href="{{ n.href }}" style="color:#5B6B82">{{ n.label }}</a>
+          </sc-for>
         </div>
         <p style="flex-basis:100%;color:#5B6B82;font-size:0.875rem;padding-top:20px;border-top:1px solid #E9EDF3">© {{ year }} Kivo Digital. {{ t.footerTag }}</p>
       </div>
@@ -214,11 +276,23 @@ const I18N = {
     title: 'Kivo Digital: sites profissionais para pequenos negócios',
     description: 'A Kivo Digital cria sites profissionais, rápidos e fáceis de atualizar para pequenos negócios. Peça seu orçamento pelo WhatsApp.',
     navLabel: 'Principal', homeLabel: 'Kivo Digital, início', langLabel: 'Idioma',
-    navTestimonials: 'Depoimentos', navFaq: 'Perguntas', cta: 'Pedir orçamento',
+    navServices: 'Serviços', navTestimonials: 'Depoimentos', navFaq: 'Perguntas', navContact: 'Contato', cta: 'Pedir orçamento',
     menuOpen: 'Abrir menu', menuClose: 'Fechar menu',
     heroLines: [['Seu', 'negócio'], ['merece', 'um', 'site'], ['de', '@icon', 'verdade']],
     heroSub: 'Rápido, bonito no celular e fácil de atualizar. A gente cuida da tecnologia, você cuida dos clientes.',
     promises: ['Feito primeiro para celular', 'Fácil de atualizar', 'Orçamento fechado'],
+    servTitle: 'Tudo para o seu negócio ', servAccent: 'estar online',
+    servSub: 'Do site completo ao cardápio no celular: a gente cria, coloca no ar e cuida para você ser encontrado.',
+    services: [
+      ['Sites profissionais', 'Para negócios no Brasil e no exterior, em português, inglês ou nos dois idiomas.'],
+      ['Landing pages', 'Uma página direta ao ponto para divulgar um produto, uma campanha ou captar contatos.'],
+      ['Loja virtual', 'Seus produtos à venda na internet, com catálogo, carrinho e pagamento online.'],
+      ['Cardápio virtual', 'Seu cardápio no celular do cliente, fácil de atualizar e com pedido pelo WhatsApp.'],
+      ['Hospedagem e domínio', 'Cuidamos do endereço do seu site e de mantê-lo no ar, rápido e seguro.'],
+      ['Otimização para o Google', 'Site preparado para aparecer nas buscas de quem procura o que você oferece.'],
+    ],
+    contTitle: 'Fale com a ', contAccent: 'gente', contSub: 'Escolha o canal que for melhor para você. A gente responde rápido.',
+    contLabels: ['E-mail', 'Telefone e WhatsApp', 'Instagram'],
     depTitle: 'Quem já tem site com a ', depAccent: 'Kivo', depSub: 'Donos de negócio falando com as próprias palavras.',
     testimonials: [
       ['Eu achava que site era coisa de empresa grande. Hoje os clientes me acham no Google e já chegam sabendo o que eu faço.', 'Estúdio de sobrancelhas'],
@@ -251,11 +325,23 @@ const I18N = {
     title: 'Kivo Digital: professional websites for small businesses',
     description: 'Kivo Digital builds professional websites for small businesses: fast and easy to update. Get your quote on WhatsApp.',
     navLabel: 'Main', homeLabel: 'Kivo Digital, home', langLabel: 'Language',
-    navTestimonials: 'Testimonials', navFaq: 'FAQ', cta: 'Get a quote',
+    navServices: 'Services', navTestimonials: 'Testimonials', navFaq: 'FAQ', navContact: 'Contact', cta: 'Get a quote',
     menuOpen: 'Open menu', menuClose: 'Close menu',
     heroLines: [['Your', 'business'], ['deserves', 'a'], ['real', '@icon', 'website']],
     heroSub: 'Fast, beautiful on mobile and easy to update. We handle the tech, you take care of your customers.',
     promises: ['Built mobile-first', 'Easy to update', 'Fixed-price quote'],
+    servTitle: 'Everything your business needs ', servAccent: 'to be online',
+    servSub: 'From a full website to a menu on your customer’s phone: we build it, put it live and help people find you.',
+    services: [
+      ['Professional websites', 'For businesses in Brazil and abroad, in Portuguese, English or both.'],
+      ['Landing pages', 'A focused, single page to promote a product or campaign, or to capture leads.'],
+      ['Online stores', 'Sell your products online, with a catalog, shopping cart and online payment.'],
+      ['Digital menus', 'Your menu on your customer’s phone, easy to update, with orders via WhatsApp.'],
+      ['Hosting and domain', 'We take care of your website address and keep it online, fast and secure.'],
+      ['Google optimization (SEO)', 'A site built to show up when people search for what you offer.'],
+    ],
+    contTitle: 'Get in ', contAccent: 'touch', contSub: 'Pick the channel that works best for you. We reply fast.',
+    contLabels: ['Email', 'Phone and WhatsApp', 'Instagram'],
     depTitle: 'Businesses already online with ', depAccent: 'Kivo', depSub: 'Business owners, in their own words.',
     testimonials: [
       ['I used to think websites were for big companies. Now customers find me on Google and already know what I do when they reach out.', 'Eyebrow studio'],
@@ -284,6 +370,22 @@ const I18N = {
     waFloat: 'Chat with Kivo on WhatsApp',
   },
 };
+const EMAIL = 'kivodigital.br@gmail.com';
+const INSTAGRAM = 'kivodigital.br';
+// Ícones de traço (viewBox 24x24), um path por ícone
+const ICONS = {
+  site: 'M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18',
+  landing: 'M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM3 9h18M8 13h8M8 16h5',
+  loja: 'M5 8h14l-1.2 12H6.2L5 8zM9 8a3 3 0 0 1 6 0',
+  cardapio: 'M9 2h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM10 7h4M10 11h4M10 15h2',
+  hospedagem: 'M5 4h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM5 13h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zM7 7.5h.01M7 16.5h.01',
+  google: 'M4 11a7 7 0 1 0 14 0a7 7 0 1 0-14 0M20 20l-4-4',
+  email: 'M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM3 7l9 6 9-6',
+  telefone: 'M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2',
+  instagram: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0M17.5 6.5h.01',
+};
+const SERVICE_ICONS = ['site', 'landing', 'loja', 'cardapio', 'hospedagem', 'google'];
+
 const LANGS = [{ key: 'pt', code: 'PT', lang: 'pt-BR', name: 'Português (Brasil)' }, { key: 'en', code: 'EN', lang: 'en', name: 'English' }];
 
 // ?lang=en na URL tem prioridade; depois a última escolha salva; padrão português
@@ -334,6 +436,12 @@ class Component extends DCLogic {
   }
 
   number() { return String(this.props.whatsapp ?? '5500000000000').replace(/\D/g, ''); }
+  // 5511912345678 -> +55 (11) 91234-5678
+  phoneDisplay() {
+    const n = this.number();
+    const m = n.match(/^55(\d{2})(\d{4,5})(\d{4})$/);
+    return m ? `+55 (${m[1]}) ${m[2]}-${m[3]}` : `+${n}`;
+  }
   setField(k) { return e => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v }, feedback: '' })); }; }
 
   submit = e => {
@@ -353,6 +461,7 @@ class Component extends DCLogic {
     const { w, h, y, loaded, menuOpen, openFaq, form, feedback, fbType, lang } = this.state;
     const t = I18N[lang];
     const isMobile = w < 768;
+    const navCompact = w < 1024; // 4 links + idioma + botão não cabem abaixo disso
     const toObj = css => Object.fromEntries(css.split(';').filter(Boolean).map(p => { const i = p.indexOf(':'); return [p.slice(0, i).trim().replace(/-([a-z])/g, (_, c) => c.toUpperCase()), p.slice(i + 1).trim()]; }));
     const reveal = (d, extra = '') => toObj(`${extra};opacity:${loaded ? 1 : 0};filter:blur(${loaded ? 0 : 12}px);transform:translateY(${loaded ? 0 : 18}px);transition:opacity .9s ease ${d}s,filter .9s ease ${d}s,transform .9s cubic-bezier(.2,.7,.2,1) ${d}s`);
 
@@ -371,6 +480,12 @@ class Component extends DCLogic {
     const inset = isMobile ? 8 * (1 - p) : 40 * (1 - p);
     const sheetStyle = toObj(`position:relative;z-index:2;margin:-96px auto 0;width:calc(100% - ${inset * 2}px);background:#F5F7FA;border-radius:${isMobile ? 24 : 40}px ${isMobile ? 24 : 40}px 0 0;box-shadow:0 -30px 80px -20px rgba(124,92,255,0.35)`);
 
+    // Ícone desenhado como máscara: herda a cor do texto (currentColor)
+    const icon = (d, size) => {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
+      const mask = `url("data:image/svg+xml,${encodeURIComponent(svg)}") center/contain no-repeat`;
+      return toObj(`flex:none;display:block;width:${size}px;height:${size}px;background-color:currentColor;-webkit-mask:${mask};mask:${mask}`);
+    };
     const langPill = on => `min-height:34px;min-width:40px;padding:0 10px;border-radius:999px;border:0;font-size:13px;font-weight:500;letter-spacing:0.04em;cursor:pointer;transition:background .2s ease,color .2s ease;background:${on ? '#C6F432' : 'transparent'};color:${on ? '#0B1220' : '#C9D1DD'}`;
     const pill = on => `min-height:44px;padding:0 20px;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;border:1.5px solid ${on ? '#5B3FD9' : '#C9D1DD'};background:${on ? '#F1EDFF' : '#FFFFFF'};color:${on ? '#5B3FD9' : '#0B1220'}`;
 
@@ -380,7 +495,17 @@ class Component extends DCLogic {
         ...l, on: lang === l.key, style: toObj(langPill(lang === l.key)),
         pick: () => this.setLang(l.key),
       })),
-      isMobile, isDesktop: !isMobile, menuOpen, showMobileMenu: isMobile && menuOpen,
+      navFull: !navCompact, navCompact, menuOpen, showMobileMenu: navCompact && menuOpen,
+      navLinks: [['#servicos', t.navServices], ['#depoimentos', t.navTestimonials], ['#perguntas', t.navFaq], ['#contato', t.navContact]]
+        .map(([href, label]) => ({ href, label })),
+      services: t.services.map(([title, text], i) => ({ title, text, iconStyle: icon(ICONS[SERVICE_ICONS[i]], 24) })),
+      contacts: [
+        { icon: ICONS.email, value: EMAIL, href: `mailto:${EMAIL}`, target: '_self' },
+        { icon: ICONS.telefone, value: this.phoneDisplay(), href: `tel:+${this.number()}`, target: '_self' },
+        { icon: ICONS.instagram, value: `@${INSTAGRAM}`, href: `https://instagram.com/${INSTAGRAM}`, target: '_blank' },
+      ].map((c, i) => ({ ...c, label: t.contLabels[i], iconStyle: icon(c.icon, 22) }))
+        // esconde o telefone enquanto o número for o provisório (55 + zeros)
+        .filter(c => c.icon !== ICONS.telefone || !/^550+$/.test(this.number())),
       menuLabel: menuOpen ? t.menuClose : t.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
