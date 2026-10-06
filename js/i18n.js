@@ -19,7 +19,7 @@ window.KIVO_I18N = {
     servTitle: 'Services to put your business ', servAccent: 'online',
     servSub: 'Pick what makes sense right now. You can start with a single page and grow later.',
     services: [
-      { title: 'Professional websites', text: 'A complete website with the pages your business needs, in Portuguese, English or both.' },
+      { title: 'Professional websites', text: 'A complete website with the pages your business needs, in Portuguese, English or both, for clients in Brazil and abroad.' },
       { title: 'Landing pages', text: 'A single, focused page to promote a product or a campaign, or to collect leads from ads.' },
       { title: 'Online stores', text: 'Catalog, shopping cart and online payment to sell your products on the internet.' },
       { title: 'Digital menus', text: 'Your menu on the customer’s phone, with orders straight to WhatsApp. Changed a price? You update it yourself.' },
@@ -71,7 +71,7 @@ window.KIVO_I18N = {
 
     footerAbout: 'Professional websites for small businesses, custom-built and kept online by our team.',
     footerNav: 'Navigation', footerContact: 'Contact', footerCompany: 'Company',
-    footerLocation: 'Online service across Brazil',
+    footerLocation: 'Serving clients in Brazil and worldwide',
     footerTag: 'All rights reserved.',
     privacyLink: 'Privacy policy', cookiePrefs: 'Cookie preferences',
     consentTitle: 'Your privacy', consentAccept: 'Accept', consentDecline: 'Decline',
