@@ -1,0 +1,21 @@
+/* Estilos da página de política de privacidade */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#F5F7FA;color:#0B1220;font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#5B3FD9}
+a:focus-visible,button:focus-visible{outline:2px solid #7C5CFF;outline-offset:3px}
+header{background:#070B14;padding:14px 24px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wrap{max-width:760px;margin:0 auto}
+.back{color:#C9D1DD;font-size:15px;font-weight:500;text-decoration:none}
+.back:hover{color:#F5F7FA}
+.langs{display:flex;gap:2px;padding:3px;border:1px solid rgba(245,247,250,0.18);border-radius:999px}
+.langs button{min-height:34px;min-width:40px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:#C9D1DD;font:500 13px/1 "Inter",sans-serif;letter-spacing:0.04em;cursor:pointer}
+.langs button[aria-pressed="true"]{background:#C6F432;color:#0B1220}
+main{padding:clamp(40px,7vw,72px) 24px 72px}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:1.1;letter-spacing:-0.025em;margin-bottom:8px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:1.25rem;margin:36px 0 10px}
+p,li{color:#3E4A63}
+p+p{margin-top:12px}
+ul{padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.updated{color:#5B6B82;font-size:0.9375rem}
+[hidden]{display:none!important}
