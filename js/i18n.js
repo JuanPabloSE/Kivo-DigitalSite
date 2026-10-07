@@ -83,7 +83,7 @@ window.KIVO_I18N = {
   dynamic: {
     pt: {
       htmlLang: 'pt-BR',
-      title: 'Criação de Sites para Pequenos Negócios em São Paulo e Bahia | Kivo Digital',
+      title: 'Criação de Sites em São Paulo e Todo o Brasil | Kivo Digital',
       description: 'A Kivo Digital cria sites profissionais, landing pages, lojas virtuais e cardápios digitais para pequenos negócios em São Paulo, na Bahia e em todo o Brasil. Orçamento fechado pelo WhatsApp.',
       heroLines: [['Seu', 'negócio'], ['merece', 'um', 'site'], ['de', '@icon', 'verdade']],
       menuOpen: 'Abrir menu', menuClose: 'Fechar menu',
