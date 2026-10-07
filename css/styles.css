@@ -268,8 +268,8 @@ img { display: block; }
    medidas da moldura usam --u (1% da largura do aparelho), então tudo cresce e
    diminui junto. O site de exemplo dentro da tela (.mk) usa em, a partir do
    font-size definido em cada variante (.mk--desktop, .mk--tablet, .mk--phone).
-   As cores das telas ficam nas variáveis --mk-* do estilo escolhido em
-   data-rs-theme, na <section id="responsivo">. */
+   As cores das telas ficam nas variáveis --mk-* (estilo "aurora": fundo
+   azul-noite e imagem com luz azul e lilás). */
 .rs-grid { width: 100%; display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .rs-card {
   position: relative; overflow: hidden; isolation: isolate;
@@ -366,7 +366,7 @@ img { display: block; }
   .no-js .js-rs-card .rs-stage > * { opacity: 1; translate: none; }
 }
 
-/* Tela de cada aparelho: fundo vem do estilo escolhido, com um reflexo leve de vidro por cima */
+/* Tela de cada aparelho: fundo azul-noite, com um reflexo leve de vidro por cima */
 .device-screen { position: relative; overflow: hidden; background: var(--mk-bg); }
 .device-screen::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -438,29 +438,9 @@ img { display: block; }
   width: calc(0.8 * var(--u)); height: calc(0.8 * var(--u)); border-radius: 50%; background: #1F2433;
 }
 
-/* ----- Estilos das telas (site de exemplo: padaria fictícia "aurora") -----
-   Azul-bebê como destaque, para combinar com o site sem parecer a própria Kivo. */
-[data-rs-theme="escuro"] {
-  --mk-bg: #0D1526;
-  --mk-ink: #E9EFF8; --mk-muted: rgba(233, 239, 248, 0.14); --mk-divider: rgba(233, 239, 248, 0.08);
-  --mk-accent: #8EC5F5; --mk-accent-ink: #0B1730; --mk-tag: #8EC5F5;
-  --mk-img:
-    radial-gradient(circle at 28% 72%, rgba(190, 222, 250, 0.9) 0 17%, transparent 18%),
-    radial-gradient(circle at 60% 44%, rgba(142, 197, 245, 0.75) 0 21%, transparent 22%),
-    radial-gradient(circle at 80% 80%, rgba(170, 160, 255, 0.7) 0 13%, transparent 14%),
-    linear-gradient(150deg, #2B4C7E, #16233F);
-  --mk-card: #141E34; --mk-card-top: #1C2C4B; --mk-card-border: rgba(233, 239, 248, 0.06);
-  --mk-btn2-border: rgba(233, 239, 248, 0.35);
-}
-[data-rs-theme="vidro"] {
-  --mk-bg: linear-gradient(180deg, #1A2238 0%, #24305A 55%, #4B4A9C 100%);
-  --mk-ink: rgba(255, 255, 255, 0.92); --mk-muted: rgba(255, 255, 255, 0.16); --mk-divider: rgba(255, 255, 255, 0.1);
-  --mk-accent: rgba(255, 255, 255, 0.16); --mk-accent-ink: #fff; --mk-tag: #B9DBFA;
-  --mk-img: linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
-  --mk-card: rgba(255, 255, 255, 0.07); --mk-card-top: rgba(255, 255, 255, 0.1); --mk-card-border: rgba(255, 255, 255, 0.18);
-  --mk-btn2-border: rgba(255, 255, 255, 0.4); --mk-glass: 1;
-}
-[data-rs-theme="aurora"] {
+/* ----- Cores das telas (site de exemplo: padaria fictícia "aurora") -----
+   Azul-bebê e lilás como destaque, para combinar com o site sem parecer a própria Kivo. */
+.rs-grid {
   --mk-bg: #0A1120;
   --mk-ink: #F2F6FC; --mk-muted: rgba(242, 246, 252, 0.16); --mk-divider: rgba(242, 246, 252, 0.08);
   --mk-accent: #F2F6FC; --mk-accent-ink: #0A1120; --mk-tag: #A9D4FA;
@@ -506,8 +486,6 @@ img { display: block; }
   background: linear-gradient(to bottom, var(--mk-card-top) 0 58%, var(--mk-card) 58%);
   box-shadow: inset 0 0 0 1px var(--mk-card-border);
 }
-/* Vidro: tudo vira placa translúcida com borda clara, como um wireframe */
-[data-rs-theme="vidro"] :is(.mk__img, .mk__cards i, .mk__btn) { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 
 .mk--desktop { font-size: calc(1.45 * var(--u)); }
 .mk--tablet { font-size: calc(2.3 * var(--u)); padding: 0 5%; }
