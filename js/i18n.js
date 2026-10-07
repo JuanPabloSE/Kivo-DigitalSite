@@ -28,6 +28,16 @@ window.KIVO_I18N = {
       { title: 'Google optimization (SEO)', text: 'Structure, copy and speed tuned so your site shows up when someone searches for what you offer.' },
     ],
 
+    respTitle: 'Perfect on ', respAccent: 'any screen',
+    respSub: 'The same website rearranges itself for phones, tablets and computers. Your customers read everything without zooming or scrolling sideways.',
+    resp: [
+      { title: 'Responsive design', text: 'Looks right on any screen size: phone, tablet or computer. No tiny text, no buttons out of place.' },
+      { title: 'Designed for mobile first', text: 'Most of your customers arrive on their phone. Big buttons, readable text and WhatsApp one tap away.' },
+      { title: 'Comfortable on tablets', text: 'On a tablet the content gets more room and stays easy to browse, in portrait or landscape.' },
+    ],
+    // Textos do site de exemplo dentro das telas dos aparelhos
+    mock: { tag: 'Artisan bakery', title: 'Fresh bread every day', cta: 'Order on WhatsApp', nav: 'Order' },
+
     procTitle: 'From the first hello to ', procAccent: 'a live website',
     procSub: 'Four steps, and you follow each one of them.',
     steps: [

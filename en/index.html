@@ -215,6 +215,123 @@
       </div>
     </section>
 
+    <!-- ===================== RESPONSIVIDADE =====================
+         Aparelhos desenhados só com CSS (MacBook Pro, iPhone e iPad Pro), sem imagens.
+         Dentro de cada tela há uma mini versão de um site de cliente (classes .mk),
+         reorganizada para cada tamanho. É decorativo: aria-hidden="true". -->
+    <section class="section" id="responsivo" aria-labelledby="resp-titulo">
+      <div class="section__inner">
+        <div class="section__head">
+          <h2 class="section__title" id="resp-titulo"><span data-i18n="respTitle">Perfeito em </span><span class="accent" data-i18n="respAccent">qualquer tela</span></h2>
+          <p class="section__sub" data-i18n="respSub">O mesmo site se reorganiza sozinho para o celular, o tablet e o computador. Seu cliente lê tudo sem dar zoom e sem rolar para o lado.</p>
+        </div>
+
+        <div class="rs-grid">
+          <!-- Cartão grande: computador + celular -->
+          <article class="rs-card rs-card--wide js-rs-card">
+            <div class="rs-card__text">
+              <h3 class="rs-card__title" data-i18n="resp.0.title">Design responsivo</h3>
+              <p class="rs-card__desc" data-i18n="resp.0.text">Exibição perfeita em qualquer tamanho de tela: celular, tablet ou computador. Nada de texto miúdo ou botão fora do lugar.</p>
+            </div>
+            <div class="rs-stage rs-stage--duo" aria-hidden="true">
+              <div class="macbook">
+                <div class="macbook__lid">
+                  <span class="macbook__notch"></span>
+                  <div class="device-screen">
+                    <div class="mk mk--desktop">
+                      <div class="mk__nav"><span class="mk__logo">aurora</span><span class="mk__links"><i></i><i></i><i></i><i></i></span><span class="mk__btn mk__btn--ghost" data-i18n="mock.nav">Pedir</span></div>
+                      <div class="mk__hero">
+                        <div class="mk__copy">
+                          <span class="mk__tag" data-i18n="mock.tag">Padaria artesanal</span>
+                          <span class="mk__title" data-i18n="mock.title">Pão quentinho todo dia</span>
+                          <i class="mk__line"></i><i class="mk__line mk__line--short"></i>
+                          <span class="mk__btn" data-i18n="mock.cta">Pedir no WhatsApp</span>
+                        </div>
+                        <div class="mk__img"></div>
+                      </div>
+                      <div class="mk__cards"><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="macbook__base"></div>
+              </div>
+              <div class="iphone">
+                <span class="iphone__island"></span>
+                <div class="device-screen">
+                  <div class="mk mk--phone">
+                    <div class="mk__status"><span>9:41</span><span class="mk__status-icons"><i></i><i></i><i></i></span></div>
+                    <div class="mk__nav"><span class="mk__logo">aurora</span><span class="mk__burger"><i></i><i></i></span></div>
+                    <div class="mk__img"></div>
+                    <span class="mk__tag" data-i18n="mock.tag">Padaria artesanal</span>
+                    <span class="mk__title" data-i18n="mock.title">Pão quentinho todo dia</span>
+                    <i class="mk__line"></i><i class="mk__line mk__line--short"></i>
+                    <span class="mk__btn" data-i18n="mock.cta">Pedir no WhatsApp</span>
+                    <div class="mk__cards"><i></i><i></i></div>
+                    <span class="mk__home"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Celular em destaque, inclinado -->
+          <article class="rs-card js-rs-card">
+            <div class="rs-card__text">
+              <h3 class="rs-card__title" data-i18n="resp.1.title">Pensado primeiro para o celular</h3>
+              <p class="rs-card__desc" data-i18n="resp.1.text">A maioria dos seus clientes chega pelo celular. Botões grandes, texto legível e o WhatsApp a um toque.</p>
+            </div>
+            <div class="rs-stage rs-stage--phone" aria-hidden="true">
+              <div class="iphone iphone--tilt">
+                <span class="iphone__island"></span>
+                <div class="device-screen">
+                  <div class="mk mk--phone">
+                    <div class="mk__status"><span>9:41</span><span class="mk__status-icons"><i></i><i></i><i></i></span></div>
+                    <div class="mk__nav"><span class="mk__logo">aurora</span><span class="mk__burger"><i></i><i></i></span></div>
+                    <div class="mk__img"></div>
+                    <span class="mk__tag" data-i18n="mock.tag">Padaria artesanal</span>
+                    <span class="mk__title" data-i18n="mock.title">Pão quentinho todo dia</span>
+                    <i class="mk__line"></i><i class="mk__line mk__line--short"></i>
+                    <span class="mk__btn" data-i18n="mock.cta">Pedir no WhatsApp</span>
+                    <div class="mk__cards"><i></i><i></i></div>
+                    <span class="mk__wa"></span>
+                    <span class="mk__home"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tablet na horizontal -->
+          <article class="rs-card js-rs-card">
+            <div class="rs-card__text">
+              <h3 class="rs-card__title" data-i18n="resp.2.title">Confortável no tablet</h3>
+              <p class="rs-card__desc" data-i18n="resp.2.text">No tablet o conteúdo ganha espaço e continua fácil de navegar, na vertical ou na horizontal.</p>
+            </div>
+            <div class="rs-stage rs-stage--tablet" aria-hidden="true">
+              <div class="ipad">
+                <span class="ipad__camera"></span>
+                <div class="device-screen">
+                  <div class="mk mk--tablet">
+                    <div class="mk__nav"><span class="mk__logo">aurora</span><span class="mk__links"><i></i><i></i><i></i></span><span class="mk__btn mk__btn--ghost" data-i18n="mock.nav">Pedir</span></div>
+                    <div class="mk__hero">
+                      <div class="mk__copy">
+                        <span class="mk__tag" data-i18n="mock.tag">Padaria artesanal</span>
+                        <span class="mk__title" data-i18n="mock.title">Pão quentinho todo dia</span>
+                        <i class="mk__line"></i><i class="mk__line mk__line--short"></i>
+                        <span class="mk__btn" data-i18n="mock.cta">Pedir no WhatsApp</span>
+                      </div>
+                      <div class="mk__img"></div>
+                    </div>
+                    <div class="mk__cards"><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== COMO FUNCIONA ===================== -->
     <section class="section" id="como-funciona" aria-labelledby="proc-titulo">
       <div class="section__inner">
