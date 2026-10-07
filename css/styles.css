@@ -339,7 +339,7 @@ img { display: block; }
 }
 
 /* Moldura comum: tela branca com cantos arredondados */
-.device-screen { position: relative; overflow: hidden; background: #FBF6EF; }
+.device-screen { position: relative; overflow: hidden; background: var(--mk-bg, #F5F9FD); }
 
 /* MacBook Pro (preto-espacial, com notch) */
 .macbook { filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5)); }
@@ -407,9 +407,10 @@ img { display: block; }
   width: calc(0.8 * var(--u)); height: calc(0.8 * var(--u)); border-radius: 50%; background: #1F2433;
 }
 
-/* ----- Site de exemplo dentro das telas (padaria fictícia) ----- */
+/* ----- Site de exemplo dentro das telas (padaria fictícia, em azul-bebê para
+   combinar com o site sem parecer a própria Kivo) ----- */
 .mk {
-  --mk-ink: #2B1D14; --mk-accent: #C8643B; --mk-soft: rgba(43, 29, 20, 0.12);
+  --mk-bg: #F5F9FD; --mk-ink: #1A2B45; --mk-accent: #4F9BE0; --mk-soft: rgba(26, 43, 69, 0.11);
   height: 100%; display: flex; flex-direction: column; padding: 0 6%;
   color: var(--mk-ink); font-family: var(--font-sans); line-height: 1.2;
 }
@@ -437,16 +438,16 @@ img { display: block; }
 .mk__img {
   aspect-ratio: 4 / 3.3; border-radius: 1.2em;
   background:
-    radial-gradient(circle at 30% 70%, #F6D7A8 0 18%, transparent 19%),
-    radial-gradient(circle at 62% 46%, #E9A86A 0 22%, transparent 23%),
-    radial-gradient(circle at 78% 78%, #F1C186 0 14%, transparent 15%),
-    linear-gradient(150deg, #E7865A, #9D3F22);
+    radial-gradient(circle at 30% 70%, #EAF4FD 0 18%, transparent 19%),
+    radial-gradient(circle at 62% 46%, #C2DFF8 0 22%, transparent 23%),
+    radial-gradient(circle at 78% 78%, #DCEDFC 0 14%, transparent 15%),
+    linear-gradient(150deg, #A9D3F5, #5C9FDD);
 }
 .mk__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; }
 .mk__cards i {
   height: 6.4em; border-radius: 0.9em;
-  background: linear-gradient(to bottom, #F3DEC6 0 58%, #fff 58%);
-  box-shadow: 0 0.3em 1em rgba(43, 29, 20, 0.08);
+  background: linear-gradient(to bottom, #DCEDFC 0 58%, #fff 58%);
+  box-shadow: 0 0.3em 1em rgba(26, 43, 69, 0.08);
 }
 
 .mk--desktop { font-size: calc(1.45 * var(--u)); }  
@@ -460,7 +461,7 @@ img { display: block; }
 .mk__status-icons { display: flex; align-items: flex-end; gap: 0.3em; }
 .mk__status-icons i { width: 0.35em; height: 0.6em; border-radius: 0.1em; background: var(--mk-ink); }
 .mk__status-icons i:nth-child(2) { height: 0.8em; }
-.mk__status-icons i:nth-child(3) { width: 1.6em; height: 0.75em; border-radius: 0.25em; margin-left: 0.3em; background: transparent; box-shadow: inset 0 0 0 0.12em var(--mk-ink), inset 0 0 0 0.3em #FBF6EF, inset 0 0 0 1em var(--mk-ink); }
+.mk__status-icons i:nth-child(3) { width: 1.6em; height: 0.75em; border-radius: 0.25em; margin-left: 0.3em; background: transparent; box-shadow: inset 0 0 0 0.12em var(--mk-ink), inset 0 0 0 0.3em var(--mk-bg), inset 0 0 0 1em var(--mk-ink); }
 .mk--phone .mk__nav { min-height: 2.6em; }
 .mk__burger { display: flex; flex-direction: column; gap: 0.3em; }
 .mk__burger i { width: 1.2em; height: 0.14em; border-radius: 1em; background: var(--mk-ink); }
