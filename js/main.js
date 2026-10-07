@@ -236,6 +236,24 @@
     update();
   }
 
+  /* ---------- Responsividade: aparelhos sobem quando o cartão aparece ---------- */
+  function setupDeviceCards() {
+    var cards = $$('.js-rs-card');
+    if (!cards.length) return;
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.25 });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+
   /* ==========================================================================
      PERGUNTAS FREQUENTES: uma aberta por vez
      ========================================================================== */
@@ -364,6 +382,7 @@
   setupLangSwitch();
   setupMenu();
   setupSheet();
+  setupDeviceCards();
   setupFaq();
   setupForm();
   setupClickTracking();
