@@ -267,20 +267,38 @@ img { display: block; }
    Os aparelhos são desenhados só com CSS. A largura de cada um fica em --w e as
    medidas da moldura usam --u (1% da largura do aparelho), então tudo cresce e
    diminui junto. O site de exemplo dentro da tela (.mk) usa em, a partir do
-   font-size definido em cada variante (.mk--desktop, .mk--tablet, .mk--phone). */
+   font-size definido em cada variante (.mk--desktop, .mk--tablet, .mk--phone).
+   As cores das telas ficam nas variáveis --mk-* (estilo "aurora": fundo
+   azul-noite e imagem com luz azul e lilás). */
 .rs-grid { width: 100%; display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .rs-card {
   position: relative; overflow: hidden; isolation: isolate;
-  background: var(--grafite-950); border-radius: 28px;
+  background: linear-gradient(180deg, #0C1322 0%, var(--grafite-950) 60%);
+  border-radius: 28px;
   display: flex; flex-direction: column;
-  box-shadow: 0 30px 60px -30px rgba(11, 18, 32, 0.55);
+  box-shadow: inset 0 1px 0 rgba(245, 247, 250, 0.08), inset 0 0 0 1px rgba(245, 247, 250, 0.05),
+              0 30px 60px -30px rgba(11, 18, 32, 0.55);
 }
+/* Luz no pé do cartão: roxo da marca misturado com azul */
 .rs-card::before {
-  content: ""; position: absolute; z-index: -1; left: -15%; right: -15%; bottom: -45%; height: 85%;
-  background: radial-gradient(closest-side, rgba(124, 92, 255, 0.55), rgba(124, 92, 255, 0));
+  content: ""; position: absolute; z-index: -1; left: -20%; right: -20%; bottom: -50%; height: 90%;
+  background:
+    radial-gradient(closest-side at 35% 50%, rgba(124, 92, 255, 0.42), rgba(124, 92, 255, 0)),
+    radial-gradient(closest-side at 70% 55%, rgba(86, 156, 236, 0.32), rgba(86, 156, 236, 0));
   pointer-events: none;
 }
-.rs-card__text { display: flex; flex-direction: column; gap: 14px; padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px) 0; }
+/* Grade fina de fundo, que some nas bordas (lembra uma prancheta de layout) */
+.rs-card::after {
+  content: ""; position: absolute; z-index: -1; inset: 0;
+  background-image:
+    linear-gradient(rgba(245, 247, 250, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 247, 250, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px; background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+.rs-card__text { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px) 0; }
 .rs-card__title {
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15; letter-spacing: -0.02em;
@@ -288,9 +306,19 @@ img { display: block; }
 }
 .rs-card__desc { color: var(--grafite-400); font-size: 1.0625rem; line-height: 1.6; max-width: 40ch; text-wrap: pretty; }
 
+/* Etiquetas com a largura de tela de cada aparelho */
+.rs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.rs-chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 28px; padding: 0 12px;
+  border-radius: 999px; border: 1px solid rgba(245, 247, 250, 0.12); background: rgba(245, 247, 250, 0.03);
+  color: var(--grafite-300); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.rs-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #8EC5F5; box-shadow: 0 0 8px rgba(142, 197, 245, 0.8); }
+
 .rs-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
 .rs-card--wide .rs-card__text { align-self: center; padding-bottom: clamp(28px, 4vw, 48px); }
-.rs-card--wide::before { left: 20%; right: -20%; bottom: -55%; height: 100%; }
+.rs-card--wide::before { left: 15%; right: -25%; bottom: -60%; height: 110%; }
 
 .rs-stage { position: relative; margin-top: auto; container-type: inline-size; }
 .rs-stage :is(.macbook, .iphone, .ipad) { width: var(--w); --u: calc(var(--w) / 100); }
@@ -304,9 +332,9 @@ img { display: block; }
   display: flex; justify-content: center; perspective: 1600px;
 }
 .rs-stage--phone::before {
-  content: ""; position: absolute; left: 50%; top: 55%; width: 70%; height: 60%;
+  content: ""; position: absolute; left: 50%; top: 55%; width: 75%; height: 65%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(closest-side, rgba(198, 244, 50, 0.28), rgba(198, 244, 50, 0));
+  background: radial-gradient(closest-side, rgba(142, 197, 245, 0.22), rgba(142, 197, 245, 0));
   pointer-events: none;
 }
 .rs-stage--phone .iphone { --w: min(48cqw, 200px); margin-top: 8px; align-self: flex-start; }
@@ -338,8 +366,12 @@ img { display: block; }
   .no-js .js-rs-card .rs-stage > * { opacity: 1; translate: none; }
 }
 
-/* Moldura comum: tela branca com cantos arredondados */
-.device-screen { position: relative; overflow: hidden; background: var(--mk-bg, #F5F9FD); }
+/* Tela de cada aparelho: fundo azul-noite, com um reflexo leve de vidro por cima */
+.device-screen { position: relative; overflow: hidden; background: var(--mk-bg); }
+.device-screen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 38%);
+}
 
 /* MacBook Pro (preto-espacial, com notch) */
 .macbook { filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5)); }
@@ -381,12 +413,11 @@ img { display: block; }
 .iphone::before, .iphone::after {
   content: ""; position: absolute; width: calc(1.4 * var(--u)); border-radius: calc(1 * var(--u)); background: #4A4A50;
 }
-.iphone::before { right: -calc(2.7 * var(--u)); top: 26%; height: 15%; }                  /* botão lateral */
-.iphone::after {                                                             /* ação + volume */
-  left: -calc(2.7 * var(--u)); top: 15%; height: 5%;
+.iphone::before { right: calc(-2.7 * var(--u)); top: 26%; height: 15%; }   /* botão lateral */
+.iphone::after {                                                           /* ação + volume */
+  left: calc(-2.7 * var(--u)); top: 15%; height: 5%;
   box-shadow: 0 calc(9 * var(--u)) 0 #4A4A50, 0 calc(19 * var(--u)) 0 #4A4A50;
 }
-.rs-stage--duo .iphone::after { box-shadow: none; height: 0; }
 .iphone__island {
   position: absolute; z-index: 3; top: calc(6.2 * var(--u)); left: 50%; transform: translateX(-50%);
   width: calc(30 * var(--u)); height: calc(8.8 * var(--u)); border-radius: 99px; background: #000;
@@ -407,61 +438,70 @@ img { display: block; }
   width: calc(0.8 * var(--u)); height: calc(0.8 * var(--u)); border-radius: 50%; background: #1F2433;
 }
 
-/* ----- Site de exemplo dentro das telas (padaria fictícia, em azul-bebê para
-   combinar com o site sem parecer a própria Kivo) ----- */
+/* ----- Cores das telas (site de exemplo: padaria fictícia "aurora") -----
+   Azul-bebê e lilás como destaque, para combinar com o site sem parecer a própria Kivo. */
+.rs-grid {
+  --mk-bg: #0A1120;
+  --mk-ink: #F2F6FC; --mk-muted: rgba(242, 246, 252, 0.16); --mk-divider: rgba(242, 246, 252, 0.08);
+  --mk-accent: #F2F6FC; --mk-accent-ink: #0A1120; --mk-tag: #A9D4FA;
+  --mk-img:
+    radial-gradient(60% 70% at 25% 30%, rgba(142, 197, 245, 0.95), transparent 70%),
+    radial-gradient(55% 60% at 75% 65%, rgba(140, 120, 255, 0.85), transparent 70%),
+    radial-gradient(50% 50% at 60% 15%, rgba(120, 220, 230, 0.6), transparent 70%),
+    #132042;
+  --mk-card: rgba(242, 246, 252, 0.05); --mk-card-top: rgba(142, 197, 245, 0.16); --mk-card-border: rgba(242, 246, 252, 0.08);
+  --mk-btn2-border: rgba(242, 246, 252, 0.35);
+}
+
 .mk {
-  --mk-bg: #F5F9FD; --mk-ink: #1A2B45; --mk-accent: #4F9BE0; --mk-soft: rgba(26, 43, 69, 0.11);
   height: 100%; display: flex; flex-direction: column; padding: 0 6%;
   color: var(--mk-ink); font-family: var(--font-sans); line-height: 1.2;
 }
 :where(.mk) :where(i, span) { font-style: normal; display: block; }
-.mk__nav { display: flex; align-items: center; justify-content: space-between; gap: 1em; min-height: 3.6em; border-bottom: 1px solid var(--mk-soft); }
+.mk__nav { display: flex; align-items: center; justify-content: space-between; gap: 1em; min-height: 3.6em; border-bottom: 1px solid var(--mk-divider); }
 .mk__logo { font-family: var(--font-display); font-weight: 700; font-size: 1.25em; letter-spacing: -0.03em; }
-.mk__logo::first-letter { color: var(--mk-accent); }
+.mk__logo::first-letter { color: var(--mk-tag); }
 .mk__links { display: flex; gap: 1.4em; }
-.mk__links i { width: 3.2em; height: 0.45em; border-radius: 1em; background: var(--mk-soft); }
+.mk__links i { width: 3.2em; height: 0.45em; border-radius: 1em; background: var(--mk-muted); }
 .mk__btn {
   width: fit-content; padding: 0.75em 1.4em; border-radius: 99px;
-  background: var(--mk-accent); color: #fff; font-size: 0.8em; font-weight: 500; white-space: nowrap;
+  background: var(--mk-accent); color: var(--mk-accent-ink); font-size: 0.8em; font-weight: 500; white-space: nowrap;
+  box-shadow: inset 0 0 0 1px var(--mk-card-border);
 }
-.mk__btn--ghost { background: transparent; color: var(--mk-ink); box-shadow: inset 0 0 0 1px var(--mk-ink); padding: 0.55em 1.2em; }
+.mk__btn--ghost { background: transparent; color: var(--mk-ink); box-shadow: inset 0 0 0 1px var(--mk-btn2-border); padding: 0.55em 1.2em; }
 .mk__hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 2.4em; padding: 2.4em 0 2em; }
 .mk__copy { display: flex; flex-direction: column; }
-.mk__tag { font-size: 0.68em; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mk-accent); }
+.mk__tag { font-size: 0.68em; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mk-tag); }
 .mk__title {
   margin: 0.25em 0 0.45em; font-family: var(--font-display); font-weight: 700;
   font-size: 2.7em; line-height: 1; letter-spacing: -0.035em; text-wrap: balance;
 }
-.mk__line { height: 0.5em; width: 92%; border-radius: 1em; background: var(--mk-soft); margin-bottom: 0.5em; }
+.mk__line { height: 0.5em; width: 92%; border-radius: 1em; background: var(--mk-muted); margin-bottom: 0.5em; }
 .mk__line--short { width: 64%; }
 .mk__copy .mk__btn { margin-top: 1em; }
-.mk__img {
-  aspect-ratio: 4 / 3.3; border-radius: 1.2em;
-  background:
-    radial-gradient(circle at 30% 70%, #EAF4FD 0 18%, transparent 19%),
-    radial-gradient(circle at 62% 46%, #C2DFF8 0 22%, transparent 23%),
-    radial-gradient(circle at 78% 78%, #DCEDFC 0 14%, transparent 15%),
-    linear-gradient(150deg, #A9D3F5, #5C9FDD);
-}
+.mk__img { aspect-ratio: 4 / 3.3; border-radius: 1.2em; background: var(--mk-img); box-shadow: inset 0 0 0 1px var(--mk-card-border); }
 .mk__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; }
 .mk__cards i {
   height: 6.4em; border-radius: 0.9em;
-  background: linear-gradient(to bottom, #DCEDFC 0 58%, #fff 58%);
-  box-shadow: 0 0.3em 1em rgba(26, 43, 69, 0.08);
+  background: linear-gradient(to bottom, var(--mk-card-top) 0 58%, var(--mk-card) 58%);
+  box-shadow: inset 0 0 0 1px var(--mk-card-border);
 }
 
-.mk--desktop { font-size: calc(1.45 * var(--u)); }  
-.mk--tablet { font-size: calc(2.3 * var(--u)); padding: 0 5%; }  
+.mk--desktop { font-size: calc(1.45 * var(--u)); }
+.mk--tablet { font-size: calc(2.3 * var(--u)); padding: 0 5%; }
 .mk--tablet .mk__hero { gap: 1.8em; padding: 2em 0 1.6em; }
 .mk--tablet .mk__title { font-size: 2.3em; }
 .mk--tablet .mk__cards { grid-template-columns: repeat(2, 1fr); }
 
-.mk--phone { font-size: calc(5.4 * var(--u)); position: relative; padding: 0 6.5%; }  
+.mk--phone { font-size: calc(5.4 * var(--u)); position: relative; padding: 0 6.5%; }
 .mk__status { display: flex; align-items: center; justify-content: space-between; min-height: 3.2em; padding: 0 0.9em 0 1.3em; font-size: 0.8em; font-weight: 600; }
 .mk__status-icons { display: flex; align-items: flex-end; gap: 0.3em; }
 .mk__status-icons i { width: 0.35em; height: 0.6em; border-radius: 0.1em; background: var(--mk-ink); }
 .mk__status-icons i:nth-child(2) { height: 0.8em; }
-.mk__status-icons i:nth-child(3) { width: 1.6em; height: 0.75em; border-radius: 0.25em; margin-left: 0.3em; background: transparent; box-shadow: inset 0 0 0 0.12em var(--mk-ink), inset 0 0 0 0.3em var(--mk-bg), inset 0 0 0 1em var(--mk-ink); }
+.mk__status-icons i:nth-child(3) {
+  width: 1.6em; height: 0.75em; margin-left: 0.3em; padding: 0.1em; border-radius: 0.25em;
+  border: 0.1em solid var(--mk-ink); background: var(--mk-ink); background-clip: content-box;
+}
 .mk--phone .mk__nav { min-height: 2.6em; }
 .mk__burger { display: flex; flex-direction: column; gap: 0.3em; }
 .mk__burger i { width: 1.2em; height: 0.14em; border-radius: 1em; background: var(--mk-ink); }
@@ -472,12 +512,12 @@ img { display: block; }
 .mk--phone .mk__cards i { height: 5.2em; }
 .mk__wa {
   position: absolute; right: 1em; bottom: 2.2em; width: 2.6em; height: 2.6em; border-radius: 50%;
-  background: #25D366; box-shadow: 0 0.4em 1em rgba(37, 211, 102, 0.45);
+  background: #25D366; box-shadow: 0 0.4em 1em rgba(37, 211, 102, 0.35);
 }
 .mk__wa::after { content: ""; position: absolute; inset: 0.75em; border-radius: 50% 50% 50% 0.2em; border: 0.18em solid #fff; }
 .mk__home {
   position: absolute; left: 50%; bottom: 0.55em; transform: translateX(-50%);
-  width: 36%; height: 0.28em; border-radius: 1em; background: var(--mk-ink);
+  width: 36%; height: 0.28em; border-radius: 1em; background: var(--mk-ink); opacity: 0.85;
 }
 
 /* ---------- Como funciona ---------- */
