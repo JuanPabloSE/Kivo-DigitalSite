@@ -84,13 +84,30 @@
     });
   }
 
+  // Idioma da página aberta: en/index.html tem data-page-lang="en"; a página principal é português
+  function pageLang() {
+    return document.documentElement.getAttribute('data-page-lang') === 'en' ? 'en' : 'pt';
+  }
+
   function initialLang() {
     try {
       var q = new URLSearchParams(window.location.search).get('lang');
       if (q === 'pt' || q === 'en') return q;
     } catch (e) {}
+    // Quem abre /en/ (por exemplo, vindo do Google em inglês) vê inglês
+    if (pageLang() === 'en') return 'en';
     var saved = storageGet('kivo-lang');
     return saved === 'en' || saved === 'pt' ? saved : 'pt';
+  }
+
+  // Mantém o endereço igual ao idioma (/ ou /en/), sem recarregar a página
+  function syncUrl(lang) {
+    try {
+      var path = lang === 'en' ? '/en/' : '/';
+      if (window.location.pathname !== path || window.location.search) {
+        window.history.replaceState(null, '', path + window.location.hash);
+      }
+    } catch (e) {}
   }
 
   function applyLang(lang, isInit) {
@@ -110,9 +127,10 @@
     });
     updateMenuLabel();
     $$('.js-wa-link').forEach(function (a) { a.href = waLink(d.waDirect); });
-    $$('.js-privacy-link').forEach(function (a) { a.href = 'privacidade.html?lang=' + lang; });
+    $$('.js-privacy-link').forEach(function (a) { a.href = '/privacidade.html?lang=' + lang; });
     updateConsentText();
     hideFeedback();
+    syncUrl(lang);
 
     if (!isInit) storageSet('kivo-lang', lang);
   }
@@ -148,7 +166,7 @@
         if (w === '@icon') {
           var img = document.createElement('img');
           img.className = 'hero__icon';
-          img.src = 'assets/kivo-avatar-lima.svg';
+          img.src = '/assets/kivo-avatar-lima.svg';
           img.alt = '';
           word.appendChild(img);
         } else {

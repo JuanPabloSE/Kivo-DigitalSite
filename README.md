@@ -16,6 +16,19 @@ https://kivodigitalbr.com.br. Não há etapa de build: o que está no repositór
 | Aviso de cookies e medição | `js/tracking.js` |
 | Política de privacidade | `privacidade.html`, `css/privacidade.css`, `js/privacidade.js` |
 
+## Google (SEO)
+
+- **Página em inglês (`/en/`)**: o arquivo `en/index.html` é **gerado**, não edite. Depois de mudar
+  o `index.html`, rode antes do commit:
+  `pwsh -NoProfile -File _ferramentas/gerar-en.ps1`
+  O título, a descrição e a prévia em inglês ficam em `_ferramentas/seo-en.html`.
+- **Título e descrição em português**: no `<head>` do `index.html`, entre `SEO:INICIO` e `SEO:FIM`
+  (e também em `js/i18n.js > dynamic`, usado quando a pessoa troca de idioma).
+- **Dados da empresa para o Google** (serviços, áreas atendidas, contato): bloco
+  `application/ld+json` no `<head>` do `index.html`.
+- **Página nova**: acrescente o endereço no `sitemap.xml`.
+- Pastas que começam com `_` (como `_ferramentas`) não são publicadas pelo GitHub Pages.
+
 ## Regras para não quebrar
 
 - Cada texto traduzível tem um `data-i18n="chave"` no HTML. Ao criar um texto novo, crie a

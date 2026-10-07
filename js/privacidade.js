@@ -15,7 +15,7 @@
     document.querySelectorAll('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
     var back = document.querySelector('.back');
     back.textContent = back.getAttribute('data-' + lang);
-    back.href = './?lang=' + lang;
+    back.href = lang === 'en' ? '/en/' : '/';
     document.querySelector('.langs').setAttribute('aria-label', lang === 'en' ? 'Language' : 'Idioma');
   }
   document.querySelectorAll('[data-lang]').forEach(function (b) {

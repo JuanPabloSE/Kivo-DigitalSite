@@ -13,6 +13,7 @@ window.KIVO_I18N = {
     navLabel: 'Main', homeLabel: 'Kivo Digital, home', langLabel: 'Language',
     navServices: 'Services', navProcess: 'How it works', navTestimonials: 'Testimonials', navFaq: 'FAQ', navContact: 'Contact',
     cta: 'Get a quote',
+    heroEyebrow: 'Website design for small businesses, from Brazil to the world',
     heroSub: 'We build fast websites that work well on mobile and that you can update yourself. The technical side, from building to hosting, is on us.',
     promises: ['Designed for mobile first', 'Updates without a developer', 'Price and timeline in writing'],
 
@@ -71,6 +72,7 @@ window.KIVO_I18N = {
 
     footerAbout: 'Professional websites for small businesses, custom-built and kept online by our team.',
     footerNav: 'Navigation', footerContact: 'Contact', footerCompany: 'Company',
+    footerCities: 'São Paulo and Bahia, Brazil',
     footerLocation: 'Serving clients in Brazil and worldwide',
     footerTag: 'All rights reserved.',
     privacyLink: 'Privacy policy', cookiePrefs: 'Cookie preferences',
@@ -81,8 +83,8 @@ window.KIVO_I18N = {
   dynamic: {
     pt: {
       htmlLang: 'pt-BR',
-      title: 'Kivo Digital: sites profissionais para pequenos negócios',
-      description: 'A Kivo Digital cria sites profissionais, rápidos e fáceis de atualizar para pequenos negócios. Peça seu orçamento pelo WhatsApp.',
+      title: 'Criação de Sites para Pequenos Negócios em São Paulo e Bahia | Kivo Digital',
+      description: 'A Kivo Digital cria sites profissionais, landing pages, lojas virtuais e cardápios digitais para pequenos negócios em São Paulo, na Bahia e em todo o Brasil. Orçamento fechado pelo WhatsApp.',
       heroLines: [['Seu', 'negócio'], ['merece', 'um', 'site'], ['de', '@icon', 'verdade']],
       menuOpen: 'Abrir menu', menuClose: 'Fechar menu',
       fbErro: 'Preencha seu nome e o tipo de negócio para continuar.', fbOk: 'Abrindo o WhatsApp...',
@@ -95,8 +97,8 @@ window.KIVO_I18N = {
     },
     en: {
       htmlLang: 'en',
-      title: 'Kivo Digital: professional websites for small businesses',
-      description: 'Kivo Digital builds professional websites for small businesses: fast and easy to update. Get your quote on WhatsApp.',
+      title: 'Website Design for Small Businesses | Kivo Digital, Brazil',
+      description: 'Kivo Digital designs professional websites, landing pages, online stores and digital menus for small businesses in Brazil and abroad, in English or Portuguese. Fixed-price quotes on WhatsApp.',
       heroLines: [['Your', 'business'], ['deserves', 'a'], ['real', '@icon', 'website']],
       menuOpen: 'Open menu', menuClose: 'Close menu',
       fbErro: 'Please fill in your name and type of business to continue.', fbOk: 'Opening WhatsApp...',
