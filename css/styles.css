@@ -741,14 +741,14 @@ img { display: block; }
 .band__sub { color: var(--grafite-400); font-size: 1.125rem; max-width: 56ch; text-wrap: pretty; }
 .band__note { padding: 0 clamp(24px, 5vw, 72px); color: var(--grafite-500); font-size: 0.8125rem; max-width: 70ch; }
 
-/* Pagamentos: mesma peça das ferramentas, em linhas que quebram (sem animação) */
-.pay { padding: 0 clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 18px; }
-.pay__label { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafite-400); }
-.pay__slash { color: var(--lima-500); }
-.pay__list { list-style: none; display: flex; flex-wrap: wrap; gap: 14px; }
-.pay .tool { height: 60px; padding: 0 20px 0 16px; gap: 12px; font-size: 1rem; }
-.pay .tool--text { padding: 0 20px; }
-.pay .tool__logo { width: 24px; height: 24px; }
+/* Onde a venda fecha: o WhatsApp Business em destaque, depois da faixa de ferramentas */
+.closer { padding: 0 clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 18px; }
+.closer__label { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafite-400); }
+.closer__slash { color: var(--lima-500); }
+.closer__row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.closer__text { color: var(--grafite-300); max-width: 48ch; min-width: 0; flex: 1 1 280px; }
+.closer .tool--feature { color: var(--gelo-50); border-color: rgba(198, 244, 50, 0.45); background: rgba(198, 244, 50, 0.07); }
+.closer .tool--feature .tool__logo { fill: var(--lima-500); }
 
 .marquee {
   display: flex; flex-direction: column; gap: 14px;

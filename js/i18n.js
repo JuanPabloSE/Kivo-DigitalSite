@@ -46,8 +46,9 @@ window.KIVO_I18N = {
     ],
 
     toolsTitle: 'The tools your customers ', toolsAccent: 'already use',
-    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp, payments by Pix and card, and websites that work on any phone, tablet or computer, Apple or Android. We work with the platforms that are part of your customers’ everyday life.',
-    payLabel: 'Payments: Pix, cards and card machines',
+    toolsSub: 'Every website is planned to turn visits into sales on WhatsApp. Ads on Google and Meta, Google Maps and Instagram bring in new customers, Google Analytics shows where they come from and WhatsApp Business carries the conversation through to payment, by Pix or card. We use the platforms your customers already know, so the sale happens where they already are.',
+    closeLabel: 'Where the sale closes',
+    closeText: 'The website’s buttons open the chat with a ready-made message. You reply, send the quote and close the sale in one place.',
     toolsNote: 'Trademarks belong to their owners. They show the tools we use in our projects and do not imply an official partnership.',
 
     respTitle: 'Perfect on ', respAccent: 'any screen',
