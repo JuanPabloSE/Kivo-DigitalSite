@@ -41,7 +41,7 @@ window.KIVO_I18N = {
       { title: 'Guaranteed response time (SLA)' },
       { title: 'A summary of every request', text: 'When it is done, you get a summary of what was done on WhatsApp and by e-mail.' },
     ],
-    supSla: ['Every support request has a set response time: first reply within', '[X hours]', '.'],
+    supSla: ['Every support request has a set response time: first reply within', '1 hour', '.'],
 
     nichTitle: 'A website that looks like ', nichAccent: 'your business',
     nichSub: 'Every kind of business needs a different website. See how we plan yours around what your customers are looking for.',

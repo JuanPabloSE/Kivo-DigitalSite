@@ -503,8 +503,7 @@ img { display: block; }
 .support__text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .support__name { font-family: var(--font-display); font-weight: 500; font-size: 1.125rem; line-height: 1.25; color: var(--grafite-900); }
 .support__desc { color: var(--grafite-500); text-wrap: pretty; }
-/* Valor ainda a definir: destacado para não passar despercebido na prévia */
-.tbd { background: var(--lima-300); color: var(--grafite-900); padding: 0 6px; border-radius: 6px; outline: 1.5px dashed var(--lima-700); font-weight: 500; white-space: nowrap; }
+.support__sla { color: var(--grafite-900); font-weight: 600; white-space: nowrap; }
 @media (max-width: 1000px) {
   .support { grid-template-columns: 1fr; }
 }
