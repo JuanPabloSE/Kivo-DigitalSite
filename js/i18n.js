@@ -36,7 +36,7 @@ window.KIVO_I18N = {
     ],
 
     nichTitle: 'A website that looks like ', nichAccent: 'your business',
-    nichSub: 'Every kind of business needs a different website. Scroll down and see how we plan yours around what your customers are looking for.',
+    nichSub: 'Every kind of business needs a different website. See how we plan yours around what your customers are looking for.',
     nicheShow: [
       { tag: 'Coffee shops, bakeries and restaurants', title: 'Menu on the phone, orders on WhatsApp', text: 'Customers see the menu with photos and prices and send the order ready to go. Changed a price? You update it yourself.' },
       { tag: 'Shops and fashion', title: 'Your shop window, open 24 hours', text: 'Catalog with photos, sizes and prices, a cart and online payment, or orders straight to WhatsApp.' },

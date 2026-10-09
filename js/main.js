@@ -380,49 +380,42 @@
 
   function setupNicheShow() {
     var el = $('.js-morph-scroll');
-    var items = $$('.niche-item');
-    if (!el || !items.length) return;
+    var shapes = $$('.niche-item').map(function (it) { return it.getAttribute('data-shape'); });
+    if (!el || !shapes.length) return;
     var nameEl = $('.js-nshow-name');
     var countEl = $('.js-nshow-count');
-    var current = items[0];
+    var index = 0;
+    var timer = null;
+    var visible = false;
 
     function relabel() {
-      var shape = current.getAttribute('data-shape');
-      if (nameEl) nameEl.textContent = dyn('niches')[shape];
-      if (countEl) countEl.textContent = '0' + (items.indexOf(current) + 1) + '/0' + items.length;
+      if (nameEl) nameEl.textContent = dyn('niches')[shapes[index]];
+      if (countEl) countEl.textContent = '0' + (index + 1) + '/0' + shapes.length;
     }
-    function activate(item) {
-      current = item;
-      el.setAttribute('data-shape', item.getAttribute('data-shape'));
-      items.forEach(function (it) { it.classList.toggle('is-active', it === item); });
+    function show(i) {
+      index = i;
+      el.setAttribute('data-shape', shapes[i]);
       relabel();
     }
-
-    // O nicho "da vez" é o último cujo meio já passou de 70% da altura da tela.
-    // Conta direto pela posição na tela a cada rolagem: funciona com ou sem GSAP,
-    // com "reduzir movimento" e também quando o site abre dentro de outra página.
-    var ticking = false;
-    function pick() {
-      ticking = false;
-      var line = window.innerHeight * 0.7;
-      var next = items[0];
-      items.forEach(function (it) {
-        var r = it.getBoundingClientRect();
-        if (r.top + r.height / 2 < line) next = it;
-      });
-      if (next !== current) activate(next);
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      if (timer || !visible || document.hidden) return;
+      timer = setInterval(function () { show((index + 1) % shapes.length); }, 3000);
     }
-    function onScroll() {
-      if (!ticking) { ticking = true; window.requestAnimationFrame(pick); }
-    }
-    // capture: true também pega a rolagem de outro elemento que não seja a janela
-    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
-    window.addEventListener('resize', onScroll);
-    window.addEventListener('load', onScroll);
 
     nicheShow = { relabel: relabel };
-    activate(items[0]);
-    pick();
+    show(0);
+
+    // Troca sozinha, como a figura do topo, só enquanto aparece na tela. Não depende da rolagem.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) { visible = true; start(); return; }
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    }, { threshold: 0.3 }).observe(el);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
   }
 
   /* ==========================================================================

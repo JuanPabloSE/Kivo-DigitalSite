@@ -789,34 +789,30 @@ img { display: block; }
   display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start;
   gap: clamp(32px, 6vw, 80px); padding: 0 clamp(24px, 5vw, 72px);
 }
+/* A figura fica parada ao lado da lista e troca de nicho sozinha (js/main.js > setupNicheShow) */
 .nshow__art { position: sticky; top: calc(var(--header-h) + 6vh); z-index: 2; }
 .stage--flat { width: min(100%, 440px); margin: 0 auto; transform: none; }
 .nshow__list { list-style: none; display: flex; flex-direction: column; }
 .niche-item {
-  min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 16px;
-  opacity: 0.25; transition: opacity .5s ease;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px 0; border-top: 1px solid rgba(220, 230, 255, 0.1);
 }
-.niche-item:first-child { min-height: 56vh; justify-content: flex-start; padding-top: 6vh; }
-.niche-item:last-child { min-height: 64vh; }
-.niche-item.is-active, .no-js .niche-item { opacity: 1; }
+.niche-item:first-child { padding-top: 0; border-top: 0; }
+.niche-item:last-child { padding-bottom: 0; }
 .niche-item__tag { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--azul-200); }
 .niche-item__tag span:first-child { color: var(--lima-500); }
 .niche-item__title {
-  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3.4vw, 2.75rem);
-  line-height: 1.05; letter-spacing: -0.03em; color: var(--gelo-50); text-wrap: balance;
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--gelo-50); text-wrap: balance;
 }
-.niche-item__text { color: var(--grafite-400); font-size: 1.125rem; max-width: 44ch; text-wrap: pretty; }
+.niche-item__text { color: var(--grafite-400); font-size: 1.0625rem; max-width: 46ch; text-wrap: pretty; }
 @media (max-width: 900px) {
-  .nshow { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  /* No celular a figura fica presa no topo, com fundo, e os textos passam por baixo dela */
-  .nshow__art {
-    top: var(--header-h); padding: 12px 0 28px;
-    background: linear-gradient(to bottom, var(--noite-950) calc(100% - 28px), rgba(5, 10, 28, 0));
-  }
-  .stage--flat { width: min(64vw, 260px); }
+  .nshow { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  /* No celular a figura fica acima da lista, sem prender na tela */
+  .nshow__art { position: static; }
+  .stage--flat { width: min(72vw, 300px); }
   .stage--flat .stage__meta { left: 46px; right: 46px; top: 10px; font-size: 9px; }
   .stage--flat .stage__caption { left: 30px; right: 30px; bottom: 8px; font-size: 0.8125rem; }
-  .niche-item, .niche-item:first-child, .niche-item:last-child { min-height: 52vh; justify-content: center; padding-top: 0; }
 }
 
 /* Títulos com as palavras subindo (o GSAP quebra o texto em palavras em js/main.js) */
