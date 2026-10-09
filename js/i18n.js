@@ -46,7 +46,8 @@ window.KIVO_I18N = {
     ],
 
     toolsTitle: 'The tools your customers ', toolsAccent: 'already use',
-    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp and websites tested on iPhone, iPad, Mac and Android. We work with the platforms that are part of your customers’ everyday life.',
+    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp, payments by Pix and card, and websites that work on any phone, tablet or computer, Apple or Android. We work with the platforms that are part of your customers’ everyday life.',
+    payLabel: 'Payments: Pix, cards and card machines',
     toolsNote: 'Trademarks belong to their owners. They show the tools we use in our projects and do not imply an official partnership.',
 
     respTitle: 'Perfect on ', respAccent: 'any screen',
@@ -54,8 +55,9 @@ window.KIVO_I18N = {
     resp: [
       { title: 'Responsive design', text: 'Looks right on any screen size: phone, tablet or computer. No tiny text, no buttons out of place.' },
       { title: 'Designed for mobile first', text: 'Most of your customers arrive on their phone. Big buttons, readable text and WhatsApp one tap away.' },
-      { title: 'Comfortable on tablets', text: 'On a tablet the content gets more room and stays easy to browse, in portrait or landscape.' },
+      { title: 'Comfortable on iPad and tablets', text: 'On a tablet the content gets more room and stays easy to browse, in portrait or landscape.' },
     ],
+    respChips: ['Laptop · 1512 px', 'Smartphone · 393 px', 'iPad and tablet · 1210 px'],
     // Textos do site de exemplo dentro das telas dos aparelhos
     mock: { tag: 'Artisan bakery', title: 'Fresh bread every day', cta: 'Order on WhatsApp', nav: 'Order' },
 

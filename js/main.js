@@ -398,22 +398,31 @@
       relabel();
     }
 
-    if (hasGsap()) {
-      window.gsap.registerPlugin(window.ScrollTrigger);
-      items.forEach(function (item) {
-        window.ScrollTrigger.create({
-          trigger: item, start: 'top 60%', end: 'bottom 60%',
-          onToggle: function (self) { if (self.isActive) activate(item); },
-        });
+    // O nicho "da vez" é o último cujo meio já passou de 70% da altura da tela.
+    // Conta direto pela posição na tela a cada rolagem: funciona com ou sem GSAP,
+    // com "reduzir movimento" e também quando o site abre dentro de outra página.
+    var ticking = false;
+    function pick() {
+      ticking = false;
+      var line = window.innerHeight * 0.7;
+      var next = items[0];
+      items.forEach(function (it) {
+        var r = it.getBoundingClientRect();
+        if (r.top + r.height / 2 < line) next = it;
       });
-    } else if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
-      }, { rootMargin: '-40% 0px -40% 0px' });
-      items.forEach(function (item) { io.observe(item); });
+      if (next !== current) activate(next);
     }
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(pick); }
+    }
+    // capture: true também pega a rolagem de outro elemento que não seja a janela
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+
     nicheShow = { relabel: relabel };
     activate(items[0]);
+    pick();
   }
 
   /* ==========================================================================
@@ -473,10 +482,10 @@
       });
     });
 
-    // Abertura saindo da tela: texto sobe e o palco tomba para trás em 3D (só computador)
+    // Abertura saindo da tela: texto sobe (sem apagar) e o palco tomba para trás em 3D (só computador)
     gsap.matchMedia().add('(min-width: 901px)', function () {
       var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('.hero__text', { yPercent: -14, opacity: 0.25, ease: 'none', scrollTrigger: st });
+      gsap.to('.hero__text', { yPercent: -10, ease: 'none', scrollTrigger: st });
       gsap.to('.js-hero-depth', {
         rotateX: 28, scale: 0.86, y: 30, transformPerspective: 900, transformOrigin: '50% 100%',
         ease: 'none', scrollTrigger: st,

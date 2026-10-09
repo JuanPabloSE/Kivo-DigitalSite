@@ -274,7 +274,7 @@ img { display: block; }
   display: flex; flex-direction: column; align-items: flex-start;
 }
 .hero__line { display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.22em; }
-.hero__line:nth-child(1) { color: #3F5A98; }
+.hero__line:nth-child(1) { color: var(--gelo-50); }
 .hero__line:nth-child(2) { color: var(--azul-300); }
 .hero__line:nth-child(3) { color: var(--gelo-50); }
 .hero__word { display: inline-flex; align-items: baseline; }
@@ -384,7 +384,7 @@ img { display: block; }
   position: relative; z-index: 2; margin: -96px auto 0;
   width: calc(100% - var(--sheet-inset) * 2);
   background: var(--gelo-50);
-  border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+  border-radius: var(--sheet-radius);
   box-shadow: 0 -30px 80px -20px rgba(47, 107, 255, 0.45);
 }
 /* O "_" da marca no topo da folha, como uma alça */
@@ -741,6 +741,15 @@ img { display: block; }
 .band__sub { color: var(--grafite-400); font-size: 1.125rem; max-width: 56ch; text-wrap: pretty; }
 .band__note { padding: 0 clamp(24px, 5vw, 72px); color: var(--grafite-500); font-size: 0.8125rem; max-width: 70ch; }
 
+/* Pagamentos: mesma peça das ferramentas, em linhas que quebram (sem animação) */
+.pay { padding: 0 clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 18px; }
+.pay__label { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafite-400); }
+.pay__slash { color: var(--lima-500); }
+.pay__list { list-style: none; display: flex; flex-wrap: wrap; gap: 14px; }
+.pay .tool { height: 60px; padding: 0 20px 0 16px; gap: 12px; font-size: 1rem; }
+.pay .tool--text { padding: 0 20px; }
+.pay .tool__logo { width: 24px; height: 24px; }
+
 .marquee {
   display: flex; flex-direction: column; gap: 14px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
@@ -996,25 +1005,25 @@ img { display: block; }
 .contact__value { font-weight: 500; font-size: 1.0625rem; overflow-wrap: anywhere; }
 
 /* ---------- Rodapé ---------- */
-.footer { padding: 0 24px 32px; }
-.footer__inner { max-width: 1200px; margin: 0 auto; padding-top: 56px; border-top: 1px solid var(--grafite-100); }
+.footer { padding: 0 24px 32px; color: var(--grafite-400); }
+.footer__inner { max-width: 1200px; margin: 0 auto; padding-top: 72px; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr; gap: 40px; }
 .footer__logo { height: 26px; width: auto; margin-bottom: 16px; }
-.footer__brand p { color: var(--grafite-500); max-width: 32ch; }
-.footer__heading { font-family: var(--font-mono); font-weight: 500; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--azul-700); margin-bottom: 14px; }
+.footer__brand p { color: var(--grafite-400); max-width: 32ch; }
+.footer__heading { font-family: var(--font-mono); font-weight: 500; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lima-500); margin-bottom: 14px; }
 .footer__list { list-style: none; display: grid; gap: 10px; }
-.footer__list a, .footer__place { color: var(--grafite-500); }
-.footer__list a:hover { color: var(--azul-700); }
+.footer__list a, .footer__place { color: var(--grafite-300); }
+.footer__list a:hover { color: var(--gelo-50); }
 .footer__list--icons a, .footer__place { display: inline-flex; align-items: center; gap: 10px; overflow-wrap: anywhere; }
-.footer__list--icons .icon { color: var(--azul-600); }
+.footer__list--icons .icon { color: var(--azul-400); }
 .footer__bottom {
-  margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--grafite-100);
+  margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(220, 230, 255, 0.1);
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px;
-  color: var(--grafite-500); font-size: 0.875rem;
+  color: var(--grafite-400); font-size: 0.875rem;
 }
 .footer__bottom p:last-child { font-family: var(--font-mono); font-size: 0.8125rem; }
-.footer__list .link-btn { font-size: 1rem; text-decoration: none; }
-.footer__list .link-btn:hover { color: var(--azul-700); }
+.footer__list .link-btn { font-size: 1rem; text-decoration: none; color: var(--grafite-300); }
+.footer__list .link-btn:hover { color: var(--gelo-50); }
 @media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; gap: 32px; } }
 .link-btn {
