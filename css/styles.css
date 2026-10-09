@@ -330,11 +330,11 @@ img { display: block; }
   -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent 100%);
           mask-image: radial-gradient(closest-side, #000 40%, transparent 100%);
 }
-.stage__corner { position: absolute; width: 22px; height: 22px; border-color: var(--lima-500); border-style: solid; border-width: 0; }
-.stage__corner--tl { top: 14px; left: 14px; border-top-width: 2px; border-left-width: 2px; }
-.stage__corner--tr { top: 14px; right: 14px; border-top-width: 2px; border-right-width: 2px; }
-.stage__corner--bl { bottom: 14px; left: 14px; border-bottom-width: 2px; border-left-width: 2px; }
-.stage__corner--br { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; }
+.stage__corner { position: absolute; width: var(--corner-size, 22px); height: var(--corner-size, 22px); border-color: var(--lima-500); border-style: solid; border-width: 0; }
+.stage__corner--tl { top: var(--corner-gap, 14px); left: var(--corner-gap, 14px); border-top-width: 2px; border-left-width: 2px; }
+.stage__corner--tr { top: var(--corner-gap, 14px); right: var(--corner-gap, 14px); border-top-width: 2px; border-right-width: 2px; }
+.stage__corner--bl { bottom: var(--corner-gap, 14px); left: var(--corner-gap, 14px); border-bottom-width: 2px; border-left-width: 2px; }
+.stage__corner--br { bottom: var(--corner-gap, 14px); right: var(--corner-gap, 14px); border-bottom-width: 2px; border-right-width: 2px; }
 .stage__meta {
   position: absolute; left: 48px; right: 48px; top: 16px; display: flex; justify-content: space-between;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azul-300);
@@ -368,14 +368,41 @@ img { display: block; }
 
 @media (max-width: 900px) {
   .hero { padding: 104px 20px 140px; }
-  .hero__inner { grid-template-columns: minmax(0, 1fr); }
-  .stage { width: min(100%, 400px); }
+  /* Celular e tablet: a figura fica pequena, ao lado do texto de apoio (como no computador).
+     O .hero__text "some" (display: contents) para os filhos dele entrarem na mesma grade da figura. */
+  .hero__inner { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; row-gap: 22px; }
+  .hero__text { display: contents; }
+  .hero__eyebrow, .hero__title, .hero__ctas, .hero__promises { grid-column: 1 / -1; }
+  .hero__sub { grid-column: 1; grid-row: 3; align-self: center; font-size: 1rem; }
+  .hero__art { grid-column: 2; grid-row: 3; align-self: center; width: clamp(128px, 36vw, 240px); }
+  .hero__depth { gap: 10px; }
+  .hero__art .niche[data-shape] { display: none; }
+  /* Palco pequeno (abertura e "Para cada negócio"): só a figura, os cantos e o nome do nicho */
+  .hero__art .stage, .stage--flat {
+    --corner-size: 12px; --corner-gap: 8px;
+    width: 100%; padding: 15%; border-radius: 20px;
+  }
+  .hero__art .stage::before, .stage--flat::before { background-size: 14px 14px; }
+  .hero__art .stage__meta, .stage--flat .stage__meta { display: none; }
+  .hero__art .stage__caption, .stage--flat .stage__caption { left: 8px; right: 8px; bottom: 6px; font-size: 10px; }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  /* Tablet: a figura acompanha o título e o texto juntos, sem deixar um vão embaixo do título */
+  .hero__title { grid-column: 1; grid-row: 2; }
+  .hero__art { grid-row: 2 / span 2; }
 }
 @media (max-width: 560px) {
   .hero__ctas { width: 100%; flex-wrap: nowrap; gap: 10px; }
   .hero__ctas .btn { flex: 1 1 auto; padding: 0 16px; font-size: 0.9375rem; }
   .hero__ctas .btn--ghost { flex: 0 1 auto; }
-  .stage__meta, .stage__caption { left: 40px; right: 40px; }
+}
+@media (max-width: 374px) {
+  /* Celulares bem estreitos (320 px): título menor, botões um embaixo do outro */
+  .hero__title { font-size: 2.375rem; }
+  .hero__sub { font-size: 0.9375rem; }
+  .hero__art { width: 108px; }
+  .hero__ctas { flex-wrap: wrap; }
+  .hero__ctas .btn, .hero__ctas .btn--ghost { flex: 1 1 100%; }
 }
 
 /* ---------- Folha clara que sobe ao rolar ---------- */
@@ -451,6 +478,45 @@ img { display: block; }
 }
 .service:hover .service__icon { background: var(--azul-500); color: var(--branco); transform: rotate(-6deg); }
 .service__num { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--grafite-400); letter-spacing: 0.06em; }
+
+/* Suporte depois da entrega: faixa larga embaixo dos cartões de serviço */
+.support {
+  width: 100%; margin-top: 16px; padding: clamp(24px, 3.4vw, 40px);
+  border: 1px solid var(--azul-100); border-radius: 24px;
+  background: linear-gradient(135deg, var(--azul-50), var(--branco) 70%);
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(24px, 3vw, 48px); align-items: center;
+}
+.support__head { display: flex; flex-direction: column; gap: 10px; }
+.support__tag { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--azul-600); }
+.support__slash { color: var(--lima-700); }
+.support__title {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.375rem, 2vw, 1.75rem);
+  line-height: 1.15; letter-spacing: -0.02em; color: var(--grafite-900); text-wrap: balance;
+}
+.support__list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.support__item { display: flex; flex-direction: column; gap: 14px; }
+.support__icon {
+  flex: none; width: 48px; height: 48px; border-radius: 14px; background: var(--azul-500); color: var(--branco);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 24px -12px rgba(31, 85, 230, 0.6);
+}
+.support__text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.support__name { font-family: var(--font-display); font-weight: 500; font-size: 1.125rem; line-height: 1.25; color: var(--grafite-900); }
+.support__desc { color: var(--grafite-500); text-wrap: pretty; }
+.support__sla { color: var(--grafite-900); font-weight: 600; white-space: nowrap; }
+@media (max-width: 1000px) {
+  .support { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .support__list { grid-template-columns: 1fr; gap: 20px; }
+  .support__item { flex-direction: row; align-items: flex-start; gap: 16px; }
+  .support__icon { width: 44px; height: 44px; border-radius: 12px; }
+}
+@media (max-width: 374px) {
+  .support { padding: 20px 18px; }
+  .support__item { gap: 12px; }
+  .support__icon { width: 40px; height: 40px; }
+}
 
 /* ---------- Responsividade (cartões escuros com aparelhos Apple) ----------
    Os aparelhos são desenhados só com CSS. A largura de cada um fica em --w e as
@@ -798,18 +864,32 @@ img { display: block; }
 }
 .niche-item__text { color: var(--grafite-400); font-size: 1.0625rem; max-width: 46ch; text-wrap: pretty; }
 @media (max-width: 900px) {
-  .nshow { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-  /* No celular a figura fica acima da lista, sem prender na tela */
-  .nshow__art { position: static; }
-  .stage--flat { width: min(72vw, 300px); }
-  .stage--flat .stage__meta { left: 46px; right: 46px; top: 10px; font-size: 9px; }
-  .stage--flat .stage__caption { left: 30px; right: 30px; bottom: 8px; font-size: 0.8125rem; }
+  /* Celular e tablet: a figura fica pequena, ao lado do texto de abertura da seção, e a lista vem embaixo.
+     O cabeçalho e o .nshow "somem" (display: contents) para os filhos entrarem na mesma grade. */
+  .band--niches {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px; row-gap: 18px; padding-inline: clamp(24px, 5vw, 72px);
+  }
+  .band--niches .band__head, .band--niches .nshow { display: contents; }
+  .band--niches .kicker, .band--niches .band__title, .nshow__list { grid-column: 1 / -1; }
+  .band--niches .band__sub { grid-column: 1; grid-row: 3; align-self: center; font-size: 1rem; }
+  .nshow__art { position: static; grid-column: 2; grid-row: 3; align-self: center; width: clamp(112px, 32vw, 220px); }
+  .nshow__list { margin-top: 18px; }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .band--niches .band__title { grid-column: 1; grid-row: 2; }
+  .nshow__art { grid-row: 2 / span 2; }
+}
+@media (max-width: 374px) {
+  .nshow__art { width: 104px; }
 }
 
 /* Títulos com as palavras subindo (o GSAP quebra o texto em palavras em js/main.js) */
 /* clip-path (e não overflow: hidden) para a palavra continuar alinhada na linha de base */
 .split-w { display: inline-block; clip-path: inset(-0.2em -0.1em -0.3em -0.1em); }
 .split-w > span { display: inline-block; }
+.is-split .accent::after { opacity: 0; transition: opacity .3s ease .45s; }
+.is-split.is-shown .accent::after { opacity: 1; }
 
 /* ---------- Como funciona ---------- */
 /* A linha acima das etapas se preenche com o limão conforme a página rola (--p de 0 a 1, main.js) */
@@ -966,12 +1046,20 @@ img { display: block; }
   display: flex; align-items: center; justify-content: center; gap: 10px;
   transition: background .2s ease, box-shadow .25s ease;
 }
+.form__submit span { text-align: left; }
+@media (max-width: 480px) {
+  .form__submit { padding: 0 16px; gap: 8px; font-size: 0.9375rem; }
+}
+@media (max-width: 374px) {
+  .quote { padding-inline: 16px; }
+  .form { padding: 20px 16px; }
+}
 .form__submit:hover { background: var(--lima-300); box-shadow: 0 12px 30px -12px rgba(155, 194, 31, 0.8); }
 
 /* ---------- Contato ---------- */
 .contacts {
   list-style: none; width: 100%; display: grid; gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
 }
 .contacts li { display: flex; }
 .contact {
@@ -989,7 +1077,12 @@ img { display: block; }
 }
 .contact__text { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
 .contact__label { color: var(--grafite-500); font-size: 0.875rem; }
-.contact__value { font-weight: 500; font-size: 1.0625rem; overflow-wrap: anywhere; }
+.contact__value { font-weight: 500; font-size: 1.0625rem; overflow-wrap: break-word; }
+@media (max-width: 480px) {
+  .contact { padding: 18px; gap: 14px; }
+  .contact__icon { width: 44px; height: 44px; border-radius: 12px; }
+  .contact__value { font-size: 1rem; }
+}
 
 /* ---------- Rodapé ---------- */
 .footer { padding: 0 24px 32px; color: var(--grafite-400); }
@@ -1001,7 +1094,8 @@ img { display: block; }
 .footer__list { list-style: none; display: grid; gap: 10px; }
 .footer__list a, .footer__place { color: var(--grafite-300); }
 .footer__list a:hover { color: var(--gelo-50); }
-.footer__list--icons a, .footer__place { display: inline-flex; align-items: center; gap: 10px; overflow-wrap: anywhere; }
+.footer__list--icons a, .footer__place { display: inline-flex; align-items: center; gap: 10px; overflow-wrap: break-word; }
+.footer__list--icons .icon { flex: none; }
 .footer__list--icons .icon { color: var(--azul-400); }
 .footer__bottom {
   margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(220, 230, 255, 0.1);
@@ -1011,8 +1105,14 @@ img { display: block; }
 .footer__bottom p:last-child { font-family: var(--font-mono); font-size: 0.8125rem; }
 .footer__list .link-btn { font-size: 1rem; text-decoration: none; color: var(--grafite-300); }
 .footer__list .link-btn:hover { color: var(--gelo-50); }
-@media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 1100px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; gap: 32px; } }
+/* Até 1340 px o botão flutuante do WhatsApp ficaria em cima da última linha do rodapé */
+@media (max-width: 1340px) { .footer { padding-bottom: 100px; } }
+@media (max-width: 900px) {
+  .footer__list { gap: 2px; }
+  .footer__list a, .footer__list .link-btn, .footer__place { min-height: 40px; display: inline-flex; align-items: center; }
+}
 .link-btn {
   border: 0; background: transparent; padding: 0; color: var(--grafite-500);
   font-size: 0.875rem; cursor: pointer; text-decoration: underline;

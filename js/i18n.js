@@ -34,6 +34,14 @@ window.KIVO_I18N = {
       { title: 'Hosting and domain', text: 'We register your website address and keep everything online, with the security padlock active.' },
       { title: 'Google optimization (SEO)', text: 'Structure, copy and speed tuned so your site shows up when someone searches for what you offer.' },
     ],
+    supTag: 'Support',
+    supTitle: 'Support continues after your site goes live',
+    support: [
+      { title: '24-hour support on WhatsApp', text: 'Send us a message and we get it any time of day or night, right on WhatsApp.' },
+      { title: 'Guaranteed response time (SLA)' },
+      { title: 'A summary of every request', text: 'When it is done, you get a summary of what was done on WhatsApp and by e-mail.' },
+    ],
+    supSla: ['Every support request has a set response time: first reply within', '1 hour', '.'],
 
     nichTitle: 'A website that looks like ', nichAccent: 'your business',
     nichSub: 'Every kind of business needs a different website. See how we plan yours around what your customers are looking for.',

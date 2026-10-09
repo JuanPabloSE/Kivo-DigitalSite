@@ -112,6 +112,7 @@
   <symbol id="ph-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
   <symbol id="ph-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
   <symbol id="ph-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+  <symbol id="ph-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
   <symbol id="ph-pause" viewBox="0 0 256 256"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></symbol>
   <symbol id="ph-play" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
   <!-- Logos das ferramentas (Simple Icons, licença CC0; as marcas pertencem aos seus donos) -->
@@ -287,6 +288,36 @@
             <p class="card-text" data-i18n="services.5.text">Estrutura, textos e velocidade ajustados para o site aparecer quando alguém procura o que você oferece.</p>
           </li>
         </ul>
+        <!-- Suporte depois da entrega (prazo do SLA definido pelo Gabriel em 09/10/2026: primeira resposta em até 1 hora) -->
+        <div class="support rv" role="group" aria-labelledby="sup-titulo">
+          <div class="support__head">
+            <p class="support__tag"><span class="support__slash" aria-hidden="true">//</span> <span data-i18n="supTag">Suporte</span></p>
+            <h3 class="support__title" id="sup-titulo" data-i18n="supTitle">O atendimento continua depois que o site vai ao ar</h3>
+          </div>
+          <ul class="support__list">
+            <li class="support__item">
+              <span class="support__icon" aria-hidden="true"><svg class="icon" width="24" height="24"><use href="#ph-whatsapp-logo"/></svg></span>
+              <span class="support__text">
+                <span class="support__name" data-i18n="support.0.title">Suporte 24h pelo WhatsApp</span>
+                <span class="support__desc" data-i18n="support.0.text">Chamou, a gente recebe a qualquer hora do dia ou da noite, direto no WhatsApp.</span>
+              </span>
+            </li>
+            <li class="support__item">
+              <span class="support__icon" aria-hidden="true"><svg class="icon" width="24" height="24"><use href="#ph-clock"/></svg></span>
+              <span class="support__text">
+                <span class="support__name" data-i18n="support.1.title">Prazo de resposta garantido (SLA)</span>
+                <span class="support__desc"><span data-i18n="supSla.0">Todo pedido de suporte tem prazo de resposta definido: primeira resposta em até</span> <strong class="support__sla" data-i18n="supSla.1">1 hora</strong><span data-i18n="supSla.2">.</span></span>
+              </span>
+            </li>
+            <li class="support__item">
+              <span class="support__icon" aria-hidden="true"><svg class="icon" width="24" height="24"><use href="#ph-envelope-simple"/></svg></span>
+              <span class="support__text">
+                <span class="support__name" data-i18n="support.2.title">Resumo de cada atendimento</span>
+                <span class="support__desc" data-i18n="support.2.text">Ao final, você recebe um resumo do que foi feito no WhatsApp e no e-mail.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -711,7 +742,7 @@
           <li>
             <a class="contact" href="mailto:contato@kivodigitalbr.com.br" data-track="contact" data-track-method="email" data-track-local="secao_contato">
               <span class="contact__icon" aria-hidden="true"><svg class="icon" width="24" height="24"><use href="#ph-envelope-simple"/></svg></span>
-              <span class="contact__text"><span class="contact__label" data-i18n="contLabels.0">E-mail</span><span class="contact__value">contato@kivodigitalbr.com.br</span></span>
+              <span class="contact__text"><span class="contact__label" data-i18n="contLabels.0">E-mail</span><span class="contact__value">contato<wbr>@kivodigitalbr.com.br</span></span>
             </a>
           </li>
           <!-- Telefone: o número vem de js/config.js. Fica escondido enquanto o número for o provisório. -->
@@ -758,7 +789,7 @@
         <p class="footer__heading" data-i18n="footerContact">Contato</p>
         <ul class="footer__list footer__list--icons">
           <li><a class="js-wa-link" href="#contato" target="_blank" rel="noopener" data-track="contact" data-track-method="whatsapp" data-track-local="rodape"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#ph-whatsapp-logo"/></svg>WhatsApp</a></li>
-          <li><a href="mailto:contato@kivodigitalbr.com.br" data-track="contact" data-track-method="email" data-track-local="rodape"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#ph-envelope-simple"/></svg>contato@kivodigitalbr.com.br</a></li>
+          <li><a href="mailto:contato@kivodigitalbr.com.br" data-track="contact" data-track-method="email" data-track-local="rodape"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#ph-envelope-simple"/></svg><span>contato<wbr>@kivodigitalbr.com.br</span></a></li>
           <li><a href="https://instagram.com/kivodigital.br" target="_blank" rel="noopener" data-track="contact" data-track-method="instagram" data-track-local="rodape"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#ph-instagram-logo"/></svg>@kivodigital.br</a></li>
         </ul>
       </div>
