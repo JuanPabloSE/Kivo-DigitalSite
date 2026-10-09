@@ -231,6 +231,7 @@
     if (!sheet) return;
     var mobile = window.matchMedia('(max-width: 767px)');
     var ticking = false;
+    var wasFull = null;
 
     var bar = $('.progress');
     var steps = $('.js-steps');
@@ -246,6 +247,19 @@
       var inset = (mobile.matches ? 8 : 40) * (1 - p);
       sheet.style.setProperty('--sheet-inset', inset.toFixed(2) + 'px');
       sheet.style.setProperty('--sheet-radius', (mobile.matches ? 24 : 40) + 'px');
+      // A folha mais larga muda a altura do conteúdo (no tablet os cards passam de 1 para 2 colunas).
+      // Quando ela termina de alargar (ou volta a estreitar), as animações recalculam onde começam,
+      // senão os títulos mais abaixo só apareceriam depois de passar do ponto.
+      var full = p >= 1;
+      if (wasFull !== null && full !== wasFull && window.ScrollTrigger) {
+        // A rolagem suave do <html> atrapalha a medição do ScrollTrigger: desliga só durante o refresh
+        var root = document.documentElement;
+        var prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        window.ScrollTrigger.refresh();
+        root.style.scrollBehavior = prev;
+      }
+      wasFull = full;
 
       // Barra de leitura no topo (o "_" do logo esticado)
       var max = document.documentElement.scrollHeight - vh;
@@ -461,9 +475,13 @@
     // Títulos das seções: as palavras sobem de dentro de uma "janela"
     $$('.section__title, .band__title, .quote__title').forEach(function (title) {
       var words = splitWords(title);
+      // 140% deixa a palavra toda abaixo da janela (sem pontinhos aparecendo antes de subir);
+      // o "_" do destaque só aparece quando as palavras começam a subir
+      title.classList.add('is-split');
       gsap.from(words, {
-        yPercent: 110, duration: 0.9, ease: 'power3.out', stagger: 0.045,
+        yPercent: 140, duration: 0.9, ease: 'power3.out', stagger: 0.045,
         scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+        onStart: function () { title.classList.add('is-shown'); },
       });
     });
 

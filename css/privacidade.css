@@ -6,7 +6,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #2F6BFF;outline-offset:3p
 header{background:#050A1C;padding:14px 24px}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .wrap{max-width:760px;margin:0 auto}
-.back{color:#C9D1DD;font-size:15px;font-weight:500;text-decoration:none}
+.back{color:#C9D1DD;font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
 .back:hover{color:#F5F7FA}
 .langs{display:flex;gap:2px;padding:3px;border:1px solid rgba(245,247,250,0.18);border-radius:999px}
 .langs button{min-height:34px;min-width:40px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:#C9D1DD;font:500 13px/1 "Inter",sans-serif;letter-spacing:0.04em;cursor:pointer}
