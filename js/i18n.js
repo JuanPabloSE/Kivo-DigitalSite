@@ -11,11 +11,18 @@
 window.KIVO_I18N = {
   en: {
     navLabel: 'Main', homeLabel: 'Kivo Digital, home', langLabel: 'Language',
-    navServices: 'Services', navProcess: 'How it works', navTestimonials: 'Testimonials', navFaq: 'FAQ', navContact: 'Contact',
+    navServices: 'Services', navProcess: 'How it works', navReviews: 'Reviews', navFaq: 'FAQ', navContact: 'Contact',
     cta: 'Get a quote',
     heroEyebrow: 'Website design for small businesses, from Brazil to the world',
     heroSub: 'We build fast websites that work well on mobile and that you can update yourself. The technical side, from building to hosting, is on us.',
+    heroSecondary: 'See services',
     promises: ['Designed for mobile first', 'Updates without a developer', 'Price and timeline in writing'],
+    // Figura em pedaços da abertura
+    stageTop: 'websites for', nichesLabel: 'Business examples',
+    niches: { cafe: 'Coffee shop', loja: 'Store', salao: 'Salon', clinica: 'Clinic', local: 'Local business' },
+
+    // Rótulos em fonte mono acima dos títulos (01 Serviços, 02 Ferramentas...)
+    kickers: ['Services', 'Tools', 'Any screen', 'How it works', 'Reviews', 'FAQ', 'Quote', 'Contact'],
 
     servTitle: 'Services to put your business ', servAccent: 'online',
     servSub: 'Pick what makes sense right now. You can start with a single page and grow later.',
@@ -27,6 +34,10 @@ window.KIVO_I18N = {
       { title: 'Hosting and domain', text: 'We register your website address and keep everything online, with the security padlock active.' },
       { title: 'Google optimization (SEO)', text: 'Structure, copy and speed tuned so your site shows up when someone searches for what you offer.' },
     ],
+
+    toolsTitle: 'The tools your customers ', toolsAccent: 'already use',
+    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp and websites tested on iPhone, iPad and Mac. We work with the platforms that are part of your customers’ everyday life.',
+    toolsNote: 'Trademarks belong to their owners. They show the tools we use in our projects and do not imply an official partnership.',
 
     respTitle: 'Perfect on ', respAccent: 'any screen',
     respSub: 'The same website rearranges itself for phones, tablets and computers. Your customers read everything without zooming or scrolling sideways.',
@@ -48,13 +59,10 @@ window.KIVO_I18N = {
     ],
     procCta: 'Get a quote',
 
-    depTitle: 'Businesses already online with ', depAccent: 'Kivo',
-    depSub: 'Business owners, in their own words.',
-    testimonials: [
-      { quote: 'I used to think websites were for big companies. Now customers find me on Google and already know what I do when they reach out.', biz: 'Eyebrow studio' },
-      { quote: 'They explained everything straight to the point. When I need to change the menu, I do it myself in two minutes.', biz: 'Burger restaurant' },
-      { quote: 'The WhatsApp button changed my routine. Quote requests come straight in, already with the right information.', biz: 'Architecture firm' },
-    ],
+    revTitle: 'Have you worked with us? ', revAccent: 'Tell us how it went',
+    revSub: 'Kivo is new, and every review helps another small business find us. It takes less than a minute and counts for any experience, from the first chat to delivery.',
+    revGoogle: 'Review us on Google', revWa: 'Tell us on WhatsApp',
+    revCardSub: 'Website design', revCardText: 'Your review here',
 
     faqTitle: 'Frequently asked ', faqAccent: 'questions',
     faqSub: 'Didn’t find your question? ', faqLink: 'Message us on WhatsApp',
@@ -102,6 +110,10 @@ window.KIVO_I18N = {
       waIntro: 'Olá, Kivo! Quero um orçamento de site.', waNome: 'Nome', waNegocio: 'Negócio',
       waSite: 'Já tem site', waMsg: 'O que preciso',
       waDirect: 'Olá, Kivo! Quero saber mais sobre sites.',
+      waReview: 'Olá, Kivo! Quero contar como foi o meu projeto com vocês.',
+      niches: { kivo: 'kivo_digital', cafe: 'cafeteria', loja: 'loja', salao: 'salão de beleza', clinica: 'clínica', local: 'negócio local' },
+      stageAria: name => `Figura em pedaços mostrando: ${name}`,
+      morphPause: 'Pausar animação', morphPlay: 'Continuar animação',
       consentTools: { ga: 'do Google Analytics', meta: 'da Meta', and: ' e ' },
       consentText: tools => `Usamos cookies ${tools} para entender como o site é usado e melhorar nossos anúncios. Eles só são ativados se você aceitar. Saiba mais na `,
     },
@@ -116,6 +128,10 @@ window.KIVO_I18N = {
       waIntro: 'Hi, Kivo! I’d like a website quote.', waNome: 'Name', waNegocio: 'Business',
       waSite: 'Already has a website', waMsg: 'What I need',
       waDirect: 'Hi, Kivo! I’d like to know more about websites.',
+      waReview: 'Hi, Kivo! I’d like to tell you how my project went.',
+      niches: { kivo: 'kivo_digital', cafe: 'coffee shop', loja: 'store', salao: 'beauty salon', clinica: 'clinic', local: 'local business' },
+      stageAria: name => `Shape made of pieces showing: ${name}`,
+      morphPause: 'Pause animation', morphPlay: 'Play animation',
       consentTools: { ga: 'Google Analytics', meta: 'Meta', and: ' and ' },
       consentText: tools => `We use ${tools} cookies to understand how the site is used and to improve our ads. They are only turned on if you accept. Learn more in our `,
     },

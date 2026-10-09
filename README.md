@@ -7,12 +7,14 @@ https://kivodigitalbr.com.br. Não há etapa de build: o que está no repositór
 
 | Quero mudar... | Arquivo |
 |---|---|
-| Número do WhatsApp, códigos do Google Analytics e do Pixel da Meta | `js/config.js` |
+| Número do WhatsApp, códigos do Google Analytics e do Pixel da Meta, link de avaliação no Google | `js/config.js` |
 | Um texto em **português** | `index.html` |
 | Um texto em **inglês** | `js/i18n.js` (parte `en`) |
 | Mensagem do WhatsApp, erros do formulário, aviso de cookies, título da abertura | `js/i18n.js` (parte `dynamic`) |
 | Cores, fontes, espaçamentos, tamanhos | `css/styles.css` (cores nas variáveis do topo) |
 | Menu, perguntas, formulário, troca de idioma | `js/main.js` |
+| Figuras em pedaços da abertura (k_, xícara, sacola...) | `_ferramentas/gerar-formas.py`, depois rode `python3 _ferramentas/gerar-formas.py` (gera `css/formas.css`) |
+| Logos da faixa "Ferramentas" | desenho no `<svg class="sprite">` do `index.html` (id `si-nome`) e item nas duas listas da seção |
 | Aviso de cookies e medição | `js/tracking.js` |
 | Política de privacidade | `privacidade.html`, `css/privacidade.css`, `js/privacidade.js` |
 
@@ -35,6 +37,9 @@ https://kivodigitalbr.com.br. Não há etapa de build: o que está no repositór
   mesma chave em `js/i18n.js > en`. Se faltar, o texto fica em português e aparece um aviso no
   console do navegador.
 - Não coloque estilos dentro das tags (`style="..."`): use uma classe no `css/styles.css`.
+- Identidade: azul, verde-limão e branco; roxo só em detalhes. O "_" do logo é o padrão da marca
+  (cursor piscando, barra de leitura no topo, linha das etapas). Animações respeitam a opção
+  "reduzir movimento" do aparelho (`prefers-reduced-motion`).
 - Nunca envie para a medição dados que a pessoa digitou (nome, negócio, mensagem).
 - Os textos de `og:` no `<head>` do `index.html` são a prévia ao compartilhar o link.
 - O arquivo `CNAME` liga o domínio próprio. Não apague.
