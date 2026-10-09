@@ -308,7 +308,7 @@ img { display: block; }
 
 /* ----- Palco da figura em pedaços ----- */
 .hero__art { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-/* Camada que o GSAP inclina em 3D quando a abertura sai da tela (só no computador) */
+/* Figura e botões dos nichos (ao rolar a página a figura fica parada e em pé) */
 .hero__depth { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .stage {
   position: relative; width: min(100%, 480px); aspect-ratio: 1; padding: 13%;

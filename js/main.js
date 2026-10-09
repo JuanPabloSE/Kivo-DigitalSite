@@ -302,6 +302,28 @@
   }
 
   /* ==========================================================================
+     ROLAGEM EM ANDAMENTO: enquanto a pessoa rola, as figuras ficam inteiras e em pé.
+     Nenhuma troca de figura começa durante a rolagem, e uma troca que já estava
+     no meio se fecha em poucos décimos de segundo (sem triângulos soltos na tela).
+     ========================================================================== */
+  var lastScroll = 0;
+  var onScrollStart = [];
+  function isScrolling() { return Date.now() - lastScroll < 700; }
+  window.addEventListener('scroll', function () {
+    var starting = !isScrolling();
+    lastScroll = Date.now();
+    if (starting) onScrollStart.forEach(function (fn) { fn(); });
+  }, { passive: true });
+
+  // Acelera a troca de figura que estiver no meio para ela terminar logo
+  function settleMorph(el) {
+    if (!el || !el.getAnimations) return;
+    el.getAnimations({ subtree: true }).forEach(function (a) {
+      if (a.playState === 'running') a.playbackRate = 12;
+    });
+  }
+
+  /* ==========================================================================
      FIGURA EM PEDAÇOS DA ABERTURA
      Os 32 triângulos (.morph__piece) mudam de forma pelo atributo data-shape;
      as formas ficam em css/formas.css. Começa espalhado ("intro"), monta o k_
@@ -341,12 +363,15 @@
       el.setAttribute('data-shape', shape);
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-shape') === shape)); });
       relabel();
+      if (isScrolling()) settleMorph(el);
     }
     function schedule(delay) {
       clearTimeout(timer);
       if (playing && visible && !document.hidden) timer = setTimeout(next, delay || 3400);
     }
     function next() {
+      // Com a pessoa rolando a página, espera a rolagem parar para trocar de figura
+      if (isScrolling()) { timer = setTimeout(next, 500); return; }
       show(SHAPES[(SHAPES.indexOf(current) + 1) % SHAPES.length]);
       schedule();
     }
@@ -364,6 +389,7 @@
     });
     if (toggle) toggle.addEventListener('click', function () { setPlaying(!playing); });
     document.addEventListener('visibilitychange', function () { if (started) schedule(); });
+    onScrollStart.push(function () { settleMorph(el); });
     morph = { relabel: relabel };
     if (reduce) { show('kivo'); return; }
 
@@ -414,11 +440,13 @@
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function start() {
       if (timer || !visible || document.hidden) return;
-      timer = setInterval(function () { show((index + 1) % shapes.length); }, 3000);
+      // Durante a rolagem pula a troca: a figura fica inteira enquanto a pessoa rola
+      timer = setInterval(function () { if (!isScrolling()) show((index + 1) % shapes.length); }, 3000);
     }
 
     nicheShow = { relabel: relabel };
     show(0);
+    onScrollStart.push(function () { settleMorph(el); });
 
     // Troca sozinha, como a figura do topo, só enquanto aparece na tela. Não depende da rolagem.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -493,13 +521,12 @@
       });
     });
 
-    // Abertura saindo da tela: texto sobe (sem apagar) e o palco tomba para trás em 3D (só computador)
+    // Abertura saindo da tela: só o texto sobe um pouco (sem apagar). A figura não inclina nem
+    // diminui com a rolagem: ela fica inteira e em pé (pedido do Gabriel em 09/10/2026).
     gsap.matchMedia().add('(min-width: 901px)', function () {
-      var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('.hero__text', { yPercent: -10, ease: 'none', scrollTrigger: st });
-      gsap.to('.js-hero-depth', {
-        rotateX: 28, scale: 0.86, y: 30, transformPerspective: 900, transformOrigin: '50% 100%',
-        ease: 'none', scrollTrigger: st,
+      gsap.to('.hero__text', {
+        yPercent: -10, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
       });
     });
   }
@@ -511,17 +538,20 @@
     if (!art || !stage) return;
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function straighten() {
+      stage.style.setProperty('--rx', '0deg');
+      stage.style.setProperty('--ry', '0deg');
+    }
     art.addEventListener('pointermove', function (e) {
+      if (isScrolling()) return; // rolando a página: o palco fica reto
       var r = stage.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
       var y = (e.clientY - r.top) / r.height - 0.5;
       stage.style.setProperty('--rx', (x * 10).toFixed(2) + 'deg');
       stage.style.setProperty('--ry', (-y * 10).toFixed(2) + 'deg');
     });
-    art.addEventListener('pointerleave', function () {
-      stage.style.setProperty('--rx', '0deg');
-      stage.style.setProperty('--ry', '0deg');
-    });
+    art.addEventListener('pointerleave', straighten);
+    onScrollStart.push(straighten);
   }
 
   /* ---------- Blocos aparecem ao rolar (.rv ganha .is-in) ---------- */
