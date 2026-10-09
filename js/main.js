@@ -127,6 +127,9 @@
     });
     updateMenuLabel();
     $$('.js-wa-link').forEach(function (a) { a.href = waLink(d.waDirect); });
+    $$('.js-review-wa').forEach(function (a) { a.href = waLink(d.waReview); });
+    if (morph) morph.relabel();
+    if (nicheShow) nicheShow.relabel();
     $$('.js-privacy-link').forEach(function (a) { a.href = '/privacidade.html?lang=' + lang; });
     updateConsentText();
     hideFeedback();
@@ -176,6 +179,14 @@
       });
       title.appendChild(line);
     });
+    // O "_" da marca piscando depois da última palavra
+    var last = title.lastChild && title.lastChild.lastChild;
+    if (last) {
+      var cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      cursor.setAttribute('aria-hidden', 'true');
+      last.appendChild(cursor);
+    }
     setWordDelays();
   }
 
@@ -221,12 +232,34 @@
     var mobile = window.matchMedia('(max-width: 767px)');
     var ticking = false;
 
+    var bar = $('.progress');
+    var steps = $('.js-steps');
+    var stepItems = steps ? $$('.step', steps) : [];
+    var vertical = window.matchMedia('(max-width: 860px)');
+
+    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+
     function update() {
       ticking = false;
-      var p = Math.max(0, Math.min(1, window.scrollY / (window.innerHeight * 0.6)));
+      var vh = window.innerHeight;
+      var p = clamp01(window.scrollY / (vh * 0.6));
       var inset = (mobile.matches ? 8 : 40) * (1 - p);
       sheet.style.setProperty('--sheet-inset', inset.toFixed(2) + 'px');
       sheet.style.setProperty('--sheet-radius', (mobile.matches ? 24 : 40) + 'px');
+
+      // Barra de leitura no topo (o "_" do logo esticado)
+      var max = document.documentElement.scrollHeight - vh;
+      if (bar) bar.style.setProperty('--read', (max > 0 ? clamp01(window.scrollY / max) : 0).toFixed(4));
+
+      // Linha das etapas: enche conforme a seção passa pela tela
+      if (steps) {
+        var r = steps.getBoundingClientRect();
+        var sp = vertical.matches ? clamp01((vh * 0.7 - r.top) / r.height) : clamp01((vh * 0.85 - r.top) / (vh * 0.45));
+        steps.style.setProperty('--p', sp.toFixed(4));
+        stepItems.forEach(function (item, i) {
+          item.classList.toggle('is-done', sp >= i / stepItems.length + 0.02);
+        });
+      }
     }
     function onScroll() {
       if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
@@ -252,6 +285,258 @@
       });
     }, { threshold: 0.25 });
     cards.forEach(function (c) { io.observe(c); });
+  }
+
+  /* ==========================================================================
+     FIGURA EM PEDAÇOS DA ABERTURA
+     Os 32 triângulos (.morph__piece) mudam de forma pelo atributo data-shape;
+     as formas ficam em css/formas.css. Começa espalhado ("intro"), monta o k_
+     e depois passa sozinho pelos tipos de negócio enquanto a abertura está na
+     tela. Clicar num botão escolhe a figura e para a troca automática.
+     ========================================================================== */
+  var SHAPES = ['kivo', 'cafe', 'loja', 'salao', 'clinica', 'local'];
+  var morph = null; // { relabel } depois de setupMorph()
+
+  function setupMorph() {
+    var el = $('.js-morph');
+    if (!el) return;
+    var buttons = $$('.niche[data-shape]');
+    var toggle = $('.js-morph-toggle');
+    var stage = $('.js-stage');
+    var nameEl = $('.js-stage-name');
+    var countEl = $('.js-stage-count');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 'kivo';
+    var playing = !reduce;
+    var visible = true;
+    var timer = null;
+
+    function relabel() {
+      var names = dyn('niches');
+      if (nameEl) nameEl.textContent = names[current];
+      if (countEl) countEl.textContent = '0' + (SHAPES.indexOf(current) + 1) + '/0' + SHAPES.length;
+      el.setAttribute('aria-label', dyn('stageAria')(names[current]));
+      if (toggle) {
+        toggle.setAttribute('aria-label', playing ? dyn('morphPause') : dyn('morphPlay'));
+        $('.js-icon-pause', toggle).hidden = !playing;
+        $('.js-icon-play', toggle).hidden = playing;
+      }
+    }
+    function show(shape) {
+      current = shape;
+      el.setAttribute('data-shape', shape);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-shape') === shape)); });
+      relabel();
+    }
+    function schedule(delay) {
+      clearTimeout(timer);
+      if (playing && visible && !document.hidden) timer = setTimeout(next, delay || 3400);
+    }
+    function next() {
+      show(SHAPES[(SHAPES.indexOf(current) + 1) % SHAPES.length]);
+      schedule();
+    }
+    function setPlaying(on) {
+      playing = on;
+      relabel();
+      if (on) schedule(900); else clearTimeout(timer);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.getAttribute('data-shape'));
+        setPlaying(false);
+      });
+    });
+    if (toggle) toggle.addEventListener('click', function () { setPlaying(!playing); });
+    document.addEventListener('visibilitychange', function () { if (started) schedule(); });
+    morph = { relabel: relabel };
+    if (reduce) { show('kivo'); return; }
+
+    // Entrada: os pedaços soltos se juntam e formam o k_. Começa quando o palco
+    // aparece na tela (no celular ele fica mais para baixo).
+    var started = false;
+    function intro() {
+      if (started) return;
+      started = true;
+      setTimeout(function () { show('kivo'); schedule(4600); }, 350);
+    }
+    if ('IntersectionObserver' in window && stage) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (!visible) { clearTimeout(timer); return; }
+        if (!started) intro(); else schedule();
+      }, { threshold: 0.35 }).observe(stage);
+    } else {
+      intro();
+    }
+  }
+
+  /* ==========================================================================
+     PARA CADA NEGÓCIO: a figura muda conforme a pessoa rola pelos textos.
+     Com GSAP, cada texto vira um ScrollTrigger; sem ele, um IntersectionObserver.
+     ========================================================================== */
+  var nicheShow = null;
+
+  function setupNicheShow() {
+    var el = $('.js-morph-scroll');
+    var shapes = $$('.niche-item').map(function (it) { return it.getAttribute('data-shape'); });
+    if (!el || !shapes.length) return;
+    var nameEl = $('.js-nshow-name');
+    var countEl = $('.js-nshow-count');
+    var index = 0;
+    var timer = null;
+    var visible = false;
+
+    function relabel() {
+      if (nameEl) nameEl.textContent = dyn('niches')[shapes[index]];
+      if (countEl) countEl.textContent = '0' + (index + 1) + '/0' + shapes.length;
+    }
+    function show(i) {
+      index = i;
+      el.setAttribute('data-shape', shapes[i]);
+      relabel();
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      if (timer || !visible || document.hidden) return;
+      timer = setInterval(function () { show((index + 1) % shapes.length); }, 3000);
+    }
+
+    nicheShow = { relabel: relabel };
+    show(0);
+
+    // Troca sozinha, como a figura do topo, só enquanto aparece na tela. Não depende da rolagem.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) { visible = true; start(); return; }
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    }, { threshold: 0.3 }).observe(el);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
+  }
+
+  /* ==========================================================================
+     GSAP (carregado do cdnjs no <head>): animações ligadas à rolagem.
+     Tudo aqui é extra: sem o GSAP, ou com "reduzir movimento", o site funciona igual.
+     ========================================================================== */
+  function hasGsap() {
+    return !!(window.gsap && window.ScrollTrigger) &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // Quebra o texto de um título em palavras (<span class="split-w"><span>palavra</span></span>)
+  function splitWords(root) {
+    var words = [];
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var parts = node.textContent.split(/(\s+)/);
+      if (parts.length < 1 || !node.textContent.trim()) return;
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var outer = document.createElement('span');
+        outer.className = 'split-w';
+        var inner = document.createElement('span');
+        inner.textContent = part;
+        outer.appendChild(inner);
+        frag.appendChild(outer);
+        words.push(inner);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return words;
+  }
+
+  function setupGsap() {
+    if (!hasGsap()) return;
+    var gsap = window.gsap;
+    gsap.registerPlugin(window.ScrollTrigger);
+
+    // Títulos das seções: as palavras sobem de dentro de uma "janela"
+    $$('.section__title, .band__title, .quote__title').forEach(function (title) {
+      var words = splitWords(title);
+      gsap.from(words, {
+        yPercent: 110, duration: 0.9, ease: 'power3.out', stagger: 0.045,
+        scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+      });
+    });
+
+    // Faixas escuras crescem até o tamanho final ao entrar na tela
+    $$('.band, .quote').forEach(function (box) {
+      gsap.fromTo(box, { scale: 0.94 }, {
+        scale: 1, ease: 'none',
+        scrollTrigger: { trigger: box, start: 'top bottom', end: 'top 40%', scrub: true },
+      });
+    });
+
+    // Abertura saindo da tela: texto sobe (sem apagar) e o palco tomba para trás em 3D (só computador)
+    gsap.matchMedia().add('(min-width: 901px)', function () {
+      var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('.hero__text', { yPercent: -10, ease: 'none', scrollTrigger: st });
+      gsap.to('.js-hero-depth', {
+        rotateX: 28, scale: 0.86, y: 30, transformPerspective: 900, transformOrigin: '50% 100%',
+        ease: 'none', scrollTrigger: st,
+      });
+    });
+  }
+
+  /* ---------- Palco inclina um pouco seguindo o mouse (só computador) ---------- */
+  function setupStageTilt() {
+    var art = $('.hero__art');
+    var stage = $('.js-stage');
+    if (!art || !stage) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    art.addEventListener('pointermove', function (e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      stage.style.setProperty('--rx', (x * 10).toFixed(2) + 'deg');
+      stage.style.setProperty('--ry', (-y * 10).toFixed(2) + 'deg');
+    });
+    art.addEventListener('pointerleave', function () {
+      stage.style.setProperty('--rx', '0deg');
+      stage.style.setProperty('--ry', '0deg');
+    });
+  }
+
+  /* ---------- Blocos aparecem ao rolar (.rv ganha .is-in) ---------- */
+  function setupReveal() {
+    var els = $$('.rv');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    // Cartões lado a lado entram um depois do outro
+    els.forEach(function (el) {
+      var siblings = $$(':scope > .rv', el.parentNode);
+      if (siblings.length > 1) el.style.setProperty('--d', (0.07 * (siblings.indexOf(el) % 4)).toFixed(2) + 's');
+    });
+    document.documentElement.classList.add('js-rv');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Avaliações: link do Google (js/config.js) ---------- */
+  function setupReviews() {
+    var url = String(cfg.googleReviewUrl || '').trim();
+    var btn = $('.js-review-google');
+    if (!btn || !/^https:\/\//.test(url)) return; // sem link: fica só o botão do WhatsApp
+    btn.href = url;
+    btn.hidden = false;
   }
 
   /* ==========================================================================
@@ -383,10 +668,16 @@
   setupMenu();
   setupSheet();
   setupDeviceCards();
+  setupMorph();
+  setupNicheShow();
+  setupStageTilt();
+  setupReveal();
+  setupReviews();
   setupFaq();
   setupForm();
   setupClickTracking();
   setupConsent();
   applyLang(initialLang(), true);
   startHeroAnimation();
+  setupGsap(); // depois do idioma: os títulos já estão com o texto certo quando são quebrados
 })();

@@ -1,0 +1,266 @@
+/* ARQUIVO GERADO por _ferramentas/gerar-formas.py. Não edite aqui: edite o script e rode de novo. */
+/* Figuras da abertura feitas de 32 triângulos (clip-path). A figura atual fica em data-shape no .morph. */
+
+.morph__piece:nth-child(1){--i:0}
+.morph__piece:nth-child(2){--i:1}
+.morph__piece:nth-child(3){--i:2}
+.morph__piece:nth-child(4){--i:3}
+.morph__piece:nth-child(5){--i:4}
+.morph__piece:nth-child(6){--i:5}
+.morph__piece:nth-child(7){--i:6}
+.morph__piece:nth-child(8){--i:7}
+.morph__piece:nth-child(9){--i:8}
+.morph__piece:nth-child(10){--i:9}
+.morph__piece:nth-child(11){--i:10}
+.morph__piece:nth-child(12){--i:11}
+.morph__piece:nth-child(13){--i:12}
+.morph__piece:nth-child(14){--i:13}
+.morph__piece:nth-child(15){--i:14}
+.morph__piece:nth-child(16){--i:15}
+.morph__piece:nth-child(17){--i:16}
+.morph__piece:nth-child(18){--i:17}
+.morph__piece:nth-child(19){--i:18}
+.morph__piece:nth-child(20){--i:19}
+.morph__piece:nth-child(21){--i:20}
+.morph__piece:nth-child(22){--i:21}
+.morph__piece:nth-child(23){--i:22}
+.morph__piece:nth-child(24){--i:23}
+.morph__piece:nth-child(25){--i:24}
+.morph__piece:nth-child(26){--i:25}
+.morph__piece:nth-child(27){--i:26}
+.morph__piece:nth-child(28){--i:27}
+.morph__piece:nth-child(29){--i:28}
+.morph__piece:nth-child(30){--i:29}
+.morph__piece:nth-child(31){--i:30}
+.morph__piece:nth-child(32){--i:31}
+
+.morph[data-shape="intro"] .morph__piece:nth-child(1){clip-path:polygon(92.92% 42.6%,88.65% 43.81%,89.73% 39.5%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(2){clip-path:polygon(56.19% 12.02%,59.1% 14.12%,55.83% 15.59%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(3){clip-path:polygon(85.19% 56.21%,87.55% 52.55%,89.54% 56.42%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(4){clip-path:polygon(8.94% 46.57%,11.41% 45.78%,10.86% 48.32%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(5){clip-path:polygon(39.58% 83.24%,39.06% 80.94%,41.31% 81.64%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(6){clip-path:polygon(72.86% 79.2%,76.01% 80.44%,73.37% 82.54%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(7){clip-path:polygon(9.74% 49.66%,9.03% 46.61%,12.03% 47.52%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(8){clip-path:polygon(63.15% 10.68%,65.91% 9.05%,65.95% 12.25%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(9){clip-path:polygon(19.33% 18.73%,15.03% 19.03%,16.91% 15.15%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(10){clip-path:polygon(24.67% 91.25%,22.47% 88.08%,26.31% 87.76%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(11){clip-path:polygon(87.86% 25.73%,85.86% 27.49%,85.34% 24.88%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(12){clip-path:polygon(70.38% 76.52%,67.07% 79.57%,66.09% 75.18%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(13){clip-path:polygon(65.88% 76.48%,67.88% 74.71%,68.41% 77.33%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(14){clip-path:polygon(11.53% 25.86%,7.47% 24.95%,10.29% 21.89%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(15){clip-path:polygon(66.76% 23.94%,67.95% 20.37%,70.45% 23.19%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(16){clip-path:polygon(29.43% 29.74%,27.55% 28.17%,29.85% 27.33%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(17){clip-path:polygon(35.21% 19.27%,37.98% 20.22%,35.77% 22.15%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(18){clip-path:polygon(54.76% 11.82%,52.67% 12.46%,53.16% 10.33%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(19){clip-path:polygon(68.34% 28.34%,67.95% 24.04%,71.87% 25.86%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(20){clip-path:polygon(52.24% 10.05%,49.34% 6.75%,53.65% 5.89%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(21){clip-path:polygon(69.2% 14.08%,71.17% 15.4%,69.04% 16.45%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(22){clip-path:polygon(31.28% 82.34%,31.45% 80.23%,33.2% 81.43%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(23){clip-path:polygon(10.2% 51.1%,9.56% 53.83%,7.51% 51.91%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(24){clip-path:polygon(6.59% 50.88%,9.79% 49.84%,9.09% 53.13%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(25){clip-path:polygon(65.21% 14.7%,64.2% 10.66%,68.2% 11.8%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(26){clip-path:polygon(6.47% 46.22%,4.41% 47.28%,4.53% 44.97%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(27){clip-path:polygon(76.66% 85.68%,77.86% 83.87%,78.83% 85.81%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(28){clip-path:polygon(26.5% 77.52%,30.24% 76.92%,28.88% 80.46%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(29){clip-path:polygon(6.47% 52.52%,8.6% 54.2%,6.08% 55.21%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(30){clip-path:polygon(64.36% 13.62%,61.99% 13.5%,63.28% 11.5%);background-color:#8DAEFF;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(31){clip-path:polygon(42.31% 92.4%,40.38% 91.36%,42.24% 90.21%);background-color:#C6F432;opacity:0}
+.morph[data-shape="intro"] .morph__piece:nth-child(32){clip-path:polygon(5.86% 59.42%,1.51% 59.64%,3.49% 55.76%);background-color:#8DAEFF;opacity:0}
+
+.morph[data-shape="kivo"] .morph__piece:nth-child(1),.no-js .morph .morph__piece:nth-child(1){clip-path:polygon(8% 50.02%,11.29% 40.89%,21.15% 50.02%);background-color:#F6F8FA;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(2),.no-js .morph .morph__piece:nth-child(2){clip-path:polygon(11.29% 40.89%,14.57% 31.76%,21.15% 50.02%);background-color:#F6F8FA;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(3),.no-js .morph .morph__piece:nth-child(3){clip-path:polygon(40.14% 34.79%,36.75% 47.31%,23.03% 53.88%);background-color:#B3C6F6;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(4),.no-js .morph .morph__piece:nth-child(4){clip-path:polygon(8% 50.02%,8% 31.76%,14.57% 31.76%);background-color:#F6F8FB;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(5),.no-js .morph .morph__piece:nth-child(5){clip-path:polygon(21.15% 31.76%,21.15% 50.02%,14.57% 31.76%);background-color:#F5F7FA;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(6),.no-js .morph .morph__piece:nth-child(6){clip-path:polygon(8% 31.76%,8% 13.5%,14.57% 31.76%);background-color:#EDEFF2;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(7),.no-js .morph .morph__piece:nth-child(7){clip-path:polygon(36.75% 47.31%,40.14% 34.79%,45.3% 47.31%);background-color:#BBCFFF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(8),.no-js .morph .morph__piece:nth-child(8){clip-path:polygon(17.86% 22.63%,14.57% 31.76%,8% 13.5%);background-color:#F5F7FA;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(9),.no-js .morph .morph__piece:nth-child(9){clip-path:polygon(21.15% 13.5%,21.15% 31.76%,14.57% 31.76%);background-color:#F6F8FB;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(10),.no-js .morph .morph__piece:nth-child(10){clip-path:polygon(21.15% 13.5%,17.86% 22.63%,8% 13.5%);background-color:#F6F8FA;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(11),.no-js .morph .morph__piece:nth-child(11){clip-path:polygon(57.25% 34.79%,45.3% 47.31%,40.14% 34.79%);background-color:#B6CAFB;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(12),.no-js .morph .morph__piece:nth-child(12){clip-path:polygon(40.56% 76.27%,58.09% 86.54%,41.18% 86.54%);background-color:#8CADFD;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(13),.no-js .morph .morph__piece:nth-child(13){clip-path:polygon(58.09% 86.54%,40.56% 76.27%,33.36% 59.83%);background-color:#8EAFFF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(14),.no-js .morph .morph__piece:nth-child(14){clip-path:polygon(23.03% 65.99%,40.56% 76.27%,41.18% 86.54%);background-color:#8EAFFF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(15),.no-js .morph .morph__piece:nth-child(15){clip-path:polygon(40.56% 76.27%,23.03% 65.99%,33.36% 59.83%);background-color:#89A9F7;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(16),.no-js .morph .morph__piece:nth-child(16){clip-path:polygon(8% 86.54%,11.29% 77.41%,21.15% 86.54%);background-color:#CBD4EC;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(17),.no-js .morph .morph__piece:nth-child(17){clip-path:polygon(11.29% 77.41%,14.57% 68.28%,21.15% 86.54%);background-color:#DFE8FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(18),.no-js .morph .morph__piece:nth-child(18){clip-path:polygon(21.15% 68.28%,21.15% 86.54%,14.57% 68.28%);background-color:#DEE7FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(19),.no-js .morph .morph__piece:nth-child(19){clip-path:polygon(8% 86.54%,8% 68.28%,14.57% 68.28%);background-color:#DFE8FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(20),.no-js .morph .morph__piece:nth-child(20){clip-path:polygon(33.36% 59.83%,23.03% 65.99%,21.15% 65.99%);background-color:#EFF3FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(21),.no-js .morph .morph__piece:nth-child(21){clip-path:polygon(21.15% 65.99%,23.03% 53.88%,33.36% 59.83%);background-color:#EEF3FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(22),.no-js .morph .morph__piece:nth-child(22){clip-path:polygon(21.15% 50.02%,21.15% 68.28%,14.57% 68.28%);background-color:#DFE8FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(23),.no-js .morph .morph__piece:nth-child(23){clip-path:polygon(8% 68.28%,8% 50.02%,14.57% 68.28%);background-color:#D4DDF5;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(24),.no-js .morph .morph__piece:nth-child(24){clip-path:polygon(21.15% 65.99%,21.15% 53.88%,23.03% 53.88%);background-color:#E7ECF8;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(25),.no-js .morph .morph__piece:nth-child(25){clip-path:polygon(17.86% 59.15%,14.57% 68.28%,8% 50.02%);background-color:#DDE7FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(26),.no-js .morph .morph__piece:nth-child(26){clip-path:polygon(36.75% 47.31%,33.36% 59.83%,23.03% 53.88%);background-color:#BFD1FF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(27),.no-js .morph .morph__piece:nth-child(27){clip-path:polygon(33.36% 59.83%,36.75% 47.31%,45.3% 47.31%);background-color:#BACEFF;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(28),.no-js .morph .morph__piece:nth-child(28){clip-path:polygon(21.15% 50.02%,17.86% 59.15%,8% 50.02%);background-color:#DAE4FC;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(29),.no-js .morph .morph__piece:nth-child(29){clip-path:polygon(77.39% 82.47%,92% 78.4%,92% 86.54%);background-color:#CBF543;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(30),.no-js .morph .morph__piece:nth-child(30){clip-path:polygon(92% 78.4%,77.39% 82.47%,62.78% 78.4%);background-color:#B6E12E;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(31),.no-js .morph .morph__piece:nth-child(31){clip-path:polygon(62.78% 86.54%,77.39% 82.47%,92% 86.54%);background-color:#BAE52F;opacity:1}
+.morph[data-shape="kivo"] .morph__piece:nth-child(32),.no-js .morph .morph__piece:nth-child(32){clip-path:polygon(77.39% 82.47%,62.78% 86.54%,62.78% 78.4%);background-color:#C7F434;opacity:1}
+
+.morph[data-shape="cafe"] .morph__piece:nth-child(1){clip-path:polygon(22% 40%,46% 40%,49% 60%);background-color:#467BFF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(2){clip-path:polygon(46% 40%,70% 40%,49% 60%);background-color:#3972FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(3){clip-path:polygon(69.43% 42.21%,73.13% 50.86%,68.39% 48.12%);background-color:#527EE6}
+.morph[data-shape="cafe"] .morph__piece:nth-child(4){clip-path:polygon(69.43% 42.21%,77.72% 47%,73.13% 50.86%);background-color:#6A96FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(5){clip-path:polygon(77.72% 47%,75% 56%,73.13% 50.86%);background-color:#6190FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(6){clip-path:polygon(77.72% 47%,81% 56%,75% 56%);background-color:#5380E9}
+.morph[data-shape="cafe"] .morph__piece:nth-child(7){clip-path:polygon(70% 40%,67% 60%,49% 60%);background-color:#2F6BFF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(8){clip-path:polygon(81% 56%,73.13% 61.14%,75% 56%);background-color:#5684F0}
+.morph[data-shape="cafe"] .morph__piece:nth-child(9){clip-path:polygon(81% 56%,77.72% 65%,73.13% 61.14%);background-color:#6C98FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(10){clip-path:polygon(77.72% 65%,68.39% 63.88%,73.13% 61.14%);background-color:#6A96FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(11){clip-path:polygon(77.72% 65%,69.43% 69.79%,68.39% 63.88%);background-color:#5684F0}
+.morph[data-shape="cafe"] .morph__piece:nth-child(12){clip-path:polygon(67% 60%,64% 80%,49% 60%);background-color:#2E68F7}
+.morph[data-shape="cafe"] .morph__piece:nth-child(13){clip-path:polygon(64% 80%,46% 80%,49% 60%);background-color:#3E76FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(14){clip-path:polygon(46% 80%,28% 80%,49% 60%);background-color:#477CFF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(15){clip-path:polygon(28% 80%,25% 60%,49% 60%);background-color:#2B62EA}
+.morph[data-shape="cafe"] .morph__piece:nth-child(16){clip-path:polygon(25% 60%,22% 40%,49% 60%);background-color:#306CFF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(17){clip-path:polygon(21% 41%,19% 34%,73% 34%);background-color:#8CADFD}
+.morph[data-shape="cafe"] .morph__piece:nth-child(18){clip-path:polygon(73% 34%,71% 41%,21% 41%);background-color:#95B4FF}
+.morph[data-shape="cafe"] .morph__piece:nth-child(19){clip-path:polygon(37.91% 27.91%,30.17% 21.88%,34.09% 30.09%);background-color:#B4DE2D}
+.morph[data-shape="cafe"] .morph__piece:nth-child(20){clip-path:polygon(37.91% 27.91%,33.83% 22.12%,30.17% 21.88%);background-color:#C1EE31}
+.morph[data-shape="cafe"] .morph__piece:nth-child(21){clip-path:polygon(33.83% 22.12%,35.54% 13.91%,30.17% 21.88%);background-color:#CAF540}
+.morph[data-shape="cafe"] .morph__piece:nth-child(22){clip-path:polygon(33.83% 22.12%,38.46% 14.09%,35.54% 13.91%);background-color:#B7E12E}
+.morph[data-shape="cafe"] .morph__piece:nth-child(23){clip-path:polygon(38.46% 14.09%,32.02% 6.49%,35.54% 13.91%);background-color:#C9F43B}
+.morph[data-shape="cafe"] .morph__piece:nth-child(24){clip-path:polygon(38.46% 14.09%,33.98% 5.51%,32.02% 6.49%);background-color:#B5DE2E}
+.morph[data-shape="cafe"] .morph__piece:nth-child(25){clip-path:polygon(49.83% 22.12%,51.54% 13.91%,46.17% 21.88%);background-color:#DDF98B}
+.morph[data-shape="cafe"] .morph__piece:nth-child(26){clip-path:polygon(53.91% 27.91%,49.83% 22.12%,46.17% 21.88%);background-color:#D0EB82}
+.morph[data-shape="cafe"] .morph__piece:nth-child(27){clip-path:polygon(53.91% 27.91%,46.17% 21.88%,50.09% 30.09%);background-color:#C7E07C}
+.morph[data-shape="cafe"] .morph__piece:nth-child(28){clip-path:polygon(54.46% 14.09%,49.98% 5.51%,48.02% 6.49%);background-color:#D5F085}
+.morph[data-shape="cafe"] .morph__piece:nth-child(29){clip-path:polygon(54.46% 14.09%,48.02% 6.49%,51.54% 13.91%);background-color:#DFF991}
+.morph[data-shape="cafe"] .morph__piece:nth-child(30){clip-path:polygon(49.83% 22.12%,54.46% 14.09%,51.54% 13.91%);background-color:#E1FA96}
+.morph[data-shape="cafe"] .morph__piece:nth-child(31){clip-path:polygon(84% 81%,77% 89%,17% 89%);background-color:#F6F8FA}
+.morph[data-shape="cafe"] .morph__piece:nth-child(32){clip-path:polygon(17% 89%,10% 81%,84% 81%);background-color:#EAECEE}
+
+.morph[data-shape="loja"] .morph__piece:nth-child(1){clip-path:polygon(33% 55.5%,18% 44%,50% 44%);background-color:#2156E6}
+.morph[data-shape="loja"] .morph__piece:nth-child(2){clip-path:polygon(33% 36%,40.47% 30.5%,39% 36%);background-color:#C9F53C}
+.morph[data-shape="loja"] .morph__piece:nth-child(3){clip-path:polygon(33% 36%,35.28% 27.5%,40.47% 30.5%);background-color:#BEEA30}
+.morph[data-shape="loja"] .morph__piece:nth-child(4){clip-path:polygon(35.28% 27.5%,44.5% 26.47%,40.47% 30.5%);background-color:#CAF540}
+.morph[data-shape="loja"] .morph__piece:nth-child(5){clip-path:polygon(35.28% 27.5%,41.5% 21.28%,44.5% 26.47%);background-color:#C0EC30}
+.morph[data-shape="loja"] .morph__piece:nth-child(6){clip-path:polygon(41.5% 21.28%,50% 25%,44.5% 26.47%);background-color:#C4F131}
+.morph[data-shape="loja"] .morph__piece:nth-child(7){clip-path:polygon(41.5% 21.28%,50% 19%,50% 25%);background-color:#C7F434}
+.morph[data-shape="loja"] .morph__piece:nth-child(8){clip-path:polygon(50% 19%,55.5% 26.47%,50% 25%);background-color:#B5DF2E}
+.morph[data-shape="loja"] .morph__piece:nth-child(9){clip-path:polygon(50% 19%,58.5% 21.28%,55.5% 26.47%);background-color:#CCF548}
+.morph[data-shape="loja"] .morph__piece:nth-child(10){clip-path:polygon(58.5% 21.28%,59.53% 30.5%,55.5% 26.47%);background-color:#C3F031}
+.morph[data-shape="loja"] .morph__piece:nth-child(11){clip-path:polygon(58.5% 21.28%,64.72% 27.5%,59.53% 30.5%);background-color:#C7F436}
+.morph[data-shape="loja"] .morph__piece:nth-child(12){clip-path:polygon(64.72% 27.5%,61% 36%,59.53% 30.5%);background-color:#C5F332}
+.morph[data-shape="loja"] .morph__piece:nth-child(13){clip-path:polygon(64.72% 27.5%,67% 36%,61% 36%);background-color:#C9F53C}
+.morph[data-shape="loja"] .morph__piece:nth-child(14){clip-path:polygon(82% 44%,65% 55.5%,50% 44%);background-color:#1C4ED3}
+.morph[data-shape="loja"] .morph__piece:nth-child(15){clip-path:polygon(65% 55.5%,82% 44%,84% 67%);background-color:#1F54E4}
+.morph[data-shape="loja"] .morph__piece:nth-child(16){clip-path:polygon(48% 67%,65% 55.5%,84% 67%);background-color:#3566E8}
+.morph[data-shape="loja"] .morph__piece:nth-child(17){clip-path:polygon(86% 90%,67% 78.5%,84% 67%);background-color:#3767E9}
+.morph[data-shape="loja"] .morph__piece:nth-child(18){clip-path:polygon(65% 55.5%,48% 67%,50% 44%);background-color:#1D50D7}
+.morph[data-shape="loja"] .morph__piece:nth-child(19){clip-path:polygon(67% 78.5%,48% 67%,84% 67%);background-color:#275BE7}
+.morph[data-shape="loja"] .morph__piece:nth-child(20){clip-path:polygon(67% 78.5%,86% 90%,50% 90%);background-color:#2A5DE7}
+.morph[data-shape="loja"] .morph__piece:nth-child(21){clip-path:polygon(48% 67%,67% 78.5%,50% 90%);background-color:#3868E9}
+.morph[data-shape="loja"] .morph__piece:nth-child(22){clip-path:polygon(31% 78.5%,48% 67%,50% 90%);background-color:#3868E9}
+.morph[data-shape="loja"] .morph__piece:nth-child(23){clip-path:polygon(14% 90%,31% 78.5%,50% 90%);background-color:#2F61E8}
+.morph[data-shape="loja"] .morph__piece:nth-child(24){clip-path:polygon(48% 67%,31% 78.5%,16% 67%);background-color:#1E52DE}
+.morph[data-shape="loja"] .morph__piece:nth-child(25){clip-path:polygon(31% 78.5%,14% 90%,16% 67%);background-color:#1D51DA}
+.morph[data-shape="loja"] .morph__piece:nth-child(26){clip-path:polygon(48% 67%,33% 55.5%,50% 44%);background-color:#1C4ED2}
+.morph[data-shape="loja"] .morph__piece:nth-child(27){clip-path:polygon(33% 55.5%,48% 67%,16% 67%);background-color:#3263E8}
+.morph[data-shape="loja"] .morph__piece:nth-child(28){clip-path:polygon(18% 44%,33% 55.5%,16% 67%);background-color:#2358E6}
+.morph[data-shape="loja"] .morph__piece:nth-child(29){clip-path:polygon(18% 44%,18% 36%,82% 36%);background-color:#608FFF}
+.morph[data-shape="loja"] .morph__piece:nth-child(30){clip-path:polygon(82% 36%,82% 44%,18% 44%);background-color:#5888F7}
+.morph[data-shape="loja"] .morph__piece:nth-child(31){clip-path:polygon(59% 66%,59% 71%,41% 71%);background-color:#CCF549}
+.morph[data-shape="loja"] .morph__piece:nth-child(32){clip-path:polygon(41% 71%,41% 66%,59% 66%);background-color:#C5F332}
+
+.morph[data-shape="salao"] .morph__piece:nth-child(1){clip-path:polygon(58.38% 37.25%,72.47% 6.71%,37.7% 64.21%);background-color:#F6F8FA}
+.morph[data-shape="salao"] .morph__piece:nth-child(2){clip-path:polygon(44.3% 67.79%,73.53% 7.29%,72.47% 6.71%);background-color:#EFF1F4}
+.morph[data-shape="salao"] .morph__piece:nth-child(3){clip-path:polygon(44.3% 67.79%,58.38% 37.25%,37.7% 64.21%);background-color:#F6F8FA}
+.morph[data-shape="salao"] .morph__piece:nth-child(4){clip-path:polygon(44.38% 35.75%,26.47% 7.29%,55.7% 67.79%);background-color:#CDD6EE}
+.morph[data-shape="salao"] .morph__piece:nth-child(5){clip-path:polygon(62.3% 64.21%,27.53% 6.71%,26.47% 7.29%);background-color:#D1DAF2}
+.morph[data-shape="salao"] .morph__piece:nth-child(6){clip-path:polygon(62.3% 64.21%,44.38% 35.75%,55.7% 67.79%);background-color:#DCE6FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(7){clip-path:polygon(73.5% 65.74%,80% 77%,74.5% 77%);background-color:#2B62EA}
+.morph[data-shape="salao"] .morph__piece:nth-child(8){clip-path:polygon(73.5% 65.74%,74.5% 77%,70.75% 70.5%);background-color:#3C74FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(9){clip-path:polygon(60.5% 65.74%,73.5% 65.74%,70.75% 70.5%);background-color:#447AFF}
+.morph[data-shape="salao"] .morph__piece:nth-child(10){clip-path:polygon(80% 77%,70.75% 83.5%,74.5% 77%);background-color:#3771FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(11){clip-path:polygon(60.5% 65.74%,70.75% 70.5%,63.25% 70.5%);background-color:#447AFF}
+.morph[data-shape="salao"] .morph__piece:nth-child(12){clip-path:polygon(80% 77%,73.5% 88.26%,70.75% 83.5%);background-color:#2B62EA}
+.morph[data-shape="salao"] .morph__piece:nth-child(13){clip-path:polygon(73.5% 88.26%,63.25% 83.5%,70.75% 83.5%);background-color:#2E69FA}
+.morph[data-shape="salao"] .morph__piece:nth-child(14){clip-path:polygon(54% 77%,60.5% 65.74%,63.25% 70.5%);background-color:#2C64EE}
+.morph[data-shape="salao"] .morph__piece:nth-child(15){clip-path:polygon(73.5% 88.26%,60.5% 88.26%,63.25% 83.5%);background-color:#4077FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(16){clip-path:polygon(54% 77%,63.25% 70.5%,59.5% 77%);background-color:#3F76FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(17){clip-path:polygon(60.5% 88.26%,59.5% 77%,63.25% 83.5%);background-color:#2E69FB}
+.morph[data-shape="salao"] .morph__piece:nth-child(18){clip-path:polygon(60.5% 88.26%,54% 77%,59.5% 77%);background-color:#4077FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(19){clip-path:polygon(46% 77%,39.5% 88.26%,36.75% 83.5%);background-color:#5F8FFF}
+.morph[data-shape="salao"] .morph__piece:nth-child(20){clip-path:polygon(46% 77%,36.75% 83.5%,40.5% 77%);background-color:#6D98FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(21){clip-path:polygon(39.5% 65.74%,46% 77%,40.5% 77%);background-color:#5583EF}
+.morph[data-shape="salao"] .morph__piece:nth-child(22){clip-path:polygon(39.5% 88.26%,29.25% 83.5%,36.75% 83.5%);background-color:#5989F9}
+.morph[data-shape="salao"] .morph__piece:nth-child(23){clip-path:polygon(39.5% 88.26%,26.5% 88.26%,29.25% 83.5%);background-color:#5A8AFB}
+.morph[data-shape="salao"] .morph__piece:nth-child(24){clip-path:polygon(39.5% 65.74%,40.5% 77%,36.75% 70.5%);background-color:#527EE6}
+.morph[data-shape="salao"] .morph__piece:nth-child(25){clip-path:polygon(26.5% 88.26%,25.5% 77%,29.25% 83.5%);background-color:#6593FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(26){clip-path:polygon(26.5% 88.26%,20% 77%,25.5% 77%);background-color:#5887F6}
+.morph[data-shape="salao"] .morph__piece:nth-child(27){clip-path:polygon(26.5% 65.74%,39.5% 65.74%,36.75% 70.5%);background-color:#6593FF}
+.morph[data-shape="salao"] .morph__piece:nth-child(28){clip-path:polygon(20% 77%,29.25% 70.5%,25.5% 77%);background-color:#537FE7}
+.morph[data-shape="salao"] .morph__piece:nth-child(29){clip-path:polygon(26.5% 65.74%,36.75% 70.5%,29.25% 70.5%);background-color:#5887F6}
+.morph[data-shape="salao"] .morph__piece:nth-child(30){clip-path:polygon(20% 77%,26.5% 65.74%,29.25% 70.5%);background-color:#5786F4}
+.morph[data-shape="salao"] .morph__piece:nth-child(31){clip-path:polygon(50% 47%,53% 50%,50% 53%);background-color:#BAE52F}
+.morph[data-shape="salao"] .morph__piece:nth-child(32){clip-path:polygon(50% 53%,47% 50%,50% 47%);background-color:#B4DE2D}
+
+.morph[data-shape="clinica"] .morph__piece:nth-child(1){clip-path:polygon(39% 56%,8% 40%,40.5% 48.5%);background-color:#3F77FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(2){clip-path:polygon(25.75% 36.75%,40.5% 48.5%,8% 40%);background-color:#2B63EB}
+.morph[data-shape="clinica"] .morph__piece:nth-child(3){clip-path:polygon(11% 25%,25.75% 36.75%,8% 40%);background-color:#2D66F4}
+.morph[data-shape="clinica"] .morph__piece:nth-child(4){clip-path:polygon(31.25% 31.25%,40.5% 48.5%,11% 25%);background-color:#2E69FB}
+.morph[data-shape="clinica"] .morph__piece:nth-child(5){clip-path:polygon(22% 14%,31.25% 31.25%,11% 25%);background-color:#2B63EB}
+.morph[data-shape="clinica"] .morph__piece:nth-child(6){clip-path:polygon(22% 14%,46% 43%,40.5% 48.5%);background-color:#2B61E7}
+.morph[data-shape="clinica"] .morph__piece:nth-child(7){clip-path:polygon(46% 43%,22% 14%,36% 13%);background-color:#2D67F7}
+.morph[data-shape="clinica"] .morph__piece:nth-child(8){clip-path:polygon(36% 13%,53% 42.5%,46% 43%);background-color:#3F76FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(9){clip-path:polygon(70% 72%,36% 13%,46% 20%);background-color:#2B63EC}
+.morph[data-shape="clinica"] .morph__piece:nth-child(10){clip-path:polygon(64% 13%,67% 42.5%,54% 20%);background-color:#2B63EB}
+.morph[data-shape="clinica"] .morph__piece:nth-child(11){clip-path:polygon(70% 72%,46% 20%,50% 27%);background-color:#2B61E8}
+.morph[data-shape="clinica"] .morph__piece:nth-child(12){clip-path:polygon(67% 42.5%,64% 13%,78% 14%);background-color:#3771FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(13){clip-path:polygon(70% 72%,50% 27%,54% 20%);background-color:#2E69FA}
+.morph[data-shape="clinica"] .morph__piece:nth-child(14){clip-path:polygon(74% 43%,78% 14%,89% 25%);background-color:#3C74FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(15){clip-path:polygon(67% 42.5%,70% 72%,54% 20%);background-color:#2D67F5}
+.morph[data-shape="clinica"] .morph__piece:nth-child(16){clip-path:polygon(70% 72%,67% 42.5%,78% 14%);background-color:#2C65F1}
+.morph[data-shape="clinica"] .morph__piece:nth-child(17){clip-path:polygon(70% 72%,89% 25%,92% 40%);background-color:#487CFF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(18){clip-path:polygon(70% 72%,74% 43%,89% 25%);background-color:#4077FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(19){clip-path:polygon(92% 40%,86% 55%,70% 72%);background-color:#4178FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(20){clip-path:polygon(53% 42.5%,70% 72%,46% 43%);background-color:#316CFF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(21){clip-path:polygon(46% 43%,70% 72%,40.5% 48.5%);background-color:#3B73FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(22){clip-path:polygon(50% 72%,70% 72%,50% 90%);background-color:#2B61E8}
+.morph[data-shape="clinica"] .morph__piece:nth-child(23){clip-path:polygon(70% 72%,39% 56%,40.5% 48.5%);background-color:#4279FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(24){clip-path:polygon(42% 63.5%,70% 72%,30% 72%);background-color:#3E76FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(25){clip-path:polygon(30% 72%,50% 72%,50% 90%);background-color:#2D66F4}
+.morph[data-shape="clinica"] .morph__piece:nth-child(26){clip-path:polygon(39% 56%,70% 72%,14% 55%);background-color:#447AFF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(27){clip-path:polygon(14% 55%,42% 63.5%,30% 72%);background-color:#4379FF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(28){clip-path:polygon(8% 40%,39% 56%,14% 55%);background-color:#2F6BFF}
+.morph[data-shape="clinica"] .morph__piece:nth-child(29){clip-path:polygon(44.5% 66%,44.5% 32%,55.5% 32%);background-color:#F5F7FA}
+.morph[data-shape="clinica"] .morph__piece:nth-child(30){clip-path:polygon(55.5% 32%,55.5% 66%,44.5% 66%);background-color:#E9EBEE}
+.morph[data-shape="clinica"] .morph__piece:nth-child(31){clip-path:polygon(33% 54.5%,33% 43.5%,67% 43.5%);background-color:#EFF1F4}
+.morph[data-shape="clinica"] .morph__piece:nth-child(32){clip-path:polygon(67% 43.5%,67% 54.5%,33% 54.5%);background-color:#F5F7FA}
+
+.morph[data-shape="local"] .morph__piece:nth-child(1){clip-path:polygon(32.55% 62.02%,40.01% 41.24%,43.83% 46.49%);background-color:#2D67F6}
+.morph[data-shape="local"] .morph__piece:nth-child(2){clip-path:polygon(32.55% 62.02%,24.33% 46.34%,40.01% 41.24%);background-color:#2D65F2}
+.morph[data-shape="local"] .morph__piece:nth-child(3){clip-path:polygon(24.33% 46.34%,40.01% 34.76%,40.01% 41.24%);background-color:#2D67F5}
+.morph[data-shape="local"] .morph__piece:nth-child(4){clip-path:polygon(24.33% 46.34%,24.33% 29.66%,40.01% 34.76%);background-color:#4077FF}
+.morph[data-shape="local"] .morph__piece:nth-child(5){clip-path:polygon(24.33% 29.66%,43.83% 29.51%,40.01% 34.76%);background-color:#2B62EA}
+.morph[data-shape="local"] .morph__piece:nth-child(6){clip-path:polygon(24.33% 29.66%,34.13% 16.16%,43.83% 29.51%);background-color:#3972FF}
+.morph[data-shape="local"] .morph__piece:nth-child(7){clip-path:polygon(34.13% 16.16%,50% 27.5%,43.83% 29.51%);background-color:#2C65F0}
+.morph[data-shape="local"] .morph__piece:nth-child(8){clip-path:polygon(34.13% 16.16%,50% 11%,50% 27.5%);background-color:#3972FF}
+.morph[data-shape="local"] .morph__piece:nth-child(9){clip-path:polygon(50% 11%,56.17% 29.51%,50% 27.5%);background-color:#3E75FF}
+.morph[data-shape="local"] .morph__piece:nth-child(10){clip-path:polygon(50% 11%,65.87% 16.16%,56.17% 29.51%);background-color:#2D66F3}
+.morph[data-shape="local"] .morph__piece:nth-child(11){clip-path:polygon(65.87% 16.16%,59.99% 34.76%,56.17% 29.51%);background-color:#306BFF}
+.morph[data-shape="local"] .morph__piece:nth-child(12){clip-path:polygon(65.87% 16.16%,75.67% 29.66%,59.99% 34.76%);background-color:#2D66F3}
+.morph[data-shape="local"] .morph__piece:nth-child(13){clip-path:polygon(75.67% 29.66%,59.99% 41.24%,59.99% 34.76%);background-color:#316DFF}
+.morph[data-shape="local"] .morph__piece:nth-child(14){clip-path:polygon(75.67% 29.66%,75.67% 46.34%,59.99% 41.24%);background-color:#3570FF}
+.morph[data-shape="local"] .morph__piece:nth-child(15){clip-path:polygon(75.67% 46.34%,56.17% 46.49%,59.99% 41.24%);background-color:#2F6AFD}
+.morph[data-shape="local"] .morph__piece:nth-child(16){clip-path:polygon(75.67% 46.34%,67.45% 62.02%,56.17% 46.49%);background-color:#2C64EF}
+.morph[data-shape="local"] .morph__piece:nth-child(17){clip-path:polygon(67.45% 62.02%,50% 48.5%,56.17% 46.49%);background-color:#2B61E8}
+.morph[data-shape="local"] .morph__piece:nth-child(18){clip-path:polygon(50% 70.75%,50% 48.5%,67.45% 62.02%);background-color:#3F76FF}
+.morph[data-shape="local"] .morph__piece:nth-child(19){clip-path:polygon(50% 93%,50% 70.75%,67.45% 62.02%);background-color:#3670FF}
+.morph[data-shape="local"] .morph__piece:nth-child(20){clip-path:polygon(50% 93%,43.83% 46.49%,50% 48.5%);background-color:#4279FF}
+.morph[data-shape="local"] .morph__piece:nth-child(21){clip-path:polygon(46.91% 69.75%,50% 93%,32.55% 62.02%);background-color:#3D75FF}
+.morph[data-shape="local"] .morph__piece:nth-child(22){clip-path:polygon(43.83% 46.49%,46.91% 69.75%,32.55% 62.02%);background-color:#3D75FF}
+.morph[data-shape="local"] .morph__piece:nth-child(23){clip-path:polygon(50% 38%,43.83% 46.49%,40.01% 41.24%);background-color:#C6F433}
+.morph[data-shape="local"] .morph__piece:nth-child(24){clip-path:polygon(50% 38%,40.01% 41.24%,40.01% 34.76%);background-color:#CAF53F}
+.morph[data-shape="local"] .morph__piece:nth-child(25){clip-path:polygon(50% 38%,50% 48.5%,43.83% 46.49%);background-color:#CAF53F}
+.morph[data-shape="local"] .morph__piece:nth-child(26){clip-path:polygon(50% 38%,40.01% 34.76%,43.83% 29.51%);background-color:#CAF53F}
+.morph[data-shape="local"] .morph__piece:nth-child(27){clip-path:polygon(50% 38%,43.83% 29.51%,50% 27.5%);background-color:#B4DD2D}
+.morph[data-shape="local"] .morph__piece:nth-child(28){clip-path:polygon(50% 38%,50% 27.5%,56.17% 29.51%);background-color:#C4F131}
+.morph[data-shape="local"] .morph__piece:nth-child(29){clip-path:polygon(50% 38%,56.17% 29.51%,59.99% 34.76%);background-color:#C9F53E}
+.morph[data-shape="local"] .morph__piece:nth-child(30){clip-path:polygon(50% 38%,56.17% 46.49%,50% 48.5%);background-color:#B6E02E}
+.morph[data-shape="local"] .morph__piece:nth-child(31){clip-path:polygon(50% 38%,59.99% 34.76%,59.99% 41.24%);background-color:#C2EF31}
+.morph[data-shape="local"] .morph__piece:nth-child(32){clip-path:polygon(50% 38%,59.99% 41.24%,56.17% 46.49%);background-color:#C8F438}

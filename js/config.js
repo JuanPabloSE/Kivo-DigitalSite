@@ -10,6 +10,10 @@ window.KIVO_CONFIG = {
   // Google Analytics 4 (GA4 > Administrador > Fluxos de dados). Vazio = desligado.
   ga4Id: 'G-6J1TK1KX6T',
 
+  // Link curto para avaliar a Kivo no Google (Perfil da Empresa > "Pedir avaliações",
+  // algo como 'https://g.page/r/...'). Vazio = o botão "Avaliar no Google" fica escondido.
+  googleReviewUrl: '',
+
   // Pixel da Meta (Gerenciador de Eventos > Kivo Digital Site). Vazio = desligado.
   metaPixelId: '959574390548724',
 };
