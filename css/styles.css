@@ -330,11 +330,11 @@ img { display: block; }
   -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent 100%);
           mask-image: radial-gradient(closest-side, #000 40%, transparent 100%);
 }
-.stage__corner { position: absolute; width: 22px; height: 22px; border-color: var(--lima-500); border-style: solid; border-width: 0; }
-.stage__corner--tl { top: 14px; left: 14px; border-top-width: 2px; border-left-width: 2px; }
-.stage__corner--tr { top: 14px; right: 14px; border-top-width: 2px; border-right-width: 2px; }
-.stage__corner--bl { bottom: 14px; left: 14px; border-bottom-width: 2px; border-left-width: 2px; }
-.stage__corner--br { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; }
+.stage__corner { position: absolute; width: var(--corner-size, 22px); height: var(--corner-size, 22px); border-color: var(--lima-500); border-style: solid; border-width: 0; }
+.stage__corner--tl { top: var(--corner-gap, 14px); left: var(--corner-gap, 14px); border-top-width: 2px; border-left-width: 2px; }
+.stage__corner--tr { top: var(--corner-gap, 14px); right: var(--corner-gap, 14px); border-top-width: 2px; border-right-width: 2px; }
+.stage__corner--bl { bottom: var(--corner-gap, 14px); left: var(--corner-gap, 14px); border-bottom-width: 2px; border-left-width: 2px; }
+.stage__corner--br { bottom: var(--corner-gap, 14px); right: var(--corner-gap, 14px); border-bottom-width: 2px; border-right-width: 2px; }
 .stage__meta {
   position: absolute; left: 48px; right: 48px; top: 16px; display: flex; justify-content: space-between;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azul-300);
@@ -368,14 +368,28 @@ img { display: block; }
 
 @media (max-width: 900px) {
   .hero { padding: 104px 20px 140px; }
-  .hero__inner { grid-template-columns: minmax(0, 1fr); }
-  .stage { width: min(100%, 400px); }
+  /* Celular e tablet: a figura fica pequena, ao lado do texto de apoio (como no computador).
+     O .hero__text "some" (display: contents) para os filhos dele entrarem na mesma grade da figura. */
+  .hero__inner { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; row-gap: 22px; }
+  .hero__text { display: contents; }
+  .hero__eyebrow, .hero__title, .hero__ctas, .hero__promises { grid-column: 1 / -1; }
+  .hero__sub { grid-column: 1; grid-row: 3; align-self: center; font-size: 1rem; }
+  .hero__art { grid-column: 2; grid-row: 3; align-self: center; width: clamp(128px, 36vw, 240px); }
+  .hero__depth { gap: 10px; }
+  .hero__art .niche[data-shape] { display: none; }
+  /* Palco pequeno (abertura e "Para cada negócio"): só a figura, os cantos e o nome do nicho */
+  .hero__art .stage, .stage--flat {
+    --corner-size: 12px; --corner-gap: 8px;
+    width: 100%; padding: 15%; border-radius: 20px;
+  }
+  .hero__art .stage::before, .stage--flat::before { background-size: 14px 14px; }
+  .hero__art .stage__meta, .stage--flat .stage__meta { display: none; }
+  .hero__art .stage__caption, .stage--flat .stage__caption { left: 8px; right: 8px; bottom: 6px; font-size: 10px; }
 }
 @media (max-width: 560px) {
   .hero__ctas { width: 100%; flex-wrap: nowrap; gap: 10px; }
   .hero__ctas .btn { flex: 1 1 auto; padding: 0 16px; font-size: 0.9375rem; }
   .hero__ctas .btn--ghost { flex: 0 1 auto; }
-  .stage__meta, .stage__caption { left: 40px; right: 40px; }
 }
 
 /* ---------- Folha clara que sobe ao rolar ---------- */
@@ -798,12 +812,17 @@ img { display: block; }
 }
 .niche-item__text { color: var(--grafite-400); font-size: 1.0625rem; max-width: 46ch; text-wrap: pretty; }
 @media (max-width: 900px) {
-  .nshow { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-  /* No celular a figura fica acima da lista, sem prender na tela */
-  .nshow__art { position: static; }
-  .stage--flat { width: min(72vw, 300px); }
-  .stage--flat .stage__meta { left: 46px; right: 46px; top: 10px; font-size: 9px; }
-  .stage--flat .stage__caption { left: 30px; right: 30px; bottom: 8px; font-size: 0.8125rem; }
+  /* Celular e tablet: a figura fica pequena, ao lado do texto de abertura da seção, e a lista vem embaixo.
+     O cabeçalho e o .nshow "somem" (display: contents) para os filhos entrarem na mesma grade. */
+  .band--niches {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px; row-gap: 18px; padding-inline: clamp(24px, 5vw, 72px);
+  }
+  .band--niches .band__head, .band--niches .nshow { display: contents; }
+  .band--niches .kicker, .band--niches .band__title, .nshow__list { grid-column: 1 / -1; }
+  .band--niches .band__sub { grid-column: 1; grid-row: 3; align-self: center; font-size: 1rem; }
+  .nshow__art { position: static; grid-column: 2; grid-row: 3; align-self: center; width: clamp(112px, 32vw, 220px); }
+  .nshow__list { margin-top: 18px; }
 }
 
 /* Títulos com as palavras subindo (o GSAP quebra o texto em palavras em js/main.js) */
