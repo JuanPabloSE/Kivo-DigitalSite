@@ -129,6 +129,7 @@
     $$('.js-wa-link').forEach(function (a) { a.href = waLink(d.waDirect); });
     $$('.js-review-wa').forEach(function (a) { a.href = waLink(d.waReview); });
     if (morph) morph.relabel();
+    if (nicheShow) nicheShow.relabel();
     $$('.js-privacy-link').forEach(function (a) { a.href = '/privacidade.html?lang=' + lang; });
     updateConsentText();
     hideFeedback();
@@ -371,6 +372,118 @@
     }
   }
 
+  /* ==========================================================================
+     PARA CADA NEGÓCIO: a figura muda conforme a pessoa rola pelos textos.
+     Com GSAP, cada texto vira um ScrollTrigger; sem ele, um IntersectionObserver.
+     ========================================================================== */
+  var nicheShow = null;
+
+  function setupNicheShow() {
+    var el = $('.js-morph-scroll');
+    var items = $$('.niche-item');
+    if (!el || !items.length) return;
+    var nameEl = $('.js-nshow-name');
+    var countEl = $('.js-nshow-count');
+    var current = items[0];
+
+    function relabel() {
+      var shape = current.getAttribute('data-shape');
+      if (nameEl) nameEl.textContent = dyn('niches')[shape];
+      if (countEl) countEl.textContent = '0' + (items.indexOf(current) + 1) + '/0' + items.length;
+    }
+    function activate(item) {
+      current = item;
+      el.setAttribute('data-shape', item.getAttribute('data-shape'));
+      items.forEach(function (it) { it.classList.toggle('is-active', it === item); });
+      relabel();
+    }
+
+    if (hasGsap()) {
+      window.gsap.registerPlugin(window.ScrollTrigger);
+      items.forEach(function (item) {
+        window.ScrollTrigger.create({
+          trigger: item, start: 'top 60%', end: 'bottom 60%',
+          onToggle: function (self) { if (self.isActive) activate(item); },
+        });
+      });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+      }, { rootMargin: '-40% 0px -40% 0px' });
+      items.forEach(function (item) { io.observe(item); });
+    }
+    nicheShow = { relabel: relabel };
+    activate(items[0]);
+  }
+
+  /* ==========================================================================
+     GSAP (carregado do cdnjs no <head>): animações ligadas à rolagem.
+     Tudo aqui é extra: sem o GSAP, ou com "reduzir movimento", o site funciona igual.
+     ========================================================================== */
+  function hasGsap() {
+    return !!(window.gsap && window.ScrollTrigger) &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // Quebra o texto de um título em palavras (<span class="split-w"><span>palavra</span></span>)
+  function splitWords(root) {
+    var words = [];
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var parts = node.textContent.split(/(\s+)/);
+      if (parts.length < 1 || !node.textContent.trim()) return;
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var outer = document.createElement('span');
+        outer.className = 'split-w';
+        var inner = document.createElement('span');
+        inner.textContent = part;
+        outer.appendChild(inner);
+        frag.appendChild(outer);
+        words.push(inner);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return words;
+  }
+
+  function setupGsap() {
+    if (!hasGsap()) return;
+    var gsap = window.gsap;
+    gsap.registerPlugin(window.ScrollTrigger);
+
+    // Títulos das seções: as palavras sobem de dentro de uma "janela"
+    $$('.section__title, .band__title, .quote__title').forEach(function (title) {
+      var words = splitWords(title);
+      gsap.from(words, {
+        yPercent: 110, duration: 0.9, ease: 'power3.out', stagger: 0.045,
+        scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+      });
+    });
+
+    // Faixas escuras crescem até o tamanho final ao entrar na tela
+    $$('.band, .quote').forEach(function (box) {
+      gsap.fromTo(box, { scale: 0.94 }, {
+        scale: 1, ease: 'none',
+        scrollTrigger: { trigger: box, start: 'top bottom', end: 'top 40%', scrub: true },
+      });
+    });
+
+    // Abertura saindo da tela: texto sobe e o palco tomba para trás em 3D (só computador)
+    gsap.matchMedia().add('(min-width: 901px)', function () {
+      var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('.hero__text', { yPercent: -14, opacity: 0.25, ease: 'none', scrollTrigger: st });
+      gsap.to('.js-hero-depth', {
+        rotateX: 28, scale: 0.86, y: 30, transformPerspective: 900, transformOrigin: '50% 100%',
+        ease: 'none', scrollTrigger: st,
+      });
+    });
+  }
+
   /* ---------- Palco inclina um pouco seguindo o mouse (só computador) ---------- */
   function setupStageTilt() {
     var art = $('.hero__art');
@@ -554,6 +667,7 @@
   setupSheet();
   setupDeviceCards();
   setupMorph();
+  setupNicheShow();
   setupStageTilt();
   setupReveal();
   setupReviews();
@@ -563,4 +677,5 @@
   setupConsent();
   applyLang(initialLang(), true);
   startHeroAnimation();
+  setupGsap(); // depois do idioma: os títulos já estão com o texto certo quando são quebrados
 })();

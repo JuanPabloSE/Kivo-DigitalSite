@@ -89,6 +89,9 @@
 <script src="/js/config.js" defer></script>
 <script src="/js/i18n.js" defer></script>
 <script src="/js/tracking.js" defer></script>
+<!-- GSAP + ScrollTrigger (animações ligadas à rolagem). Se não carregarem, o site funciona igual, só com menos movimento. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="/js/main.js" defer></script>
 </head>
 <body>
@@ -111,6 +114,12 @@
   <symbol id="ph-pause" viewBox="0 0 256 256"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></symbol>
   <symbol id="ph-play" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
   <!-- Logos das ferramentas (Simple Icons, licença CC0; as marcas pertencem aos seus donos) -->
+  <symbol id="si-android" viewBox="0 0 24 24"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></symbol>
+  <symbol id="si-trello" viewBox="0 0 24 24"><path d="M21.147 0H2.853A2.86 2.86 0 000 2.853v18.294A2.86 2.86 0 002.853 24h18.294A2.86 2.86 0 0024 21.147V2.853A2.86 2.86 0 0021.147 0zM10.34 17.287a.953.953 0 01-.953.953h-4a.954.954 0 01-.954-.953V5.38a.953.953 0 01.954-.953h4a.954.954 0 01.953.953zm9.233-5.467a.944.944 0 01-.953.947h-4a.947.947 0 01-.953-.947V5.38a.953.953 0 01.953-.953h4a.954.954 0 01.953.953z"/></symbol>
+  <symbol id="si-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
+  <symbol id="si-facebook" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+  <symbol id="si-figma" viewBox="0 0 24 24"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></symbol>
+  <symbol id="si-youtube" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
   <symbol id="si-google" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></symbol>
   <symbol id="si-googleads" viewBox="0 0 24 24"><path d="M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z"/></symbol>
   <symbol id="si-googleanalytics" viewBox="0 0 24 24"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></symbol>
@@ -121,9 +130,6 @@
   <symbol id="si-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
   <symbol id="si-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
   <symbol id="si-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
-  <symbol id="si-html5" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></symbol>
-  <symbol id="si-css" viewBox="0 0 24 24"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></symbol>
-  <symbol id="si-javascript" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></symbol>
 </svg>
 
 <!-- ===================== CABEÇALHO ===================== -->
@@ -201,6 +207,7 @@
            viram o símbolo de cada tipo de negócio. Formas em css/formas.css (gerado por
            _ferramentas/gerar-formas.py); troca automática e botões em js/main.js. -->
       <div class="hero__art reveal">
+        <div class="hero__depth js-hero-depth">
         <figure class="stage js-stage">
           <span class="stage__corner stage__corner--tl" aria-hidden="true"></span>
           <span class="stage__corner stage__corner--tr" aria-hidden="true"></span>
@@ -231,6 +238,7 @@
             <svg class="icon js-icon-pause" width="16" height="16" aria-hidden="true"><use href="#ph-pause"/></svg>
             <svg class="icon js-icon-play" width="16" height="16" aria-hidden="true" hidden><use href="#ph-play"/></svg>
           </button>
+        </div>
         </div>
       </div>
     </div>
@@ -281,61 +289,66 @@
       </div>
     </section>
 
-    <!-- ===================== FERRAMENTAS =====================
-         Faixa com os logos das plataformas que a Kivo usa no dia a dia. Não indica parceria
-         oficial (está escrito no rodapé da faixa). Para tirar ou pôr um logo: o desenho fica
-         no <svg class="sprite"> do topo (id "si-nome") e o item nas duas listas abaixo
-         (a segunda é a cópia que faz a faixa girar sem emenda). -->
-    <section class="section section--band" id="ferramentas" aria-labelledby="ferr-titulo">
-      <div class="band">
+    <!-- ===================== PARA CADA NEGÓCIO =====================
+         A figura da esquerda fica parada (sticky) e muda conforme a pessoa rola pelos
+         textos da direita. Com o GSAP carregado, quem controla é o ScrollTrigger; sem ele,
+         um IntersectionObserver faz o mesmo (js/main.js > setupNicheShow). -->
+    <section class="section section--band" id="nichos" aria-labelledby="nich-titulo">
+      <div class="band band--niches">
         <div class="band__head rv">
-          <p class="kicker kicker--dark"><span class="kicker__num">02</span><span data-i18n="kickers.1">Ferramentas</span></p>
-          <h2 class="band__title" id="ferr-titulo"><span data-i18n="toolsTitle">As ferramentas que seus clientes </span><span class="accent" data-i18n="toolsAccent">já usam</span></h2>
-          <p class="band__sub" data-i18n="toolsSub">Anúncios no Google e na Meta, medição com o Google Analytics, conversa pelo WhatsApp e sites testados em iPhone, iPad e Mac. Trabalhamos com as plataformas que fazem parte do dia a dia do seu cliente.</p>
+          <p class="kicker kicker--dark"><span class="kicker__num">02</span><span data-i18n="kickers.8">Para cada negócio</span></p>
+          <h2 class="band__title" id="nich-titulo"><span data-i18n="nichTitle">Um site com a cara do </span><span class="accent" data-i18n="nichAccent">seu negócio</span></h2>
+          <p class="band__sub" data-i18n="nichSub">Cada tipo de negócio pede um site diferente. Role a página e veja como a gente pensa o seu a partir do que os seus clientes procuram.</p>
         </div>
-
-        <div class="marquee">
-          <div class="marquee__row">
-            <ul class="marquee__track">
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-google"/></svg>Google Workspace</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googleads"/></svg>Google Ads</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googleanalytics"/></svg>Google Analytics</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googlemaps"/></svg>Google Maps</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-meta"/></svg>Meta</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-instagram"/></svg>Instagram</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-whatsapp"/></svg>WhatsApp</li>
-            </ul>
-            <ul class="marquee__track" aria-hidden="true">
-              <li class="tool"><svg class="tool__logo"><use href="#si-google"/></svg>Google Workspace</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-googleads"/></svg>Google Ads</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-googleanalytics"/></svg>Google Analytics</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-googlemaps"/></svg>Google Maps</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-meta"/></svg>Meta</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-instagram"/></svg>Instagram</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-whatsapp"/></svg>WhatsApp</li>
-            </ul>
+        <div class="nshow">
+          <div class="nshow__art" aria-hidden="true">
+            <div class="stage stage--flat">
+              <span class="stage__corner stage__corner--tl"></span>
+              <span class="stage__corner stage__corner--tr"></span>
+              <span class="stage__corner stage__corner--bl"></span>
+              <span class="stage__corner stage__corner--br"></span>
+              <span class="stage__meta stage__meta--top"><span data-i18n="stageTop">sites para</span><span class="js-nshow-count">01/05</span></span>
+              <div class="morph js-morph-scroll" data-shape="cafe">
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              <span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span><span class="morph__piece"></span>
+              </div>
+              <span class="stage__caption"><span class="js-nshow-name">cafeteria</span><span class="cursor"></span></span>
+            </div>
           </div>
-          <div class="marquee__row marquee__row--reverse">
-            <ul class="marquee__track">
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-apple"/></svg>Apple</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-github"/></svg>GitHub</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googlesearchconsole"/></svg>Search Console</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-html5"/></svg>HTML5</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-css"/></svg>CSS</li>
-              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-javascript"/></svg>JavaScript</li>
-            </ul>
-            <ul class="marquee__track" aria-hidden="true">
-              <li class="tool"><svg class="tool__logo"><use href="#si-apple"/></svg>Apple</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-github"/></svg>GitHub</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-googlesearchconsole"/></svg>Search Console</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-html5"/></svg>HTML5</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-css"/></svg>CSS</li>
-              <li class="tool"><svg class="tool__logo"><use href="#si-javascript"/></svg>JavaScript</li>
-            </ul>
-          </div>
+          <ol class="nshow__list">
+          <li class="niche-item" data-shape="cafe">
+            <p class="niche-item__tag"><span aria-hidden="true">01 //</span> <span data-i18n="nicheShow.0.tag">Cafeteria, padaria e restaurante</span></p>
+            <h3 class="niche-item__title" data-i18n="nicheShow.0.title">Cardápio no celular, pedido no WhatsApp</h3>
+            <p class="niche-item__text" data-i18n="nicheShow.0.text">O cliente vê o cardápio com fotos e preços e já manda o pedido pronto. Mudou um preço? Você mesmo atualiza.</p>
+          </li>
+          <li class="niche-item" data-shape="loja">
+            <p class="niche-item__tag"><span aria-hidden="true">02 //</span> <span data-i18n="nicheShow.1.tag">Loja e moda</span></p>
+            <h3 class="niche-item__title" data-i18n="nicheShow.1.title">Sua vitrine aberta 24 horas</h3>
+            <p class="niche-item__text" data-i18n="nicheShow.1.text">Catálogo com fotos, tamanhos e preços, carrinho e pagamento online ou pedido direto pelo WhatsApp.</p>
+          </li>
+          <li class="niche-item" data-shape="salao">
+            <p class="niche-item__tag"><span aria-hidden="true">03 //</span> <span data-i18n="nicheShow.2.tag">Salão, barbearia e estética</span></p>
+            <h3 class="niche-item__title" data-i18n="nicheShow.2.title">Serviços, preços e horários num só lugar</h3>
+            <p class="niche-item__text" data-i18n="nicheShow.2.text">Mostre seus trabalhos, a tabela de serviços e um botão para agendar pelo WhatsApp.</p>
+          </li>
+          <li class="niche-item" data-shape="clinica">
+            <p class="niche-item__tag"><span aria-hidden="true">04 //</span> <span data-i18n="nicheShow.3.tag">Clínica e consultório</span></p>
+            <h3 class="niche-item__title" data-i18n="nicheShow.3.title">Confiança antes da primeira consulta</h3>
+            <p class="niche-item__text" data-i18n="nicheShow.3.text">Especialidades, equipe e localização numa página clara, que passa segurança para o paciente.</p>
+          </li>
+          <li class="niche-item" data-shape="local">
+            <p class="niche-item__tag"><span aria-hidden="true">05 //</span> <span data-i18n="nicheShow.4.tag">Serviços e comércio de bairro</span></p>
+            <h3 class="niche-item__title" data-i18n="nicheShow.4.title">Apareça para quem procura perto de você</h3>
+            <p class="niche-item__text" data-i18n="nicheShow.4.text">Site ligado ao seu perfil no Google e ao mapa, para quem busca o seu serviço no bairro chegar até você.</p>
+          </li>
+          </ol>
         </div>
-
-        <p class="band__note" data-i18n="toolsNote">As marcas pertencem aos seus donos. Elas mostram as ferramentas que usamos nos projetos e não indicam parceria oficial.</p>
       </div>
     </section>
 
@@ -497,6 +510,72 @@
       </div>
     </section>
 
+    <!-- ===================== FERRAMENTAS =====================
+         Faixa com os logos das plataformas que a Kivo usa no dia a dia. Não indica parceria
+         oficial (está escrito no rodapé da faixa). Para tirar ou pôr um logo: o desenho fica
+         no <svg class="sprite"> do topo (id "si-nome") e o item nas duas listas abaixo
+         (a segunda é a cópia que faz a faixa girar sem emenda). -->
+    <section class="section section--band" id="ferramentas" aria-labelledby="ferr-titulo">
+      <div class="band">
+        <div class="band__head rv">
+          <p class="kicker kicker--dark"><span class="kicker__num">05</span><span data-i18n="kickers.1">Ferramentas</span></p>
+          <h2 class="band__title" id="ferr-titulo"><span data-i18n="toolsTitle">As ferramentas que seus clientes </span><span class="accent" data-i18n="toolsAccent">já usam</span></h2>
+          <p class="band__sub" data-i18n="toolsSub">Anúncios no Google e na Meta, medição com o Google Analytics, conversa pelo WhatsApp e sites testados em iPhone, iPad, Mac e Android. Trabalhamos com as plataformas que fazem parte do dia a dia do seu cliente.</p>
+        </div>
+
+        <div class="marquee">
+          <div class="marquee__row">
+            <ul class="marquee__track">
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-google"/></svg>Google Workspace</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-gmail"/></svg>Gmail</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googleads"/></svg>Google Ads</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googleanalytics"/></svg>Google Analytics</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googlemaps"/></svg>Google Maps</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-meta"/></svg>Meta</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-facebook"/></svg>Facebook</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-instagram"/></svg>Instagram</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-whatsapp"/></svg>WhatsApp</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-youtube"/></svg>YouTube</li>
+            </ul>
+            <ul class="marquee__track" aria-hidden="true">
+              <li class="tool"><svg class="tool__logo"><use href="#si-google"/></svg>Google Workspace</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-gmail"/></svg>Gmail</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-googleads"/></svg>Google Ads</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-googleanalytics"/></svg>Google Analytics</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-googlemaps"/></svg>Google Maps</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-meta"/></svg>Meta</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-facebook"/></svg>Facebook</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-instagram"/></svg>Instagram</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-whatsapp"/></svg>WhatsApp</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-youtube"/></svg>YouTube</li>
+            </ul>
+          </div>
+          <div class="marquee__row marquee__row--reverse">
+            <ul class="marquee__track">
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-apple"/></svg>Apple</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-android"/></svg>Android</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-googlesearchconsole"/></svg>Search Console</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-github"/></svg>GitHub</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-figma"/></svg>Figma</li>
+              <li class="tool tool--text">Canva</li>
+              <li class="tool"><svg class="tool__logo" aria-hidden="true"><use href="#si-trello"/></svg>Trello</li>
+            </ul>
+            <ul class="marquee__track" aria-hidden="true">
+              <li class="tool"><svg class="tool__logo"><use href="#si-apple"/></svg>Apple</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-android"/></svg>Android</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-googlesearchconsole"/></svg>Search Console</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-github"/></svg>GitHub</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-figma"/></svg>Figma</li>
+              <li class="tool tool--text">Canva</li>
+              <li class="tool"><svg class="tool__logo"><use href="#si-trello"/></svg>Trello</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="band__note" data-i18n="toolsNote">As marcas pertencem aos seus donos. Elas mostram as ferramentas que usamos nos projetos e não indicam parceria oficial.</p>
+      </div>
+    </section>
+
     <!-- ===================== AVALIAÇÕES =====================
          Pedido de avaliação no Google (no lugar dos depoimentos, até chegarem os primeiros).
          O link do botão do Google fica em js/config.js (googleReviewUrl). Enquanto estiver
@@ -506,7 +585,7 @@
       <div class="section__inner">
         <div class="review">
           <div class="review__text rv">
-            <p class="kicker"><span class="kicker__num">05</span><span data-i18n="kickers.4">Avaliações</span></p>
+            <p class="kicker"><span class="kicker__num">06</span><span data-i18n="kickers.4">Avaliações</span></p>
             <h2 class="section__title" id="aval-titulo"><span data-i18n="revTitle">Já fez um projeto com a gente? </span><span class="accent" data-i18n="revAccent">Conte como foi</span></h2>
             <p class="section__sub" data-i18n="revSub">A Kivo é nova e cada avaliação ajuda outro pequeno negócio a nos encontrar. Leva menos de um minuto e vale para qualquer experiência, do primeiro contato à entrega.</p>
             <div class="review__ctas">
@@ -546,7 +625,7 @@
     <section class="section" id="perguntas" aria-labelledby="faq-titulo">
       <div class="section__inner section__inner--narrow">
         <div class="section__head rv">
-          <p class="kicker"><span class="kicker__num">06</span><span data-i18n="kickers.5">Perguntas</span></p>
+          <p class="kicker"><span class="kicker__num">07</span><span data-i18n="kickers.5">Perguntas</span></p>
           <h2 class="section__title" id="faq-titulo"><span data-i18n="faqTitle">Perguntas </span><span class="accent" data-i18n="faqAccent">frequentes</span></h2>
           <p class="section__sub section__sub--free"><span data-i18n="faqSub">Não achou sua dúvida? </span><a class="js-wa-link" href="#contato" target="_blank" rel="noopener" data-track="contact" data-track-method="whatsapp" data-track-local="perguntas" data-i18n="faqLink">Fale com a gente no WhatsApp</a>.</p>
         </div>
@@ -585,7 +664,7 @@
       <div class="quote">
         <div class="quote__grid">
           <div class="quote__text rv">
-            <p class="kicker kicker--dark"><span class="kicker__num">07</span><span data-i18n="kickers.6">Orçamento</span></p>
+            <p class="kicker kicker--dark"><span class="kicker__num">08</span><span data-i18n="kickers.6">Orçamento</span></p>
             <h2 class="quote__title" id="orc-titulo"><span data-i18n="orcTitle">Conte sobre o seu </span><span class="accent" data-i18n="orcAccent">negócio</span></h2>
             <p class="quote__sub" data-i18n="orcSub">Preencha os campos e a conversa continua no WhatsApp, com as informações já escritas.</p>
           </div>
@@ -624,7 +703,7 @@
     <section class="section section--contact" id="contato" aria-labelledby="contato-titulo">
       <div class="section__inner">
         <div class="section__head rv">
-          <p class="kicker"><span class="kicker__num">08</span><span data-i18n="kickers.7">Contato</span></p>
+          <p class="kicker"><span class="kicker__num">09</span><span data-i18n="kickers.7">Contato</span></p>
           <h2 class="section__title" id="contato-titulo"><span data-i18n="contTitle">Fale com a </span><span class="accent" data-i18n="contAccent">gente</span></h2>
           <p class="section__sub" data-i18n="contSub">Escolha o canal que preferir.</p>
         </div>

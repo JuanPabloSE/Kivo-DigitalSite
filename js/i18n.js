@@ -22,7 +22,7 @@ window.KIVO_I18N = {
     niches: { cafe: 'Coffee shop', loja: 'Store', salao: 'Salon', clinica: 'Clinic', local: 'Local business' },
 
     // Rótulos em fonte mono acima dos títulos (01 Serviços, 02 Ferramentas...)
-    kickers: ['Services', 'Tools', 'Any screen', 'How it works', 'Reviews', 'FAQ', 'Quote', 'Contact'],
+    kickers: ['Services', 'Tools', 'Any screen', 'How it works', 'Reviews', 'FAQ', 'Quote', 'Contact', 'For every business'],
 
     servTitle: 'Services to put your business ', servAccent: 'online',
     servSub: 'Pick what makes sense right now. You can start with a single page and grow later.',
@@ -35,8 +35,18 @@ window.KIVO_I18N = {
       { title: 'Google optimization (SEO)', text: 'Structure, copy and speed tuned so your site shows up when someone searches for what you offer.' },
     ],
 
+    nichTitle: 'A website that looks like ', nichAccent: 'your business',
+    nichSub: 'Every kind of business needs a different website. Scroll down and see how we plan yours around what your customers are looking for.',
+    nicheShow: [
+      { tag: 'Coffee shops, bakeries and restaurants', title: 'Menu on the phone, orders on WhatsApp', text: 'Customers see the menu with photos and prices and send the order ready to go. Changed a price? You update it yourself.' },
+      { tag: 'Shops and fashion', title: 'Your shop window, open 24 hours', text: 'Catalog with photos, sizes and prices, a cart and online payment, or orders straight to WhatsApp.' },
+      { tag: 'Salons, barbers and beauty', title: 'Services, prices and hours in one place', text: 'Show your work, your price list and a button to book on WhatsApp.' },
+      { tag: 'Clinics and practices', title: 'Trust before the first appointment', text: 'Specialties, team and location on a clear page that makes patients feel safe.' },
+      { tag: 'Local services and shops', title: 'Show up for people searching nearby', text: 'A website connected to your Google profile and the map, so people looking for your service nearby can find you.' },
+    ],
+
     toolsTitle: 'The tools your customers ', toolsAccent: 'already use',
-    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp and websites tested on iPhone, iPad and Mac. We work with the platforms that are part of your customers’ everyday life.',
+    toolsSub: 'Ads on Google and Meta, measurement with Google Analytics, conversations on WhatsApp and websites tested on iPhone, iPad, Mac and Android. We work with the platforms that are part of your customers’ everyday life.',
     toolsNote: 'Trademarks belong to their owners. They show the tools we use in our projects and do not imply an official partnership.',
 
     respTitle: 'Perfect on ', respAccent: 'any screen',

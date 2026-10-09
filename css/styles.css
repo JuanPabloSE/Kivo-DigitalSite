@@ -308,6 +308,8 @@ img { display: block; }
 
 /* ----- Palco da figura em pedaços ----- */
 .hero__art { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+/* Camada que o GSAP inclina em 3D quando a abertura sai da tela (só no computador) */
+.hero__depth { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .stage {
   position: relative; width: min(100%, 480px); aspect-ratio: 1; padding: 13%;
   border-radius: 28px;
@@ -756,6 +758,7 @@ img { display: block; }
   transition: color .25s ease, border-color .25s ease, background .25s ease;
 }
 .tool__logo { width: 28px; height: 28px; fill: currentColor; flex: none; }
+.tool--text { padding: 0 28px; }
 .tool:hover { color: var(--gelo-50); border-color: rgba(198, 244, 50, 0.4); background: rgba(198, 244, 50, 0.06); }
 .tool:hover .tool__logo { fill: var(--lima-500); }
 /* Sem animação: os logos ficam parados, em linhas que quebram */
@@ -769,6 +772,48 @@ img { display: block; }
   .tool { height: 60px; padding: 0 20px 0 16px; font-size: 1rem; gap: 12px; }
   .tool__logo { width: 24px; height: 24px; }
 }
+
+/* ---------- Para cada negócio (figura parada à esquerda, textos rolando à direita) ---------- */
+/* overflow: clip (e não hidden) para o position: sticky da figura funcionar dentro da faixa */
+.band--niches { overflow: visible; overflow: clip; }
+.nshow {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start;
+  gap: clamp(32px, 6vw, 80px); padding: 0 clamp(24px, 5vw, 72px);
+}
+.nshow__art { position: sticky; top: calc(var(--header-h) + 6vh); z-index: 2; }
+.stage--flat { width: min(100%, 440px); margin: 0 auto; transform: none; }
+.nshow__list { list-style: none; display: flex; flex-direction: column; }
+.niche-item {
+  min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 16px;
+  opacity: 0.25; transition: opacity .5s ease;
+}
+.niche-item:first-child { min-height: 56vh; justify-content: flex-start; padding-top: 6vh; }
+.niche-item:last-child { min-height: 64vh; }
+.niche-item.is-active, .no-js .niche-item { opacity: 1; }
+.niche-item__tag { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--azul-200); }
+.niche-item__tag span:first-child { color: var(--lima-500); }
+.niche-item__title {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  line-height: 1.05; letter-spacing: -0.03em; color: var(--gelo-50); text-wrap: balance;
+}
+.niche-item__text { color: var(--grafite-400); font-size: 1.125rem; max-width: 44ch; text-wrap: pretty; }
+@media (max-width: 900px) {
+  .nshow { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  /* No celular a figura fica presa no topo, com fundo, e os textos passam por baixo dela */
+  .nshow__art {
+    top: var(--header-h); padding: 12px 0 28px;
+    background: linear-gradient(to bottom, var(--noite-950) calc(100% - 28px), rgba(5, 10, 28, 0));
+  }
+  .stage--flat { width: min(64vw, 260px); }
+  .stage--flat .stage__meta { left: 46px; right: 46px; top: 10px; font-size: 9px; }
+  .stage--flat .stage__caption { left: 30px; right: 30px; bottom: 8px; font-size: 0.8125rem; }
+  .niche-item, .niche-item:first-child, .niche-item:last-child { min-height: 52vh; justify-content: center; padding-top: 0; }
+}
+
+/* Títulos com as palavras subindo (o GSAP quebra o texto em palavras em js/main.js) */
+/* clip-path (e não overflow: hidden) para a palavra continuar alinhada na linha de base */
+.split-w { display: inline-block; clip-path: inset(-0.2em -0.1em -0.3em -0.1em); }
+.split-w > span { display: inline-block; }
 
 /* ---------- Como funciona ---------- */
 /* A linha acima das etapas se preenche com o limão conforme a página rola (--p de 0 a 1, main.js) */
