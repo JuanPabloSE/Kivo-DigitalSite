@@ -240,10 +240,49 @@
 
     function clamp01(v) { return Math.max(0, Math.min(1, v)); }
 
+    // O recálculo do ScrollTrigger mexe na posição da página por um instante: no meio da rolagem
+    // ele parava a rolagem suave dos links do menu e o embalo do dedo no celular. Por isso só
+    // acontece com a página parada.
+    var refreshTimer = null;
+    function refreshWhenStill() {
+      clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(function () {
+        if (isScrolling()) { refreshWhenStill(); return; }
+        // A rolagem suave do <html> atrapalha a medição do ScrollTrigger: desliga só durante o refresh
+        var root = document.documentElement;
+        var prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        window.ScrollTrigger.refresh();
+        root.style.scrollBehavior = prev;
+      }, 250);
+    }
+
+    // Link para uma seção dentro da folha (menu, "Ver serviços", "Pedir orçamento"): a folha fica
+    // larga antes de a rolagem começar. Assim o navegador calcula o destino com o tamanho final
+    // e para no lugar certo, em vez de passar do ponto quando a folha alarga no caminho.
+    var wide = false;
+    var wideTimer = null;
+    function releaseWhenStill() {
+      clearTimeout(wideTimer);
+      wideTimer = setTimeout(function () {
+        if (isScrolling()) { releaseWhenStill(); return; }
+        wide = false;
+        update();
+      }, 250);
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      var target = a && a.getAttribute('href').length > 1 && document.getElementById(a.getAttribute('href').slice(1));
+      if (!target || !sheet.contains(target)) return;
+      wide = true;
+      update();
+      releaseWhenStill();
+    });
+
     function update() {
       ticking = false;
       var vh = window.innerHeight;
-      var p = clamp01(window.scrollY / (vh * 0.6));
+      var p = wide ? 1 : clamp01(window.scrollY / (vh * 0.6));
       var inset = (mobile.matches ? 8 : 40) * (1 - p);
       sheet.style.setProperty('--sheet-inset', inset.toFixed(2) + 'px');
       sheet.style.setProperty('--sheet-radius', (mobile.matches ? 24 : 40) + 'px');
@@ -251,14 +290,7 @@
       // Quando ela termina de alargar (ou volta a estreitar), as animações recalculam onde começam,
       // senão os títulos mais abaixo só apareceriam depois de passar do ponto.
       var full = p >= 1;
-      if (wasFull !== null && full !== wasFull && window.ScrollTrigger) {
-        // A rolagem suave do <html> atrapalha a medição do ScrollTrigger: desliga só durante o refresh
-        var root = document.documentElement;
-        var prev = root.style.scrollBehavior;
-        root.style.scrollBehavior = 'auto';
-        window.ScrollTrigger.refresh();
-        root.style.scrollBehavior = prev;
-      }
+      if (wasFull !== null && full !== wasFull && window.ScrollTrigger) refreshWhenStill();
       wasFull = full;
 
       // Barra de leitura no topo (o "_" do logo esticado)
@@ -302,6 +334,32 @@
   }
 
   /* ==========================================================================
+     ROLAGEM EM ANDAMENTO: enquanto a pessoa rola, as figuras ficam inteiras e em pé.
+     A troca automática espera a rolagem parar; se a rolagem começa no meio de uma
+     troca, a figura se fecha na hora (sem triângulos soltos na tela).
+     ========================================================================== */
+  var MORPH_MS = 1800; // duração de uma troca de figura (css/styles.css, .morph__piece)
+  var lastScroll = 0;
+  var lastY = window.pageYOffset;
+  var onScrollStart = [];
+  function isScrolling() { return Date.now() - lastScroll < 500; }
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset;
+    if (Math.abs(y - lastY) < 2) return; // evento sem a página sair do lugar (ex.: recálculo das animações)
+    lastY = y;
+    var starting = !isScrolling();
+    lastScroll = Date.now();
+    if (starting) onScrollStart.forEach(function (fn) { fn(); });
+  }, { passive: true });
+
+  // Fecha a figura na hora: desliga a transição dos triângulos por um instante
+  function settleMorph(el) {
+    el.classList.add('is-settled');
+    void el.offsetWidth; // aplica agora: as transições em andamento terminam no lugar final
+    el.classList.remove('is-settled');
+  }
+
+  /* ==========================================================================
      FIGURA EM PEDAÇOS DA ABERTURA
      Os 32 triângulos (.morph__piece) mudam de forma pelo atributo data-shape;
      as formas ficam em css/formas.css. Começa espalhado ("intro"), monta o k_
@@ -324,6 +382,8 @@
     var playing = !reduce;
     var visible = true;
     var timer = null;
+    var changeEnd = 0; // até quando a troca atual está acontecendo
+    var waited = 0;
 
     function relabel() {
       var names = dyn('niches');
@@ -341,12 +401,18 @@
       el.setAttribute('data-shape', shape);
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-shape') === shape)); });
       relabel();
+      changeEnd = Date.now() + MORPH_MS;
+      if (isScrolling()) settleMorph(el);
     }
     function schedule(delay) {
       clearTimeout(timer);
       if (playing && visible && !document.hidden) timer = setTimeout(next, delay || 3400);
     }
     function next() {
+      // Com a pessoa rolando a página, espera a rolagem parar para trocar de figura
+      // (até uns 3 s; depois troca mesmo assim, já com a figura inteira)
+      if (isScrolling() && waited < 6) { waited++; timer = setTimeout(next, 500); return; }
+      waited = 0;
       show(SHAPES[(SHAPES.indexOf(current) + 1) % SHAPES.length]);
       schedule();
     }
@@ -364,6 +430,7 @@
     });
     if (toggle) toggle.addEventListener('click', function () { setPlaying(!playing); });
     document.addEventListener('visibilitychange', function () { if (started) schedule(); });
+    onScrollStart.push(function () { if (Date.now() < changeEnd) settleMorph(el); });
     morph = { relabel: relabel };
     if (reduce) { show('kivo'); return; }
 
@@ -401,6 +468,8 @@
     var index = 0;
     var timer = null;
     var visible = false;
+    var changeEnd = 0;
+    var skipped = 0;
 
     function relabel() {
       if (nameEl) nameEl.textContent = dyn('niches')[shapes[index]];
@@ -410,15 +479,23 @@
       index = i;
       el.setAttribute('data-shape', shapes[i]);
       relabel();
+      changeEnd = Date.now() + MORPH_MS;
+      if (isScrolling()) settleMorph(el);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function start() {
       if (timer || !visible || document.hidden) return;
-      timer = setInterval(function () { show((index + 1) % shapes.length); }, 3000);
+      timer = setInterval(function () {
+        // Durante a rolagem pula uma troca; se a pessoa continua rolando, troca já com a figura inteira
+        if (isScrolling() && !skipped) { skipped = 1; return; }
+        skipped = 0;
+        show((index + 1) % shapes.length);
+      }, 3000);
     }
 
     nicheShow = { relabel: relabel };
     show(0);
+    onScrollStart.push(function () { if (Date.now() < changeEnd) settleMorph(el); });
 
     // Troca sozinha, como a figura do topo, só enquanto aparece na tela. Não depende da rolagem.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -493,13 +570,12 @@
       });
     });
 
-    // Abertura saindo da tela: texto sobe (sem apagar) e o palco tomba para trás em 3D (só computador)
+    // Abertura saindo da tela: só o texto sobe um pouco (sem apagar). A figura não inclina nem
+    // diminui com a rolagem: ela fica inteira e em pé (pedido do Gabriel em 09/10/2026).
     gsap.matchMedia().add('(min-width: 901px)', function () {
-      var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('.hero__text', { yPercent: -10, ease: 'none', scrollTrigger: st });
-      gsap.to('.js-hero-depth', {
-        rotateX: 28, scale: 0.86, y: 30, transformPerspective: 900, transformOrigin: '50% 100%',
-        ease: 'none', scrollTrigger: st,
+      gsap.to('.hero__text', {
+        yPercent: -10, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
       });
     });
   }
@@ -511,17 +587,20 @@
     if (!art || !stage) return;
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function straighten() {
+      stage.style.setProperty('--rx', '0deg');
+      stage.style.setProperty('--ry', '0deg');
+    }
     art.addEventListener('pointermove', function (e) {
+      if (isScrolling()) return; // rolando a página: o palco fica reto
       var r = stage.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
       var y = (e.clientY - r.top) / r.height - 0.5;
       stage.style.setProperty('--rx', (x * 10).toFixed(2) + 'deg');
       stage.style.setProperty('--ry', (-y * 10).toFixed(2) + 'deg');
     });
-    art.addEventListener('pointerleave', function () {
-      stage.style.setProperty('--rx', '0deg');
-      stage.style.setProperty('--ry', '0deg');
-    });
+    art.addEventListener('pointerleave', straighten);
+    onScrollStart.push(straighten);
   }
 
   /* ---------- Blocos aparecem ao rolar (.rv ganha .is-in) ---------- */
