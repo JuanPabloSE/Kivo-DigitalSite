@@ -115,9 +115,13 @@
     var d = I18N.dynamic[lang];
 
     document.documentElement.lang = d.htmlLang;
-    document.title = d.title;
-    var meta = $('meta[name="description"]');
-    if (meta) meta.setAttribute('content', d.description);
+    // Na abertura em português o <head> já vem certo no HTML: não reescrever título e descrição
+    // (se o JavaScript falhar, o Google não grava "undefined" como título)
+    if (!(isInit && lang === 'pt')) {
+      if (d.title) document.title = d.title;
+      var meta = $('meta[name="description"]');
+      if (meta && d.description) meta.setAttribute('content', d.description);
+    }
 
     translateStatic(lang);
     if (!(isInit && lang === 'pt')) buildHeroTitle(d.heroLines); // o HTML já vem em português
