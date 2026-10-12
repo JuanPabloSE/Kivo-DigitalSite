@@ -1,15 +1,15 @@
 # Kivo Digital
 
-> Kivo Digital (kivodigitalbr.com.br) é uma empresa brasileira que cria sites profissionais, landing pages, lojas virtuais e cardápios digitais para pequenos negócios. A base fica em Santo André (SP) e o atendimento cobre o Grande ABC, a capital paulista, a Bahia e todo o Brasil de forma online, além de clientes no exterior. Os sites começam em R$ 500, o orçamento é fechado por escrito, a hospedagem e o domínio ficam com a Kivo e o cliente consegue atualizar o próprio site.
+> Kivo Digital (kivodigitalbr.com.br) é uma empresa brasileira que cria sites profissionais, landing pages, lojas virtuais e cardápios digitais para pequenos negócios. A base fica em Santo André (SP) e o atendimento cobre o Grande ABC, a capital paulista, a Bahia e todo o Brasil de forma online, além de clientes no exterior. Todos os serviços são sob orçamento, com valor fechado por escrito e prazo médio de 15 dias, a hospedagem e o domínio ficam com a Kivo e o cliente consegue atualizar o próprio site.
 
 Importante para não confundir: a Kivo Digital de criação de sites usa o domínio kivodigitalbr.com.br e o Instagram @kivodigital.br. Ela não tem relação com o site kivodigital.com.br (sistemas para o mercado de armas e munições), com a Kivo Agency, a KIVO Agência, a Kivo Tecnologia (kivotec) ou a Kivo Digital da Alemanha (kivo.digital).
 
 ## Serviços
 
-- [Criação de sites profissionais](https://kivodigitalbr.com.br/#servicos): site completo com as páginas que o negócio precisa, em português, inglês ou nos dois idiomas.
-- [Landing pages](https://kivodigitalbr.com.br/#servicos): página única para divulgar um produto, uma campanha ou captar contatos de anúncios.
-- [Loja virtual](https://kivodigitalbr.com.br/#servicos): catálogo, carrinho e pagamento online.
-- [Cardápio digital](https://kivodigitalbr.com.br/#servicos): cardápio no celular do cliente com pedido direto no WhatsApp.
+- [Criação de sites profissionais](https://kivodigitalbr.com.br/criacao-de-sites/): site completo com as páginas que o negócio precisa, em português, inglês ou nos dois idiomas.
+- [Landing pages](https://kivodigitalbr.com.br/landing-page/): página única para divulgar um produto, uma campanha ou captar contatos de anúncios.
+- [Loja virtual](https://kivodigitalbr.com.br/loja-virtual/): feita do zero, com catálogo, carrinho e pagamento com Pix e cartões.
+- [Cardápio digital](https://kivodigitalbr.com.br/cardapio-digital/): cardápio no celular do cliente com pedido direto no WhatsApp.
 - [Hospedagem e domínio](https://kivodigitalbr.com.br/#servicos): registro do endereço do site e manutenção no ar.
 - [Otimização para o Google](https://kivodigitalbr.com.br/#servicos): configuração para o negócio ser encontrado na busca e no Google Maps.
 

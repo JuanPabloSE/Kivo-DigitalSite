@@ -479,6 +479,14 @@ img { display: block; }
   transition: background .3s ease, color .3s ease, transform .4s var(--ease-out);
 }
 .service:hover .service__icon { background: var(--azul-500); color: var(--branco); transform: rotate(-6deg); }
+/* Cartão com página própria: o link do título cobre o cartão inteiro */
+.card-link { color: inherit; }
+.card-link::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.card-link::after { content: " \2192"; color: var(--azul-500); transition: margin .25s var(--ease-out); }
+.service:hover .card-link::after { margin-left: 4px; }
+.card-link:hover { text-decoration: none; }
+.card-link:focus-visible { outline: none; }
+.service:has(.card-link:focus-visible) { outline: 2px solid var(--azul-500); outline-offset: 3px; }
 .service__num { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--grafite-400); letter-spacing: 0.06em; }
 
 /* Suporte depois da entrega: faixa larga embaixo dos cartões de serviço */

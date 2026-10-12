@@ -31,6 +31,19 @@ https://kivodigitalbr.com.br. Não há etapa de build: o que está no repositór
 - **Página nova**: acrescente o endereço no `sitemap.xml`.
 - Pastas que começam com `_` (como `_ferramentas`) não são publicadas pelo GitHub Pages.
 
+## Páginas de serviço
+
+`criacao-de-sites/`, `landing-page/`, `loja-virtual/` e `cardapio-digital/` são **geradas**, não edite o
+`index.html` delas. Textos, perguntas, prazo e ícones ficam em `_ferramentas/gerar-paginas.py`. Depois de
+mudar o gerador (ou o rodapé do `index.html`), rode:
+`python3 _ferramentas/gerar-paginas.py`
+
+Estilo próprio dessas páginas: `css/pagina.css`. Script: `js/pagina.js` (menu, perguntas, WhatsApp com
+mensagem de cada página, cookies). Ao criar uma página nova, inclua no `sitemap.xml` e no `llms.txt`.
+Regra da Kivo: **nenhum valor em reais no site**. Preço é sempre "sob orçamento".
+
+Sem PowerShell, a versão em inglês também pode ser gerada com `python3 _ferramentas/gerar-en.py .`
+
 ## Regras para não quebrar
 
 - Cada texto traduzível tem um `data-i18n="chave"` no HTML. Ao criar um texto novo, crie a

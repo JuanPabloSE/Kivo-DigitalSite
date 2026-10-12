@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Páginas de serviço (criacao-de-sites, landing-page, loja-virtual, cardapio-digital)
+   Usa as cores, fontes e blocos do css/styles.css. Aqui ficam só as peças próprias
+   destas páginas: abertura compacta, trilha de navegação, preço, público e chamada final.
+   As páginas são geradas por _ferramentas/gerar-paginas.py.
+   ========================================================================== */
+
+/* ---------- Abertura compacta ---------- */
+.phero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--header-h) + 64px) 24px 168px; background: var(--noite-950);
+}
+.phero__inner { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.phero__title {
+  font-family: var(--font-display); font-weight: 700; color: var(--gelo-50);
+  font-size: clamp(2.25rem, 5.6vw, 4.25rem); line-height: 1.02; letter-spacing: -0.04em;
+  max-width: 18ch; text-wrap: balance;
+}
+.phero__title .accent { color: var(--azul-300); }
+.phero__lead { color: var(--grafite-300); font-size: clamp(1.0625rem, 1.6vw, 1.25rem); max-width: 60ch; text-wrap: pretty; }
+.phero__lead strong { color: var(--gelo-50); font-weight: 500; }
+.phero .hero__ctas { margin-top: 4px; flex-wrap: wrap; }
+
+/* Trilha: Início / Serviços / página atual */
+.crumbs { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.04em; }
+.crumbs li { display: flex; align-items: center; gap: 8px; color: var(--grafite-400); }
+.crumbs li + li::before { content: "/"; color: var(--lima-500); }
+.crumbs a { color: var(--grafite-300); }
+.crumbs a:hover { color: var(--gelo-50); }
+.crumbs [aria-current] { color: var(--azul-300); }
+
+/* ---------- Caixa de preço e prazo ---------- */
+.facts { list-style: none; width: 100%; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.fact {
+  background: var(--branco); border: 1px solid var(--grafite-100); border-radius: 24px; padding: 28px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.fact__label { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--azul-700); }
+.fact__value { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--grafite-900); }
+.fact__note { color: var(--grafite-500); font-size: 0.9375rem; text-wrap: pretty; }
+.fact--accent { background: var(--noite-900); border-color: var(--noite-700); }
+.fact--accent .fact__label { color: var(--lima-500); }
+.fact--accent .fact__value { color: var(--gelo-50); }
+.fact--accent .fact__note { color: var(--grafite-300); }
+
+/* ---------- Lista "o que está incluso" (mesmo cartão dos serviços, sem número) ---------- */
+.services--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+
+/* ---------- Para quem é ---------- */
+.fits { list-style: none; width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
+.fits li {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px;
+  border-radius: 999px; background: var(--branco); border: 1px solid var(--grafite-100);
+  color: var(--grafite-900); font-weight: 500;
+}
+.fits li::before { content: ""; width: 10px; height: 2px; background: var(--lima-500); flex: none; }
+
+/* As etapas aqui não acompanham a rolagem: a linha já aparece cheia */
+.steps--static { --p: 1; }
+.steps--static .step::before { background: var(--lima-500); box-shadow: inset 0 0 0 3px var(--lima-500); }
+
+/* ---------- Chamada final ---------- */
+.cta-box {
+  width: 100%; border-radius: 32px; padding: clamp(32px, 5vw, 64px);
+  background: var(--noite-900); color: var(--gelo-50);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px;
+  box-shadow: 0 30px 60px -30px rgba(47, 107, 255, 0.6);
+}
+.cta-box__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3.6vw, 2.75rem); line-height: 1.05; letter-spacing: -0.03em; max-width: 20ch; }
+.cta-box__title .accent { color: var(--lima-500); }
+.cta-box__sub { color: var(--grafite-300); margin-top: 12px; max-width: 46ch; }
+
+/* ---------- Outros serviços ---------- */
+.others { list-style: none; width: 100%; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.other {
+  height: 100%; display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: 20px;
+  background: var(--branco); border: 1px solid var(--grafite-100); color: var(--grafite-900);
+  transition: border-color .2s ease, transform .3s var(--ease-out), box-shadow .2s ease;
+}
+.other:hover { text-decoration: none; border-color: var(--azul-200); transform: translateY(-3px); box-shadow: 0 16px 36px -18px rgba(31, 85, 230, 0.4); }
+.other__name { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.other__name .icon { color: var(--azul-500); flex: none; }
+.other__text { color: var(--grafite-500); font-size: 0.9375rem; }
+
+/* Texto corrido (explicação do serviço) */
+.prose { max-width: 70ch; display: flex; flex-direction: column; gap: 16px; color: var(--grafite-700); font-size: 1.0625rem; }
+.prose strong { color: var(--grafite-900); font-weight: 500; }
+
+@media (max-width: 560px) {
+  .phero { padding-bottom: 136px; }
+  .phero .hero__ctas .btn { flex: 1 1 100%; }
+  .cta-box .btn { flex: 1 1 100%; }
+}
