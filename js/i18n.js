@@ -86,7 +86,7 @@ window.KIVO_I18N = {
     faqTitle: 'Frequently asked ', faqAccent: 'questions',
     faqSub: 'Didn’t find your question? ', faqLink: 'Message us on WhatsApp',
     faqs: [
-      { q: 'How much does a website cost?', a: 'It depends on the size of the site and what it needs to do. You explain it on WhatsApp and get a fixed-price quote, with no extra charges along the way.' },
+      { q: 'How much does a website cost?', a: 'Kivo websites start at R$ 500. The final price depends on the size of the site and what it needs to do: you explain it on WhatsApp and get a fixed-price quote, with no extra charges along the way.' },
       { q: 'How long does it take?', a: 'The timeline is in writing in the quote, along with the price. You know from the start when your site goes live.' },
       { q: 'Do I need to be good with technology?', a: 'No. The technical side is on us, and we talk without jargon. You just need to tell us how your business works.' },
       { q: 'Can I update the site later?', a: 'Yes. Changing a text, a photo or your opening hours doesn’t require a developer, and we show you how at handover.' },
@@ -109,7 +109,7 @@ window.KIVO_I18N = {
 
     footerAbout: 'Professional websites for small businesses, custom-built and kept online by our team.',
     footerNav: 'Navigation', footerContact: 'Contact', footerCompany: 'Company',
-    footerCities: 'São Paulo and Bahia, Brazil',
+    footerCities: 'Santo André (SP), São Paulo and Bahia, Brazil',
     footerLocation: 'Serving clients in Brazil and worldwide',
     footerTag: 'All rights reserved.',
     privacyLink: 'Privacy policy', cookiePrefs: 'Cookie preferences',
@@ -121,7 +121,7 @@ window.KIVO_I18N = {
     pt: {
       htmlLang: 'pt-BR',
       title: 'Criação de Sites em São Paulo e Todo o Brasil | Kivo Digital',
-      description: 'A Kivo Digital cria sites profissionais, landing pages, lojas virtuais e cardápios digitais para pequenos negócios em São Paulo, na Bahia e em todo o Brasil. Orçamento fechado pelo WhatsApp.',
+      description: 'A Kivo Digital cria sites profissionais a partir de R$ 500, landing pages, lojas virtuais e cardápios digitais para pequenos negócios em Santo André, São Paulo, na Bahia e em todo o Brasil. Orçamento fechado pelo WhatsApp.',
       heroLines: [['Seu', 'negócio'], ['merece', 'um', 'site'], ['de', '@icon', 'verdade']],
       menuOpen: 'Abrir menu', menuClose: 'Fechar menu',
       fbErro: 'Preencha seu nome e o tipo de negócio para continuar.', fbOk: 'Abrindo o WhatsApp...',
